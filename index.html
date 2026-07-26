@@ -388,4 +388,77 @@ $('#importFile').onchange=async e=>{const f=e.target.files?.[0];if(!f)return;try
 $('#snapshotList').onclick=async e=>{const b=e.target.closest('[data-restore-snapshot]');if(!b)return;const s=await idbGet('snapshots',b.dataset.restoreSnapshot);if(!s)return;if(confirm(`恢复到 ${new Date(s.at).toLocaleString('zh-CN')} 的状态吗？当前状态会先下载备份。`)){downloadBackup('恢复前保护备份');state=clone(s.data);await persist('恢复版本快照',false,true);initSelects();toast('已恢复版本')}};
 init().catch(err=>{console.error(err);alert('应用启动失败：'+err.message)});
 </script>
-</body></html>
+</body></html
+<div class="brain-card">
+  <div class="brain-hero" data-brain-hero>数独 · 一步一步找唯一解。</div>
+
+  <div class="sudoku-wrap" data-subtab="sudoku">
+    <div class="brain-layout">
+      <div class="sudoku-shell">
+        <div class="sudoku-grid" id="sudokuGrid" role="grid" aria-label="九宫格数独"></div>
+        <div class="number-pad" id="sudokuNumberPad"></div>
+        <div class="sudoku-message" id="sudokuMessage">点“新题目”开始。先从确定性最高的空格排除候选数字。</div>
+      </div>
+      <aside class="sudoku-side">
+        <div class="sudoku-status" id="sudokuStatus"></div>
+        <div class="panel card" style="box-shadow:none;border:1px solid var(--line)">
+          <div class="label">玩法</div>
+          <div class="sub">点选空格，再点数字。每一行、每一列和每个 3×3 宫都要恰好包含 1—9。检查只标出错误，不会直接公布答案。</div>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <div class="ms-wrap" data-subtab="minesweeper" hidden>
+    <div class="ms-toolbar">
+      <button class="small" data-ms-new="easy">新局 · 简单</button>
+      <button class="small" data-ms-new="medium">新局 · 中等</button>
+      <button class="small" data-ms-new="hard">新局 · 困难</button>
+      <button class="small ghost" data-ms-action="toggleFlagMode">🚩 插旗模式</button>
+      <button class="small ghost" data-ms-action="check">检查</button>
+      <button class="small ghost" data-ms-action="reveal">显示答案</button>
+    </div>
+    <div class="ms-custom-row">
+      <label for="msSizeSelect">规格</label>
+      <select id="msSizeSelect" data-ms-size>
+        <option value="9x9">9×9</option>
+        <option value="12x12">12×12</option>
+        <option value="16x16">16×16</option>
+      </select>
+      <label for="msMineInput">雷数</label>
+      <input id="msMineInput" data-ms-mines type="number" min="1" step="1" value="10" inputmode="numeric">
+      <button class="small" data-ms-custom-start>开始自定义</button>
+    </div>
+    <div class="ms-board" data-ms-board></div>
+    <div class="ms-legend" data-ms-legend>第一次点击不会踩雷。开启插旗模式后，再点格子就会插旗。</div>
+    <div class="ms-status-grid">
+      <div class="stat-card"><div class="label">已开局</div><div class="value" data-ms-opened>0</div></div>
+      <div class="stat-card"><div class="label">已胜利</div><div class="value" data-ms-won>0</div></div>
+      <div class="stat-card"><div class="label">最佳用时</div><div class="value" data-ms-best>—</div></div>
+      <div class="stat-card"><div class="label">当前状态</div><div class="value" data-ms-state>未开始</div></div>
+    </div>
+  </div>
+
+  <div class="freecell-wrap" data-subtab="freecell" hidden>
+    <div class="freecell-toolbar">
+      <button class="small" data-fc-new="easy">新局 · 简单</button>
+      <button class="small" data-fc-new="medium">新局 · 中等</button>
+      <button class="small" data-fc-new="hard">新局 · 困难</button>
+      <button class="small ghost" data-fc-action="undo">撤销</button>
+      <button class="small ghost" data-fc-action="auto">自动收牌</button>
+      <button class="small ghost" data-fc-action="reset">重置</button>
+    </div>
+    <div class="freecell-board" data-freecell-board></div>
+    <div class="freecell-hint" data-freecell-hint>点“新局”开始，先把 A 尽快移向收集区。</div>
+    <div class="freecell-status-grid">
+      <div class="stat-card"><div class="label">已开局</div><div class="value" data-fc-opened>0</div></div>
+      <div class="stat-card"><div class="label">已胜利</div><div class="value" data-fc-won>0</div></div>
+      <div class="stat-card"><div class="label">最佳用时</div><div class="value" data-fc-best>—</div></div>
+      <div class="stat-card"><div class="label">当前状态</div><div class="value" data-fc-state>未开始</div></div>
+    </div>
+  </div>
+</div>
+    </section>
+  </main>
+
+  >
