@@ -1,11 +1,12 @@
 {
   "name": "小松鼠生活管家",
   "short_name": "松鼠管家",
-  "start_url": "./?source=pwa",
+  "description": "家务、记账、数独、空当接龙、扫雷与生活管理工具",
+  "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#f6f2ea",
-  "theme_color": "#d7e0d3",
+  "background_color": "#f5f1e8",
+  "theme_color": "#6c8b70",
   "icons": [
     {
       "src": "./icon-192.png",
