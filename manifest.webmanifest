@@ -1,7 +1,7 @@
 {
   "name": "小松鼠生活管家",
   "short_name": "松鼠管家",
-  "description": "家务、记账、数独与生活管理工具",
+  "description": "家务、记账、数独、空当接龙、扫雷与生活管理工具",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
