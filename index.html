@@ -229,4 +229,85 @@ $('#importFile').onchange=async e=>{const f=e.target.files?.[0];if(!f)return;try
 $('#snapshotList').onclick=async e=>{const b=e.target.closest('[data-restore-snapshot]');if(!b)return;const s=await idbGet('snapshots',b.dataset.restoreSnapshot);if(!s)return;if(confirm(`恢复到 ${new Date(s.at).toLocaleString('zh-CN')} 的状态吗？当前状态会先下载备份。`)){downloadBackup('恢复前保护备份');state=clone(s.data);await persist('恢复版本快照',false,true);initSelects();toast('已恢复版本')}};
 init().catch(err=>{console.error(err);alert('应用启动失败：'+err.message)});
 </script>
+
+<style id="squirrel-sudoku-compact-patch">
+  .squirrel-sudoku-pad-compact{
+    display:grid !important;
+    grid-template-columns:repeat(5,minmax(0,1fr)) !important;
+    gap:10px !important;
+    margin:12px 0 14px !important;
+    width:100% !important;
+  }
+  .squirrel-sudoku-pad-compact button{
+    min-height:56px !important;
+    font-size:28px !important;
+    border-radius:16px !important;
+  }
+  .squirrel-sudoku-summary-after-pad{
+    margin-top:4px !important;
+  }
+</style>
+<script>
+(function(){
+  function isVisible(el){
+    if(!el) return false;
+    const rect = el.getBoundingClientRect();
+    const style = getComputedStyle(el);
+    return style.display !== 'none' && style.visibility !== 'hidden' && rect.width > 0 && rect.height > 0;
+  }
+  function getButtonsText(el){
+    return Array.from(el.querySelectorAll('button')).map(b => (b.textContent || '').trim()).filter(Boolean);
+  }
+  function findKeypad(){
+    const digits = ['1','2','3','4','5','6','7','8','9'];
+    const blocks = Array.from(document.querySelectorAll('div, section'));
+    let best = null, bestScore = -1;
+    for(const el of blocks){
+      if(!isVisible(el)) continue;
+      const texts = getButtonsText(el);
+      if(texts.length < 9) continue;
+      const hit = digits.filter(d => texts.includes(d)).length;
+      if(hit < 9) continue;
+      const score = hit * 100 - texts.length; // prefer tighter wrappers
+      if(score > bestScore){
+        bestScore = score;
+        best = el;
+      }
+    }
+    return best;
+  }
+  function findSummary(){
+    const els = Array.from(document.querySelectorAll('div, section, p'));
+    return els.find(el => {
+      if(!isVisible(el)) return false;
+      const t = (el.textContent || '').replace(/\s+/g,' ').trim();
+      return t.includes('已填') && t.includes('/81');
+    }) || null;
+  }
+  function patchSudokuLayout(){
+    const keypad = findKeypad();
+    const summary = findSummary();
+    if(!keypad || !summary || !summary.parentElement) return;
+
+    if(summary.previousElementSibling !== keypad){
+      summary.parentElement.insertBefore(keypad, summary);
+    }
+
+    keypad.classList.add('squirrel-sudoku-pad-compact');
+    summary.classList.add('squirrel-sudoku-summary-after-pad');
+
+    keypad.querySelectorAll('button').forEach(btn => {
+      btn.style.minHeight = '56px';
+      btn.style.fontSize = '28px';
+      btn.style.borderRadius = '16px';
+    });
+  }
+  const run = () => requestAnimationFrame(patchSudokuLayout);
+  document.addEventListener('DOMContentLoaded', run);
+  window.addEventListener('load', run);
+  new MutationObserver(run).observe(document.documentElement, {childList:true, subtree:true});
+  setInterval(run, 1200);
+})();
+</script>
+
 </body></html>
