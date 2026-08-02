@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#73836d">
+<meta name="theme-color" content="#6c8b70">
 <title>小松鼠生活管家</title>
 <link rel="manifest" href="./manifest.webmanifest">
 <link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png">
@@ -74,7 +74,6 @@ dialog{border:0;border-radius:21px;padding:0;width:min(680px,calc(100% - 20px));
 @media(max-width:580px){.bottom-nav{grid-template-columns:repeat(6,1fr)}.nav-btn{font-size:11px;padding:8px 2px}.nav-btn span{font-size:18px}.number-pad{grid-template-columns:repeat(5,1fr)}}
 @media(max-width:920px){.grid.kpi{grid-template-columns:repeat(2,1fr)}.budget-grid{grid-template-columns:repeat(3,1fr)}.backup-grid{grid-template-columns:repeat(2,1fr)}.module-cards{grid-template-columns:1fr 1fr}.record,.chore{grid-template-columns:1fr 1fr}.record-main,.chore-main{grid-column:1/-1}.actions{grid-column:1/-1;justify-content:flex-start}}
 @media(max-width:580px){.app{width:calc(100% - 14px);padding-top:13px}.mascot{font-size:44px}.grid.two,.grid.three{grid-template-columns:1fr}.budget-grid,.module-cards{grid-template-columns:1fr}.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.backup-grid{grid-template-columns:1fr 1fr}.chart-row{grid-template-columns:80px 1fr 68px}.top-actions .left,.top-actions .right{width:100%}.top-actions .right .btn{flex:1}.toolbar input,.toolbar select{flex:1;min-width:130px}}
-
 
 /* 日历计划本 */
 .calendar-toolbar{display:flex;align-items:center;justify-content:space-between;gap:9px;flex-wrap:wrap;margin-bottom:13px}.calendar-toolbar .calendar-nav{display:flex;gap:7px;align-items:center;flex-wrap:wrap}.calendar-toolbar input[type="month"]{border:1px solid var(--line);border-radius:12px;padding:9px 11px;background:#fff;color:var(--ink);font-weight:760}
@@ -741,47 +740,142 @@ dialog{border:0;border-radius:21px;padding:0;width:min(680px,calc(100% - 20px));
 @media(max-width:620px){.savings-summary{grid-template-columns:1fr}.savings-card strong{font-size:21px}}
 
 
-
-/* v1.9.25：柔和森林手账主题与记梦笔记本 */
+/* v1.9.25：像素农场主题 + 记梦笔记本 */
 :root{
-  --bg:#f3eee4;--paper:rgba(255,253,248,.97);--paper2:#fffdf8;--ink:#3d463e;--muted:#71786f;
-  --line:#ddd8cc;--sage:#73836d;--sage2:#52604e;--soft:#e9eee5;--gold:#ad8759;
-  --warn:#bd8548;--danger:#ad685e;--ok:#6f8d72;--shadow:0 8px 24px rgba(59,67,59,.08);--radius:18px;
+  --bg:#78ad55;--paper:#f7dfa0;--paper2:#ffedbd;--ink:#4b2918;--muted:#765236;
+  --line:#8b532b;--sage:#6f9f3d;--sage2:#456d2c;--soft:#e9c878;--gold:#e7ad39;
+  --warn:#d57a31;--danger:#b54d3e;--ok:#629443;--shadow:6px 6px 0 rgba(55,45,24,.28);
+  --radius:4px;--wood-dark:#4a2716;--wood:#9b5528;--wood-light:#d58a3d;--cream:#ffe6a5;
 }
-html{font-size:16px}
-body{line-height:1.65;letter-spacing:.008em;background:radial-gradient(circle at 8% 5%,rgba(217,226,207,.68),transparent 30%),linear-gradient(150deg,#f6f1e8 0%,#f1ede3 52%,#eee8dc 100%);background-attachment:fixed}
-.app{width:min(1120px,calc(100% - 28px));padding-top:26px;padding-bottom:108px}
-.panel{border-color:#e4dfd4;box-shadow:var(--shadow);backdrop-filter:none}
-.section{padding:20px;margin-bottom:18px}.card{padding:19px}.section-head{align-items:flex-start;margin-bottom:16px}.section-head h2{font-size:21px;line-height:1.35;font-weight:760;letter-spacing:0}.section-head span{font-size:13px;line-height:1.55}
-.brand h1{font-weight:780;letter-spacing:-.025em}.brand p{max-width:720px;font-size:15px;line-height:1.8}
-.btn,.icon-btn,.nav-btn{font-weight:700}.btn{padding:10px 15px}.btn:hover{transform:none}.btn:focus-visible,.icon-btn:focus-visible,.nav-btn:focus-visible,.dream-book:focus-visible,.dream-recent-card:focus-visible{outline:3px solid rgba(115,131,109,.28);outline-offset:2px}
-.module-card,.quick-row,.record,.chore,.wish-card,.budget,.backup-card{background:#fffdf9;border-color:#e2ddd2}
-.module-card p,.quick-note,.record-note,.chore-note,.sub,.wish-tip{line-height:1.65}
-.value{font-weight:780}.quick-title,.record-title,.chore-title,.wish-title,.budget-name{font-weight:740}
-.field input,.field select,.field textarea,.toolbar input,.toolbar select,input,select,textarea{background:#fffefa;border-color:#d9d5ca;color:var(--ink);line-height:1.55}
-textarea{resize:vertical}
-.bottom-nav{width:min(880px,calc(100% - 20px));grid-template-columns:repeat(10,1fr);gap:4px;padding:7px;background:#fffdf8f2;border-color:#e7e1d6;border-radius:18px;box-shadow:0 10px 30px rgba(53,61,53,.13);backdrop-filter:blur(10px)}
-.nav-btn{padding:8px 2px;font-size:10.5px;line-height:1.25}.nav-btn span{font-size:18px}.nav-btn.active{background:#e7ede3;color:#4d5d49}
+html{image-rendering:pixelated;background:#315d2f}
+body{
+  font-family:"Courier New","Microsoft YaHei","PingFang SC",monospace;
+  font-weight:600;
+  background-color:#69a74d;
+  background-image:
+    linear-gradient(180deg,#83c8e8 0,#aee2ef 14%,transparent 14%),
+    repeating-linear-gradient(90deg,transparent 0 12px,rgba(38,108,45,.10) 12px 14px),
+    repeating-linear-gradient(0deg,transparent 0 12px,rgba(255,238,113,.08) 12px 14px),
+    linear-gradient(180deg,transparent 0 14%,#75b65a 14% 100%);
+  background-attachment:fixed;
+}
+body:before,body:after{content:"";position:fixed;pointer-events:none;z-index:-1;image-rendering:pixelated}
+body:before{left:0;right:0;top:13%;height:18px;background:repeating-linear-gradient(90deg,#3d7c38 0 24px,#4c9145 24px 48px);box-shadow:0 5px 0 #2d612d}
+body:after{left:0;right:0;bottom:0;height:20px;background:repeating-linear-gradient(90deg,#3d6f2f 0 18px,#4f8338 18px 36px);border-top:4px solid #244d27}
+*{scrollbar-color:#9a5b2e #f5d991}
+.app{width:min(1180px,calc(100% - 18px));padding:18px 0 106px}
+.panel{
+  background:linear-gradient(180deg,#ffe9ae,#f4d184)!important;
+  border:4px solid var(--wood-dark)!important;border-radius:4px!important;
+  box-shadow:0 0 0 3px var(--wood-light),7px 7px 0 rgba(45,67,28,.35)!important;
+  backdrop-filter:none!important;
+}
+.hero-shell{position:relative;background:
+  repeating-linear-gradient(0deg,#c77632 0 17px,#b5662b 17px 20px)!important;
+  border-color:#4a2816!important;box-shadow:0 0 0 4px #e5a34c,8px 8px 0 #315c2e!important;
+  overflow:visible;margin-top:12px
+}
+.hero-shell:before,.hero-shell:after{content:"";position:absolute;top:-10px;width:20px;height:20px;background:#6b351e;border:4px solid #3f2114;box-shadow:inset 0 0 0 3px #aa6735}
+.hero-shell:before{left:40px}.hero-shell:after{right:40px}
+.hero-header{padding:24px 26px!important;align-items:center!important}
+.brand h1{font-size:clamp(30px,6vw,52px)!important;color:#3f2417;text-shadow:2px 2px 0 #f5bd5e,-1px -1px 0 #fff0b5;letter-spacing:.02em!important}
+.brand p{color:#55341f!important;background:#f4d77e;border:3px solid #74411f;padding:8px 10px;box-shadow:inset 0 0 0 2px #fff0b8;line-height:1.55!important}
+.mascot-stack{gap:2px!important}.mascot-stack span{filter:drop-shadow(3px 3px 0 #4d281b)!important}
+.banner{border:3px solid #7a4322!important;border-radius:3px!important;background:#ffe29a!important;color:#59331f!important;box-shadow:3px 3px 0 #855026!important}
+.top-actions{background:linear-gradient(180deg,#f8e4ae,#e7bd67)!important;border:3px solid #6b3a20!important;border-radius:3px!important;margin:0 14px 16px!important;box-shadow:inset 0 0 0 2px #fff0b8!important}
+.status-pill{border:2px solid #81502c!important;border-radius:2px!important;background:#f7d98f!important;color:#4d311f!important}
+.btn,.icon-btn,.type-chip,.brain-tab,.fc-difficulty-switch button,.pet-resident-mini{
+  border:3px solid #4d2a19!important;border-radius:3px!important;
+  box-shadow:inset 0 0 0 2px rgba(255,236,163,.55),0 3px 0 #59321e!important;
+  background:linear-gradient(180deg,#efc56c,#c98538)!important;color:#4a2819!important;
+  text-shadow:1px 1px 0 #ffe5a3;transition:none!important
+}
+.btn:hover,.icon-btn:hover,.type-chip:hover,.brain-tab:hover,.fc-difficulty-switch button:hover{transform:translateY(-1px)!important;filter:brightness(1.06)}
+.btn:active,.icon-btn:active{transform:translateY(2px)!important;box-shadow:inset 0 0 0 2px rgba(255,236,163,.55),0 1px 0 #59321e!important}
+.btn.primary,.icon-btn.primary-action,.type-chip.active,.brain-tab.active,.fc-difficulty-switch button.active{
+  background:linear-gradient(180deg,#9bc55e,#5d8b38)!important;color:#243a1c!important;border-color:#315323!important
+}
+.btn.soft{background:linear-gradient(180deg,#f6d986,#d9a94e)!important}.btn.ghost{background:linear-gradient(180deg,#fff0bd,#e7ca80)!important;color:#5c422a!important}.btn.danger{background:linear-gradient(180deg,#e99a7a,#bd5c49)!important}
+input,select,textarea{
+  border:3px solid #6e4428!important;border-radius:2px!important;background:#fff0be!important;color:#482b1b!important;
+  box-shadow:inset 3px 3px 0 rgba(107,67,38,.16)!important;outline:none
+}
+input:focus,select:focus,textarea:focus{border-color:#4e7b32!important;box-shadow:inset 3px 3px 0 rgba(107,67,38,.16),0 0 0 3px #b8d66a!important}
+.section{padding:18px!important;margin-bottom:18px!important}
+.section-head{border-bottom:4px dashed #9e6335!important;padding-bottom:10px!important;margin-bottom:14px!important}
+.section-head h2{display:inline-block;margin:0!important;background:linear-gradient(180deg,#bd6c2e,#8c4823);color:#fff0b0!important;border:3px solid #4d2918;padding:7px 12px;box-shadow:inset 0 0 0 2px #db9145,3px 3px 0 #6a3d20;text-shadow:2px 2px 0 #4c2a18}
+.section-head span,.sub,.label,.meta-label{color:#704c31!important}
+.card,.kpi-card,.module-card,.backup-card,.restaurant-card,.wish-card,.chore,.snapshot,.game-history-item,.sudoku-history-item{
+  border:3px solid #7e4a27!important;border-radius:3px!important;background:#ffe8a9!important;
+  box-shadow:inset 0 0 0 2px #fff3c5,4px 4px 0 rgba(101,66,35,.22)!important
+}
+.kpi-card .value{color:#426b31!important;text-shadow:1px 1px 0 #d9e886}
+.module-card h3,.restaurant-title,.chore-title{color:#5c321d!important}
+.toolbar,.brain-controls,.fc-library,.brain-points-bar,.wish-tip,.game-message,.sudoku-message,.calendar-toolbar{
+  border:3px solid #81502d!important;border-radius:3px!important;background:#f7d98f!important;box-shadow:inset 0 0 0 2px #fff1b7!important
+}
+.bottom-nav{
+  width:min(980px,calc(100% - 8px))!important;grid-template-columns:repeat(10,1fr)!important;gap:2px!important;padding:5px!important;
+  background:repeating-linear-gradient(0deg,#9c5529 0 13px,#864620 13px 16px)!important;
+  border:4px solid #402315!important;border-radius:4px!important;box-shadow:0 0 0 3px #d88a3d,0 7px 0 #2c4f2c!important;backdrop-filter:none!important
+}
+.nav-btn{min-width:0!important;border:2px solid transparent!important;border-radius:2px!important;color:#ffe8a2!important;text-shadow:1px 1px 0 #4b2817!important;font-size:10px!important;padding:6px 1px!important;white-space:nowrap}
+.nav-btn span{font-size:18px!important;filter:drop-shadow(1px 1px 0 #4b2817)}
+.nav-btn.active{background:#f4d282!important;color:#4a2918!important;border-color:#4a2918!important;box-shadow:inset 0 0 0 2px #fff1b3!important;text-shadow:none!important}
+.calendar-weekdays,.calendar-grid{gap:4px!important}.calendar-weekdays div{background:#945027;color:#ffeab0;border:2px solid #4d2b19;padding:6px 1px}
+.calendar-day{border:3px solid #744526!important;border-radius:2px!important;background:#ffebb2!important;box-shadow:inset 0 0 0 2px #fff4ca!important}
+.calendar-day.today{outline:3px solid #d27726!important}.calendar-day.selected{box-shadow:inset 0 0 0 3px #6e9d3f!important}
+.calendar-day .day-number{background:#f8d884!important;border:2px solid #7b4b2a!important;border-radius:2px!important}
+.ledger-table,.freecell-board,.sudoku-grid,.mine-grid,.sokoban-board{border-color:#4c2a19!important;box-shadow:0 0 0 3px #c17834,5px 5px 0 rgba(45,66,28,.32)!important}
+.ledger-table th{background:#955026!important;color:#ffefb5!important}.ledger-table td{background:#ffedba!important;border-color:#b78149!important}
+.brain-tabs{grid-template-columns:repeat(4,1fr)!important;gap:7px!important}.brain-tab{padding:11px 6px!important}
+.fc-library-note,.fc-recent-puzzles,.game-status,.sudoku-status{color:#604328!important}
+.fc-slot,.fc-foundation,.fc-card{border-radius:2px!important}
+.mine-cell,.soko-cell,.sudoku-cell{border-radius:0!important}
+dialog{border:4px solid #4a2818!important;border-radius:4px!important;background:#f7d88e!important;box-shadow:0 0 0 4px #d68a3d,9px 9px 0 #2f4d2c!important}dialog::backdrop{background:#25341ecf!important}
+.dialog-inner{background:linear-gradient(180deg,#ffebb0,#eecb79)}
+.toast{border:3px solid #3c2318!important;border-radius:3px!important;background:#5c8a3c!important;color:#fff1b0!important;box-shadow:4px 4px 0 #2c3d24!important}
+.pet-game-shell,.pet-game-stage{border-radius:3px!important}.pet-game-stage{border:4px solid #4a2918!important;box-shadow:0 0 0 3px #d58a3f!important}
+.pet-panel-overlay,.pet-hud,.pet-action-drawer,.pet-decor-toolbar-wrap{border-radius:3px!important;border-color:#6b4327!important;background:#ffe9aeed!important;backdrop-filter:none!important}
+.pet-resident-tile{border:3px solid #704428!important;border-radius:3px!important;background:#ffebaf!important;box-shadow:inset 0 0 0 2px #fff3c7,3px 3px 0 #936039!important}
+.pet-resident-tile .emoji,.pet-avatar,.pet-companion-avatar,.pet-tool,.mascot-stack{font-family:"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif!important}
+.pet-resident-tile .emoji{font-size:37px!important;filter:none!important}
 
-.dream-date-panel{position:relative;overflow:hidden}.dream-date-panel:after{content:"";position:absolute;right:-50px;top:-60px;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,#e5dfc9 0 36%,transparent 68%);opacity:.6;pointer-events:none}
-.dream-date-toolbar{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;position:relative;z-index:1}.dream-date-toolbar input{min-width:170px;border:1px solid var(--line);border-radius:12px;padding:10px 12px;background:#fffefa;color:var(--ink)}
-.dream-workspace{display:grid;grid-template-columns:minmax(270px,390px) minmax(0,1fr);gap:22px;align-items:start;margin-bottom:18px}
-.dream-book{appearance:none;border:0;width:100%;min-height:470px;padding:54px 36px 38px 60px;position:relative;overflow:hidden;border-radius:12px 24px 24px 12px;background:linear-gradient(145deg,#657462,#4d5d4d);color:#f9f4e9;text-align:left;cursor:pointer;box-shadow:7px 10px 0 #d8c9ae,14px 18px 32px rgba(54,61,54,.18);transition:transform .2s ease,box-shadow .2s ease}
-.dream-book:hover{transform:translateY(-2px);box-shadow:7px 12px 0 #d8c9ae,14px 22px 36px rgba(54,61,54,.2)}.dream-book.open{transform:rotate(-1deg) translateY(-2px)}
-.dream-book:before{content:"";position:absolute;inset:18px;border:1px solid rgba(246,235,208,.45);border-radius:5px 17px 17px 5px}.dream-book:after{content:"";position:absolute;right:-4px;top:13px;bottom:13px;width:13px;border-radius:0 16px 16px 0;background:repeating-linear-gradient(to bottom,#f7f0df 0 3px,#ded1b7 3px 4px)}
-.dream-book-binding{position:absolute;left:22px;top:0;bottom:0;width:15px;background:repeating-linear-gradient(to bottom,transparent 0 23px,#d4bd8e 23px 33px,transparent 33px 45px);filter:drop-shadow(1px 1px 0 #344234)}
-.dream-book-moon{display:block;font-size:72px;line-height:1;color:#e8d6a4;margin-bottom:28px;text-shadow:0 4px 12px rgba(0,0,0,.14)}
-.dream-book-label{display:block;font-size:14px;letter-spacing:.22em;color:#e7dfcd;margin-bottom:8px}.dream-book strong{display:block;font-size:30px;line-height:1.28;font-weight:740;margin-bottom:18px}.dream-book>span#dreamBookPreview{display:block;max-width:260px;color:#f0eadc;line-height:1.75;font-size:14px}.dream-book small{position:absolute;left:60px;bottom:38px;color:#dfd7c7;letter-spacing:.12em}
-.dream-editor{padding:0;overflow:hidden;position:relative;min-height:470px;background:#fffdf7}.dream-editor.hidden{display:none!important}.dream-paper-lines{position:absolute;inset:0;background:repeating-linear-gradient(to bottom,transparent 0 34px,rgba(126,144,121,.12) 34px 35px);pointer-events:none}.dream-editor-content{position:relative;padding:26px 28px 24px}.dream-field{display:grid;gap:7px;margin-bottom:18px}.dream-field>span{font-size:13px;color:var(--muted);font-weight:700}.dream-field input,.dream-field textarea{width:100%;border:1px solid #ddd8cc;border-radius:12px;padding:12px 14px;background:rgba(255,254,249,.92);outline:none}.dream-field input{font-size:17px;font-weight:700}.dream-field textarea{min-height:270px;font-size:16px;line-height:1.9}.dream-editor-actions{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
-.dream-recent-list{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.dream-recent-card{border:1px solid #e1dbcf;background:#fffdf9;border-radius:14px;padding:13px;text-align:left;color:var(--ink);cursor:pointer;display:grid;gap:9px;min-height:118px}.dream-recent-card.active{border-color:#879681;box-shadow:inset 0 0 0 1px #879681}.dream-recent-card span{display:flex;justify-content:space-between;gap:8px;align-items:flex-start}.dream-recent-card strong{font-size:15px;line-height:1.4}.dream-recent-card small{color:var(--muted);white-space:nowrap}.dream-recent-card em{font-style:normal;color:var(--muted);font-size:12px;line-height:1.65;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+/* 记梦笔记本 */
+.dream-date-bar{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:16px;padding:12px;border:3px solid #754424;background:#f1cd78;box-shadow:inset 0 0 0 2px #ffefb2}
+.dream-date-bar input{width:170px;text-align:center;font-weight:900}
+.dream-notebook{position:relative;max-width:860px;margin:0 auto 16px;padding:22px 22px 22px 48px;background:#8f4d28;border:4px solid #452518;box-shadow:0 0 0 4px #c87936,8px 8px 0 #31572c;cursor:text}
+.dream-notebook:before{content:"";position:absolute;left:20px;top:14px;bottom:14px;width:11px;background:repeating-linear-gradient(180deg,#e9b44e 0 8px,#59331e 8px 13px);border:2px solid #47291b}
+.dream-page{min-height:430px;padding:25px 28px;background:
+ repeating-linear-gradient(180deg,#fff0ba 0 31px,#d9ad66 31px 33px);
+ border:4px solid #5d351f;box-shadow:inset 0 0 0 3px #fff8d6;position:relative}
+.dream-page:before{content:"DREAM JOURNAL";position:absolute;right:20px;top:12px;color:#b9803b;font-size:12px;letter-spacing:.15em}
+.dream-title-input{width:100%;font-size:22px;font-weight:900;background:transparent!important;border:0!important;border-bottom:4px double #754725!important;box-shadow:none!important;padding:8px 2px!important;margin-bottom:12px}
+.dream-textarea{width:100%;min-height:300px;resize:vertical;line-height:33px;background:transparent!important;border:0!important;box-shadow:none!important;padding:0 3px!important;font-size:16px}
+.dream-textarea:focus,.dream-title-input:focus{box-shadow:none!important;border-color:#5a7e34!important}
+.dream-footer-row{display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin-top:12px}
+.dream-keywords{flex:1;min-width:220px}
+.dream-actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+.dream-recent-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.dream-card{position:relative;min-height:145px;padding:15px;background:#ffe8a8;border:3px solid #704225;box-shadow:inset 0 0 0 2px #fff3c5,4px 4px 0 #8b5c33;cursor:pointer}
+.dream-card:before{content:"";position:absolute;left:8px;top:0;bottom:0;border-left:2px dashed #c08a4c}.dream-card h3{margin:0 0 8px 8px;color:#56301d}.dream-card p{margin:0 0 0 8px;color:#68472e;line-height:1.55;white-space:pre-wrap}.dream-card small{display:block;margin:8px 0 0 8px;color:#8c643e}
+.dream-empty{text-align:center;padding:36px 12px;color:#765032}
+@media(max-width:760px){
+  .app{width:calc(100% - 10px);padding-top:10px;padding-bottom:100px}
+  .hero-header{padding:18px 12px!important}.brand p{font-size:12px}.mascot-stack span{font-size:58px!important}
+  .panel{box-shadow:0 0 0 2px var(--wood-light),4px 4px 0 rgba(45,67,28,.35)!important}
+  .section{padding:11px!important}.section-head{align-items:flex-start!important}.section-head h2{font-size:17px;padding:6px 8px}
+  .bottom-nav{grid-template-columns:repeat(10,1fr)!important;gap:0!important;padding:3px!important}.nav-btn{font-size:8px!important;padding:5px 0!important}.nav-btn span{font-size:15px!important;margin-bottom:1px!important}
+  .dream-notebook{padding:15px 10px 15px 34px}.dream-notebook:before{left:11px}.dream-page{min-height:390px;padding:22px 14px}.dream-textarea{min-height:285px;font-size:15px}.dream-recent-grid{grid-template-columns:1fr}
+  .grid.kpi{grid-template-columns:repeat(2,1fr)!important}.brain-tabs{grid-template-columns:repeat(2,1fr)!important}
+}
+@media(max-width:390px){.nav-btn{font-size:7px!important}.nav-btn span{font-size:14px!important}.brand h1{font-size:29px!important}.dream-date-bar{gap:5px}.dream-date-bar .btn{padding:8px 7px!important}.dream-date-bar input{width:145px}}
 
-@media(max-width:840px){.bottom-nav{grid-template-columns:repeat(5,1fr);width:min(620px,calc(100% - 18px));gap:3px}.app{padding-bottom:158px}.dream-workspace{grid-template-columns:1fr}.dream-book{width:min(390px,100%);min-height:390px;justify-self:center}.dream-recent-list{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:580px){html{font-size:15px}.app{width:min(100% - 18px,1120px);padding-top:16px;padding-bottom:154px}.panel{border-radius:16px}.section{padding:15px}.bottom-nav{bottom:max(6px,env(safe-area-inset-bottom));padding:6px}.nav-btn{padding:7px 2px;font-size:10px}.nav-btn span{font-size:17px;margin-bottom:1px}.dream-date-toolbar{display:grid;grid-template-columns:1fr 1fr}.dream-date-toolbar input{grid-column:1/-1;grid-row:1;min-width:0}.dream-book{min-height:350px;padding:45px 28px 34px 52px}.dream-book-moon{font-size:58px;margin-bottom:20px}.dream-book strong{font-size:25px}.dream-book small{left:52px;bottom:30px}.dream-editor-content{padding:20px 17px}.dream-field textarea{min-height:250px}.dream-recent-list{grid-template-columns:1fr}.module-cards{grid-template-columns:1fr}.section-head{flex-direction:column;gap:4px}}
 </style>
 </head>
 <body>
 <main class="app">
-<section class="hero-shell panel"><header class="hero-header"><div class="brand"><h1>小松鼠生活管家</h1><p>家务、记账、探店和未来的植物、冰箱、习惯模块，都住在同一个安全数据仓里。</p></div><div class="mascot-stack" aria-hidden="true"><span>🐿️</span><span>🏠</span></div></header>
+<section class="hero-shell panel"><header class="hero-header"><div class="brand"><h1>小松鼠生活管家</h1><p>日历、账本、家务、梦境和树屋居民，都住在同一个像素农场里。</p></div><div class="mascot-stack" aria-hidden="true"><span>🐿️</span><span>🏠</span></div></header>
 <div id="fileBanner" class="banner hidden"><strong>当前是本地文件模式。</strong> 可以立即使用，但手机浏览器对 <code>file:</code> 页面的本地存储行为并不稳定。已开启“每日首次修改自动下载备份”；长期使用请部署 PWA 版本到 HTTPS 地址。</div>
 <section class="top-actions hero-actions"><div class="left"><span class="status-pill" id="backupBadge">正在检查数据安全…</span><button class="btn primary" id="quickLedgerBtn">＋ 记一笔</button><button class="btn soft" id="quickChoreBtn">＋ 加家务</button><button class="btn soft" id="quickWishBtn">＋ 加愿望</button><button class="btn soft" id="quickRestaurantBtn">＋ 餐厅打卡</button></div><div class="right"><button class="btn soft" id="backupNowBtn">立即备份</button><button class="btn ghost hidden" id="installBtn">安装到桌面</button></div></section></section>
 
@@ -793,7 +887,8 @@ textarea{resize:vertical}
   </div>
   <section class="panel section"><div class="section-head"><h2>生活模块</h2><span>以后继续往这里长</span></div><div class="module-cards">
     <article class="module-card"><h3>🗓️ 日历计划本</h3><p id="homeCalendarSummary">记录今天做了什么，也把之后的计划安稳放进日历。</p><button class="btn soft" style="margin-top:10px" data-open-view="calendar">打开日历本</button></article>
-    <article class="module-card"><h3>🍽️ 餐厅与外卖</h3><p id="homeRestaurantSummary">把堂食、外卖和推荐菜都收进自己的味觉地图。</p><button class="btn soft" style="margin-top:10px" data-open-view="restaurants">打开探店记录</button></article><article class="module-card"><h3>🐣 树屋居民</h3><p id="homePetSummary">领养一位会吃饭、睡觉、交朋友和慢慢长大的小居民。</p><button class="btn soft" style="margin-top:10px" data-open-view="village">去树屋看看</button></article><article class="module-card"><h3>🌙 记梦笔记本</h3><p id="homeDreamSummary">把醒来后还记得的片段放进一本安静的笔记本。</p><button class="btn soft" style="margin-top:10px" data-open-view="dream">打开记梦本</button></article><article class="module-card"><h3>🌿 植物照护</h3><p>记录浇水、补光、黑斑、新叶和照片。下一阶段加入。</p></article>
+    <article class="module-card"><h3>📔 记梦笔记本</h3><p id="homeDreamSummary">醒来后把梦留在纸页上，之后也能按日期翻看。</p><button class="btn soft" style="margin-top:10px" data-open-view="dreams">打开记梦本</button></article>
+    <article class="module-card"><h3>🍽️ 餐厅与外卖</h3><p id="homeRestaurantSummary">把堂食、外卖和推荐菜都收进自己的味觉地图。</p><button class="btn soft" style="margin-top:10px" data-open-view="restaurants">打开探店记录</button></article><article class="module-card"><h3>🐣 树屋居民</h3><p id="homePetSummary">领养一位会吃饭、睡觉、交朋友和慢慢长大的小居民。</p><button class="btn soft" style="margin-top:10px" data-open-view="village">去树屋看看</button></article><article class="module-card"><h3>🌿 植物照护</h3><p>记录浇水、补光、黑斑、新叶和照片。下一阶段加入。</p></article>
     <article class="module-card"><h3>🧠 脑力训练</h3><p>数独、空当接龙、扫雷和推箱子已上线，进度与成绩会一起进入完整备份。</p><button class="btn soft" style="margin-top:10px" data-open-view="brain">进入脑力房</button></article><article class="module-card"><h3>🎁 愿望冷静箱</h3><p id="homeWishSummary">先把想买的东西放进来，等冷静期结束再决定。</p><button class="btn soft" style="margin-top:10px" data-open-view="wishlist">打开愿望箱</button></article>
   </div></section>
 </section>
@@ -880,41 +975,30 @@ textarea{resize:vertical}
 </section>
 
 
-<section class="view" id="view-dream">
-  <section class="panel section dream-date-panel">
-    <div class="section-head"><div><h2>🌙 记梦笔记本</h2><span>醒来时记下一点点，也算把梦接住了</span></div><span id="dreamSavedHint">按日期单独保存</span></div>
-    <div class="dream-date-toolbar">
+<section class="view" id="view-dreams">
+  <section class="panel section">
+    <div class="section-head"><h2>📔 小松鼠记梦笔记本</h2><span>按日期保存，醒来时写一点也很好</span></div>
+    <div class="dream-date-bar">
       <button class="btn ghost" id="dreamPrevBtn">‹ 前一天</button>
       <input id="dreamDate" type="date" aria-label="选择梦境日期">
       <button class="btn ghost" id="dreamNextBtn">后一天 ›</button>
       <button class="btn soft" id="dreamTodayBtn">回到今天</button>
     </div>
-  </section>
-
-  <section class="dream-workspace">
-    <button class="dream-book" id="dreamBookBtn" type="button" aria-expanded="false" aria-controls="dreamEditor">
-      <span class="dream-book-binding" aria-hidden="true"></span>
-      <span class="dream-book-moon" aria-hidden="true">☾</span>
-      <span class="dream-book-label">记梦笔记本</span>
-      <strong id="dreamBookDate">今天的梦</strong>
-      <span id="dreamBookPreview">点开笔记本，写下还记得的片段</span>
-      <small>轻轻点开</small>
-    </button>
-
-    <section class="panel dream-editor hidden" id="dreamEditor">
-      <div class="dream-paper-lines" aria-hidden="true"></div>
-      <div class="dream-editor-content">
-        <div class="section-head"><div><h2 id="dreamEditorTitle">今天的梦</h2><span>不需要完整，也不需要解释</span></div><span>Ctrl / ⌘ + Enter 保存</span></div>
-        <label class="dream-field" for="dreamTitle"><span>给这个梦取个名字（选填）</span><input id="dreamTitle" maxlength="80" placeholder="例如：雪地里的树屋"></label>
-        <label class="dream-field" for="dreamContent"><span>我梦见……</span><textarea id="dreamContent" maxlength="12000" placeholder="人物、地点、气味、颜色、一句话，想到什么就写什么……"></textarea></label>
-        <div class="dream-editor-actions"><button class="btn ghost" id="dreamClearBtn" type="button">清空这一天</button><button class="btn primary" id="dreamSaveBtn" type="button">保存梦境</button></div>
+    <div class="dream-notebook" id="dreamNotebook" title="点击笔记本开始书写">
+      <div class="dream-page">
+        <input class="dream-title-input" id="dreamTitle" maxlength="80" placeholder="给这个梦起一个小标题……">
+        <textarea class="dream-textarea" id="dreamText" maxlength="12000" placeholder="我梦见……  醒来后记得的画面、声音、情绪和奇怪细节，都可以写在这里。"></textarea>
+        <div class="dream-footer-row">
+          <input class="dream-keywords" id="dreamKeywords" maxlength="200" placeholder="关键词：森林、下雪、Fio……">
+          <span class="status-pill" id="dreamSaveStatus">这一天还没有保存</span>
+        </div>
       </div>
-    </section>
+    </div>
+    <div class="dream-actions"><button class="btn danger" id="dreamClearBtn">清空这一天</button><button class="btn primary" id="dreamSaveBtn">保存梦境</button></div>
   </section>
-
   <section class="panel section">
-    <div class="section-head"><h2>近期的梦</h2><span>点一下就能回到那一天</span></div>
-    <div class="dream-recent-list" id="dreamRecentList"></div>
+    <div class="section-head"><h2>近期梦境</h2><span>点击纸页可以直接翻回那一天</span></div>
+    <div class="dream-recent-grid" id="dreamRecentList"></div>
   </section>
 </section>
 
@@ -1094,7 +1178,7 @@ textarea{resize:vertical}
 </section>
 </main>
 
-<nav class="bottom-nav"><button class="nav-btn active" data-view="home"><span>🏠</span>首页</button><button class="nav-btn" data-view="calendar"><span>🗓️</span>日历</button><button class="nav-btn" data-view="ledger"><span>💰</span>记账</button><button class="nav-btn" data-view="chores"><span>🧹</span>家务</button><button class="nav-btn" data-view="dream"><span>🌙</span>记梦</button><button class="nav-btn" data-view="restaurants"><span>🍽️</span>探店</button><button class="nav-btn" data-view="wishlist"><span>🎁</span>愿望</button><button class="nav-btn" data-view="brain"><span>🧩</span>脑力</button><button class="nav-btn" data-view="village"><span>🐣</span>居民</button><button class="nav-btn" data-view="backup"><span>🛡️</span>备份</button></nav>
+<nav class="bottom-nav"><button class="nav-btn active" data-view="home"><span>🏠</span>首页</button><button class="nav-btn" data-view="calendar"><span>🗓️</span>日历</button><button class="nav-btn" data-view="ledger"><span>💰</span>记账</button><button class="nav-btn" data-view="chores"><span>🧹</span>家务</button><button class="nav-btn" data-view="dreams"><span>📔</span>记梦</button><button class="nav-btn" data-view="restaurants"><span>🍽️</span>探店</button><button class="nav-btn" data-view="wishlist"><span>🎁</span>愿望</button><button class="nav-btn" data-view="brain"><span>🧩</span>脑力</button><button class="nav-btn" data-view="village"><span>🐣</span>居民</button><button class="nav-btn" data-view="backup"><span>🛡️</span>备份</button></nav>
 
 
 <dialog id="restaurantDialog"><form method="dialog" class="dialog-inner" id="restaurantForm">
@@ -1155,7 +1239,7 @@ textarea{resize:vertical}
 <dialog id="budgetDialog"><div class="dialog-inner"><h3>调整月预算与存款</h3><div id="budgetEditor" class="grid"></div><div class="dialog-actions"><button class="btn ghost" data-close="budgetDialog">取消</button><button class="btn primary" id="saveBudgetBtn">保存预算</button></div></div></dialog>
 <div class="toast" id="toast"></div>
 <script>
-const SEED={"app":"squirrel-life-housekeeper","schemaVersion":32,"createdAt":"2026-07-26T10:46:08.637104+00:00","updatedAt":"2026-07-26T10:46:08.637104+00:00","ledger":{"budgets":{"基础生活":0,"小额幸福":0,"临时愿望":0,"医疗应急":0,"月底缓冲":0},"categories":["餐饮外卖","买菜食材","零食饮品","交通","话费","水电","日用品","游戏","书籍","家居","植物","娃娃","美容护理","衣物","医疗","退款/补贴","其他"],"accounts":["生活卡","储蓄卡","现金","其他"],"natures":["必需","幸福微需","幸福"],"records":[],"currentSavings":0.0,"monthlySavings":{}},"chores":{"items":[{"id":"chore-toilet","name":"马桶","icon":"🚽","interval":3,"lastDone":"","note":"刷洗内壁、外侧和底座","history":[]},{"id":"chore-shower","name":"淋浴间","icon":"🚿","interval":7,"lastDone":"","note":"地漏、墙面和玻璃","history":[]},{"id":"chore-floor","name":"地面","icon":"🧹","interval":4,"lastDone":"","note":"扫地或拖地","history":[]},{"id":"chore-pillowcase","name":"枕套","icon":"🛏️","interval":7,"lastDone":"","note":"单独换洗","history":[]},{"id":"chore-sheet","name":"床单","icon":"🛏️","interval":14,"lastDone":"","note":"单独换洗","history":[]},{"id":"chore-duvet","name":"被套","icon":"🛏️","interval":21,"lastDone":"","note":"单独换洗","history":[]},{"id":"chore-fridge","name":"冰箱冷藏间","icon":"🧊","interval":30,"lastDone":"","note":"内壁、隔板、抽屉和过期食品","history":[]}]},"modules":{"plants":{"enabled":false,"items":[]},"pantry":{"enabled":false,"items":[]},"habits":{"enabled":false,"items":[]},"brain":{"enabled":true,"sudoku":{"stats":{"played":0,"completed":0,"bestSeconds":null},"current":null,"history":[]},"activeGame":"sudoku","freecell":{"stats":{"played":0,"won":0,"bestMoves":null,"bestSeconds":null},"current":null,"history":[],"autoCollect":true,"libraryDifficulty":"easy","libraryPuzzleNo":1,"recentPuzzles":[],"completedPuzzles":{"easy":[],"medium":[],"hard":[]}},"minesweeper":{"stats":{"played":0,"won":0,"lost":0,"bestSeconds":{"easy":null,"medium":null,"hard":null}},"current":null,"history":[]},"sokoban":{"stats":{"played":0,"won":0,"bestMoves":null,"bestPushes":null},"current":null,"history":[],"libraryDifficulty":"easy","libraryPuzzleNo":1,"recentPuzzles":[],"completedPuzzles":{"easy":[],"medium":[],"hard":[]},"difficultyRevision":3}},"wishlist":{"enabled":true,"defaultCooldownDays":7,"items":[]},"calendar":{"enabled":true,"visibleMonth":"","selectedDate":"","entries":{}},"tamagotchi":{"enabled":true,"current":null,"residents":[{"id":"resident-milu","name":"米露","emoji":"🐰","personality":"温柔的面包师，喜欢分享胡萝卜面包。","friendship":18,"lastTalkDate":""},{"id":"resident-lili","name":"栗栗","emoji":"🐿️","personality":"活泼的收集家，总能找到亮晶晶的小东西。","friendship":22,"lastTalkDate":""},{"id":"resident-achi","name":"阿赤","emoji":"🦊","personality":"有点傲娇的邮差，熟悉村里的每条小路。","friendship":12,"lastTalkDate":""},{"id":"resident-mimi","name":"蜜蜜","emoji":"🐻","personality":"慢吞吞的蜂蜜店老板，最擅长安慰别人。","friendship":15,"lastTalkDate":""},{"id":"resident-doudou","name":"豆豆","emoji":"🐹","personality":"热心的小修理匠，什么坏掉了都想试着修。","friendship":10,"lastTalkDate":""},{"id":"resident-fio","name":"菲奥","emoji":"🦉","personality":"安静寡言的夜巡者，总会在树屋熄灯前确认大家平安回家。","friendship":16,"lastTalkDate":""},{"id":"resident-xiaoha","name":"小哈","emoji":"🐶","personality":"热情又可靠的小狗居民，喜欢在村口迎接大家，也会陪朋友散步和找东西。","friendship":14,"lastTalkDate":""}],"event":null,"lastEventDate":"","lastEventSummary":"","scene":"forest","history":[],"memorials":[],"decorCoins":100,"decorWalletInitialized":true,"decorPresetVersion":2,"decorUnlocked":["flower-yellow","mushroom-red"],"decorPlacements":{"forest":[],"home":[],"meadow":[],"village":[]},"decorInitializedScenes":{},"decorBaseSeeded":false,"foodInventory":{"carrot":2,"apple":1,"bread":1},"foodStarterGranted":true,"toyUnlocked":["ball"],"activityRewards":{"ledger":[],"calendar":[]},"wanderEnabled":true},"dreams":{"enabled":true,"selectedDate":"","entries":{}}},"settings":{"autoDailyDownload":true,"lastExternalBackupAt":"","lastExternalBackupDay":"","theme":"sage","currency":"CNY"}};
+const SEED={"app":"squirrel-life-housekeeper","schemaVersion":32,"createdAt":"2026-07-26T10:46:08.637104+00:00","updatedAt":"2026-07-26T10:46:08.637104+00:00","ledger":{"budgets":{"基础生活":0,"小额幸福":0,"临时愿望":0,"医疗应急":0,"月底缓冲":0},"categories":["餐饮外卖","买菜食材","零食饮品","交通","话费","水电","日用品","游戏","书籍","家居","植物","娃娃","美容护理","衣物","医疗","退款/补贴","其他"],"accounts":["生活卡","储蓄卡","现金","其他"],"natures":["必需","幸福微需","幸福"],"records":[],"currentSavings":0.0,"monthlySavings":{}},"chores":{"items":[{"id":"chore-toilet","name":"马桶","icon":"🚽","interval":3,"lastDone":"","note":"刷洗内壁、外侧和底座","history":[]},{"id":"chore-shower","name":"淋浴间","icon":"🚿","interval":7,"lastDone":"","note":"地漏、墙面和玻璃","history":[]},{"id":"chore-floor","name":"地面","icon":"🧹","interval":4,"lastDone":"","note":"扫地或拖地","history":[]},{"id":"chore-pillowcase","name":"枕套","icon":"🛏️","interval":7,"lastDone":"","note":"单独换洗","history":[]},{"id":"chore-sheet","name":"床单","icon":"🛏️","interval":14,"lastDone":"","note":"单独换洗","history":[]},{"id":"chore-duvet","name":"被套","icon":"🛏️","interval":21,"lastDone":"","note":"单独换洗","history":[]},{"id":"chore-fridge","name":"冰箱冷藏间","icon":"🧊","interval":30,"lastDone":"","note":"内壁、隔板、抽屉和过期食品","history":[]}]},"modules":{"plants":{"enabled":false,"items":[]},"pantry":{"enabled":false,"items":[]},"habits":{"enabled":false,"items":[]},"brain":{"enabled":true,"sudoku":{"stats":{"played":0,"completed":0,"bestSeconds":null},"current":null,"history":[]},"activeGame":"sudoku","freecell":{"stats":{"played":0,"won":0,"bestMoves":null,"bestSeconds":null},"current":null,"history":[],"autoCollect":true,"libraryDifficulty":"easy","libraryPuzzleNo":1,"recentPuzzles":[],"completedPuzzles":{"easy":[],"medium":[],"hard":[]}},"minesweeper":{"stats":{"played":0,"won":0,"lost":0,"bestSeconds":{"easy":null,"medium":null,"hard":null}},"current":null,"history":[]},"sokoban":{"stats":{"played":0,"won":0,"bestMoves":null,"bestPushes":null},"current":null,"history":[],"libraryDifficulty":"easy","libraryPuzzleNo":1,"recentPuzzles":[],"completedPuzzles":{"easy":[],"medium":[],"hard":[]},"difficultyRevision":3}},"wishlist":{"enabled":true,"defaultCooldownDays":7,"items":[]},"calendar":{"enabled":true,"visibleMonth":"","selectedDate":"","entries":{}},"dreams":{"enabled":true,"selectedDate":"","entries":{}},"tamagotchi":{"enabled":true,"current":null,"residents":[{"id":"resident-milu","name":"米露","emoji":"🐰","personality":"温柔的面包师，喜欢分享胡萝卜面包。","friendship":18,"lastTalkDate":""},{"id":"resident-lili","name":"栗栗","emoji":"🐿️","personality":"活泼的收集家，总能找到亮晶晶的小东西。","friendship":22,"lastTalkDate":""},{"id":"resident-achi","name":"阿赤","emoji":"🦊","personality":"有点傲娇的邮差，熟悉村里的每条小路。","friendship":12,"lastTalkDate":""},{"id":"resident-mimi","name":"蜜蜜","emoji":"🐻","personality":"慢吞吞的蜂蜜店老板，最擅长安慰别人。","friendship":15,"lastTalkDate":""},{"id":"resident-doudou","name":"豆豆","emoji":"🐹","personality":"热心的小修理匠，什么坏掉了都想试着修。","friendship":10,"lastTalkDate":""},{"id":"resident-fio","name":"菲奥","emoji":"🦉","personality":"安静寡言的夜巡者，总会在树屋熄灯前确认大家平安回家。","friendship":16,"lastTalkDate":""},{"id":"resident-xiaoha","name":"小哈","emoji":"🐶","personality":"热情又可靠的小狗居民，喜欢在村口迎接大家，也会陪朋友散步和找东西。","friendship":14,"lastTalkDate":""}],"event":null,"lastEventDate":"","lastEventSummary":"","scene":"forest","history":[],"memorials":[],"decorCoins":100,"decorWalletInitialized":true,"decorPresetVersion":2,"decorUnlocked":["flower-yellow","mushroom-red"],"decorPlacements":{"forest":[],"home":[],"meadow":[],"village":[]},"decorInitializedScenes":{},"decorBaseSeeded":false,"foodInventory":{"carrot":2,"apple":1,"bread":1},"foodStarterGranted":true,"toyUnlocked":["ball"],"activityRewards":{"ledger":[],"calendar":[]},"wanderEnabled":true}},"settings":{"autoDailyDownload":true,"lastExternalBackupAt":"","lastExternalBackupDay":"","theme":"sage","currency":"CNY"}};
 const APP_ID='squirrel-life-housekeeper';
 const DB_NAME='SquirrelLifeHousekeeperDB';
 const DB_VERSION=1;
@@ -1201,13 +1285,13 @@ function migrate(input){
  s.modules.wishlist.defaultCooldownDays=Math.max(0,Number(s.modules.wishlist.defaultCooldownDays??7));
  s.modules.calendar={...clone(SEED.modules.calendar),...(s.modules.calendar||{})};
  s.modules.calendar.entries=(s.modules.calendar.entries&&typeof s.modules.calendar.entries==='object'&&!Array.isArray(s.modules.calendar.entries))?s.modules.calendar.entries:{};
- s.modules.dreams={...clone(SEED.modules.dreams),...(s.modules.dreams||{})};
- s.modules.dreams.entries=(s.modules.dreams.entries&&typeof s.modules.dreams.entries==='object'&&!Array.isArray(s.modules.dreams.entries))?s.modules.dreams.entries:{};
- s.modules.dreams.selectedDate=/^\d{4}-\d{2}-\d{2}$/.test(s.modules.dreams.selectedDate||'')?s.modules.dreams.selectedDate:today();
- for(const [date,entry] of Object.entries(s.modules.dreams.entries)){if(!/^\d{4}-\d{2}-\d{2}$/.test(date)){delete s.modules.dreams.entries[date];continue}s.modules.dreams.entries[date]=normalizeDreamEntry(entry,date)}
  s.modules.calendar.visibleMonth=/^\d{4}-\d{2}$/.test(s.modules.calendar.visibleMonth||'')?s.modules.calendar.visibleMonth:monthNow();
  s.modules.calendar.selectedDate=/^\d{4}-\d{2}-\d{2}$/.test(s.modules.calendar.selectedDate||'')?s.modules.calendar.selectedDate:today();
  for(const [date,entry] of Object.entries(s.modules.calendar.entries))s.modules.calendar.entries[date]=normalizeCalendarEntry(entry,date);
+ s.modules.dreams={...clone(SEED.modules.dreams),...(s.modules.dreams||{})};
+ s.modules.dreams.entries=(s.modules.dreams.entries&&typeof s.modules.dreams.entries==='object'&&!Array.isArray(s.modules.dreams.entries))?s.modules.dreams.entries:{};
+ s.modules.dreams.selectedDate=/^\d{4}-\d{2}-\d{2}$/.test(s.modules.dreams.selectedDate||'')?s.modules.dreams.selectedDate:today();
+ for(const [date,entry] of Object.entries(s.modules.dreams.entries)){if(!/^\d{4}-\d{2}-\d{2}$/.test(date)){delete s.modules.dreams.entries[date];continue}s.modules.dreams.entries[date]={date,title:String(entry?.title||''),text:String(entry?.text||''),keywords:String(entry?.keywords||''),updatedAt:String(entry?.updatedAt||'')}}
  s.modules.brain={...clone(SEED.modules.brain),...(s.modules.brain||{})};
  for(const key of ['sudoku','freecell','minesweeper','sokoban']){
    s.modules.brain[key]={...clone(SEED.modules.brain[key]),...(s.modules.brain[key]||{})};
@@ -1266,35 +1350,6 @@ function choreStatus(c){const u=urgency(c);if(!Number.isFinite(u))return {key:'n
 function selectedMonth(){return $('#ledgerMonth').value||monthNow()}
 function monthRecords(){return state.ledger.records.filter(r=>r.date?.startsWith(selectedMonth()))}
 function renderHome(){const m=monthRecords();const exp=m.filter(r=>r.type==='支出').reduce((s,r)=>s+Number(r.amount),0);const inc=m.filter(r=>r.type==='收入').reduce((s,r)=>s+Number(r.amount),0);const budget=Object.values(state.ledger.budgets).reduce((s,v)=>s+Number(v),0);const due=state.chores.items.filter(c=>['due','never'].includes(choreStatus(c).key)).length;$('#homeKpis').innerHTML=[['本月支出',money(exp),`${m.filter(r=>r.type==='支出').length}笔支出`],['预算剩余',money(budget-exp),`月预算 ${money(budget)}`],['需要处理的家务',due,`共 ${state.chores.items.length} 项`],['外部备份',state.settings.lastExternalBackupAt?'已建立':'尚未建立',state.settings.lastExternalBackupAt?new Date(state.settings.lastExternalBackupAt).toLocaleString('zh-CN'):'请先点一次立即备份']].map(x=>`<article class="panel card kpi-card"><div class="label">${x[0]}</div><div class="value">${x[1]}</div><div class="sub">${x[2]}</div></article>`).join('');const top=[...state.chores.items].sort((a,b)=>urgency(b)-urgency(a))[0];$('#homeChore').innerHTML=top?`<div class="quick-row"><div class="quick-main"><div class="quick-title">${esc(top.icon)} ${esc(top.name)}</div><div class="quick-note">上次：${top.lastDone||'未记录'}｜周期：${top.interval}天</div></div><span class="tag ${choreStatus(top).key}">${choreStatus(top).text}</span></div>`:'<div class="empty">还没有家务任务。</div>';$('#homeLedger').innerHTML=[...state.ledger.records].sort((a,b)=>(b.date+b.updatedAt).localeCompare(a.date+a.updatedAt)).slice(0,5).map(r=>`<div class="quick-row"><div class="quick-main"><div class="quick-title">${esc(r.note||r.category)}</div><div class="quick-note">${esc(r.date)} · ${esc(r.category)}</div></div><div class="money ${r.type==='支出'?'expense':r.type==='收入'?'income':'transfer'}">${r.type==='支出'?'−':r.type==='收入'?'+':'↔'}${money(r.amount)}</div></div>`).join('')||'<div class="empty">还没有账目。</div>'}
-
-
-/* 记梦笔记本 */
-let dreamBookOpen=false;
-function dreamsData(){return state.modules.dreams}
-function normalizeDreamEntry(e,date=''){e=(e&&typeof e==='object')?e:{};return {date:e.date||date,title:String(e.title||''),content:String(e.content||''),createdAt:String(e.createdAt||''),updatedAt:String(e.updatedAt||'')}}
-function dreamSelected(){const D=dreamsData();return /^\d{4}-\d{2}-\d{2}$/.test(D.selectedDate||'')?D.selectedDate:today()}
-function dreamEntry(date=dreamSelected()){const e=dreamsData().entries?.[date];return e?normalizeDreamEntry(e,date):normalizeDreamEntry(null,date)}
-function dreamMeaningful(e){return !!String(e?.title||e?.content||'').trim()}
-function dreamDateLabel(date){const d=localDate(date);if(!d)return date;const week='日一二三四五六'[d.getDay()];return `${d.getMonth()+1}月${d.getDate()}日 · 周${week}`}
-function renderDreamHome(){const el=$('#homeDreamSummary');if(!el)return;const rows=Object.values(dreamsData().entries||{}).map(e=>normalizeDreamEntry(e,e.date)).filter(dreamMeaningful).sort((a,b)=>b.date.localeCompare(a.date));el.textContent=rows.length?`已经记下 ${rows.length} 个梦；最近一次是 ${dreamDateLabel(rows[0].date)}。`:'把醒来后还记得的片段放进一本安静的笔记本。'}
-function renderDreams(){
- const D=dreamsData();if(!/^\d{4}-\d{2}-\d{2}$/.test(D.selectedDate||''))D.selectedDate=today();const date=D.selectedDate,e=dreamEntry(date),meaningful=dreamMeaningful(e),isToday=date===today();
- const dateInput=$('#dreamDate');if(!dateInput)return;dateInput.value=date;
- $('#dreamBookDate').textContent=isToday?'今天的梦':dreamDateLabel(date);
- $('#dreamBookPreview').textContent=meaningful?(e.title||e.content.replace(/\s+/g,' ').slice(0,72)):'点开笔记本，写下还记得的片段';
- $('#dreamEditorTitle').textContent=isToday?'今天的梦':dreamDateLabel(date);
- $('#dreamTitle').value=e.title;$('#dreamContent').value=e.content;
- const hint=$('#dreamSavedHint');hint.textContent=meaningful?(e.updatedAt?`保存于 ${new Date(e.updatedAt).toLocaleString('zh-CN',{month:'numeric',day:'numeric',hour:'2-digit',minute:'2-digit'})}`:'这一天已有记录'):'这一天还没有记录';
- $('#dreamEditor').classList.toggle('hidden',!dreamBookOpen);$('#dreamBookBtn').setAttribute('aria-expanded',String(dreamBookOpen));$('#dreamBookBtn').classList.toggle('open',dreamBookOpen);
- const rows=Object.values(D.entries||{}).map(x=>normalizeDreamEntry(x,x.date)).filter(dreamMeaningful).sort((a,b)=>b.date.localeCompare(a.date)).slice(0,12);
- $('#dreamRecentList').innerHTML=rows.map(x=>`<button class="dream-recent-card ${x.date===date?'active':''}" data-dream-date="${x.date}"><span><strong>${esc(x.title||'没有标题的梦')}</strong><small>${esc(dreamDateLabel(x.date))}</small></span><em>${esc(x.content.replace(/\s+/g,' ').slice(0,76)||'只留下了一个标题')}</em></button>`).join('')||'<div class="empty">梦境书页还是空的。下次醒来，哪怕只记得一个颜色也可以写下来。</div>';
- renderDreamHome()
-}
-async function chooseDreamDate(date){if(!/^\d{4}-\d{2}-\d{2}$/.test(date||''))return;dreamsData().selectedDate=date;dreamBookOpen=false;await persist('切换记梦日期',false,false)}
-async function shiftDreamDate(days){await chooseDreamDate(addDateDays(dreamSelected(),days))}
-function toggleDreamBook(){dreamBookOpen=!dreamBookOpen;renderDreams();if(dreamBookOpen)setTimeout(()=>$('#dreamContent')?.focus(),180)}
-async function saveDream(){const D=dreamsData(),date=dreamSelected(),title=$('#dreamTitle').value.trim(),content=$('#dreamContent').value.trim(),old=D.entries[date];if(!title&&!content)return toast('先写下一点梦的片段吧');D.entries[date]={date,title,content,createdAt:old?.createdAt||nowISO(),updatedAt:nowISO()};await persist(`保存梦境：${date}`,true,true);toast('这个梦已经收进笔记本了')}
-async function clearDream(){const D=dreamsData(),date=dreamSelected();if(!D.entries[date]){$('#dreamTitle').value='';$('#dreamContent').value='';return toast('这一天本来就是空白页')};if(!confirm(`清空 ${dreamDateLabel(date)} 的梦境记录吗？`))return;delete D.entries[date];await persist(`清空梦境：${date}`,true,true);toast('这一天恢复为空白页')}
 
 
 /* 日历计划本 */
@@ -1646,7 +1701,7 @@ function petWanderTick(){
  if(currentView!=='village'||petDecorMode||petBusy||petGamePanel||selectedPetTool||isPetNight())return;const T=tamagotchiData(),p=T.current,el=document.querySelector('[data-pet-avatar]');if(!T.wanderEnabled||!p?.alive||!el||el.classList.contains('leave')||el.classList.contains('visit')||el.classList.contains('sleeping'))return;const scene=T.scene||'forest',anchor=petPosition(scene),current=petWanderLivePositions[scene]||{...anchor,facing:1},rangeX=scene==='home'?20:30,rangeY=scene==='home'?12:17,stepX=scene==='home'?13:18,stepY=scene==='home'?8:11,minX=Math.max(10,anchor.x-rangeX),maxX=Math.min(90,anchor.x+rangeX),minY=Math.max(35,anchor.y-rangeY),maxY=Math.min(82,anchor.y+rangeY),x=Math.max(minX,Math.min(maxX,current.x+(Math.random()*2-1)*stepX)),y=Math.max(minY,Math.min(maxY,current.y+(Math.random()*2-1)*stepY)),dx=x-current.x,facing=Math.abs(dx)<.3?Number(current.facing||1):(dx>0?-1:1);petWanderLivePositions[scene]={x,y,scale:Number(anchor.scale||1),z:Number(anchor.z||30),facing};el.classList.add('wander-step');el.style.setProperty('--pet-x',`${x}%`);el.style.setProperty('--pet-y',`${y}%`);el.style.setProperty('--pet-facing',facing);setTimeout(()=>el?.classList.remove('wander-step'),3000)
 }
 function startPetWandering(){clearInterval(petWanderTimer);petWanderTimer=setInterval(petWanderTick,6200);setTimeout(petWanderTick,1800)}
-async function renderBackup(){const snaps=(await idbAll('snapshots')).sort((a,b)=>String(b.at).localeCompare(String(a.at)));let persisted=false;try{persisted=await navigator.storage?.persisted?.()}catch{};const external=state.settings.lastExternalBackupAt?new Date(state.settings.lastExternalBackupAt).toLocaleString('zh-CN'):'从未';$('#backupCards').innerHTML=[['主数据库','IndexedDB','浏览器内主要数据仓'],['本地镜像','已同步','localStorage 副本'],['版本快照',`${snaps.length}份`,'保留最近50次修改'],['外部备份',external,persisted?'浏览器存储已获持久权限':'仍建议保留下载的JSON']].map((x,i)=>`<div class="backup-card"><div class="label">${x[0]}</div><strong class="${i===3&&!state.settings.lastExternalBackupAt?'warn':'safe'}">${x[1]}</strong><p>${x[2]}</p></div>`).join('');$('#dailyBackupSwitch').classList.toggle('on',!!state.settings.autoDailyDownload);$('#everyChangeSwitch').classList.toggle('on',!!state.settings.everyChangeDownload);$('#snapshotList').innerHTML=snaps.slice(0,12).map(s=>`<div class="snapshot"><div><strong>${new Date(s.at).toLocaleString('zh-CN')}</strong><br><small>${esc(s.reason)}</small></div><button class="btn ghost" data-restore-snapshot="${s.id}">恢复</button></div>`).join('')||'<div class="empty">还没有版本快照。</div>';$('#diagnostics').innerHTML=`应用版本：1.9.25（记梦笔记本与柔和森林手账）<br>数据结构版本：${state.schemaVersion}<br>账目：${state.ledger.records.length}笔<br>家务：${state.chores.items.length}项<br>日历记录：${Object.keys(state.modules.calendar.entries||{}).length}天<br>梦境记录：${Object.values(dreamsData().entries||{}).filter(dreamMeaningful).length}天<br>餐厅与外卖：${restaurantData().items.length}次<br>树屋居民：${tamagotchiData().current?.name||'尚未领养'}<br>愿望：${state.modules.wishlist.items.length}件<br>数独完成：${state.modules.brain.sudoku.stats.completed||0}题<br>空当接龙胜利：${state.modules.brain.freecell.stats.won||0}局<br>扫雷胜利：${state.modules.brain.minesweeper.stats.won||0}局<br>推箱子通关：${state.modules.brain.sokoban.stats.won||0}关<br>当前来源：${location.protocol}<br>最近更新：${new Date(state.updatedAt).toLocaleString('zh-CN')}`;$('#backupBadge').textContent=state.settings.lastExternalBackupAt?`外部备份：${new Date(state.settings.lastExternalBackupAt).toLocaleDateString('zh-CN')}`:'外部备份尚未建立'}
+async function renderBackup(){const snaps=(await idbAll('snapshots')).sort((a,b)=>String(b.at).localeCompare(String(a.at)));let persisted=false;try{persisted=await navigator.storage?.persisted?.()}catch{};const external=state.settings.lastExternalBackupAt?new Date(state.settings.lastExternalBackupAt).toLocaleString('zh-CN'):'从未';$('#backupCards').innerHTML=[['主数据库','IndexedDB','浏览器内主要数据仓'],['本地镜像','已同步','localStorage 副本'],['版本快照',`${snaps.length}份`,'保留最近50次修改'],['外部备份',external,persisted?'浏览器存储已获持久权限':'仍建议保留下载的JSON']].map((x,i)=>`<div class="backup-card"><div class="label">${x[0]}</div><strong class="${i===3&&!state.settings.lastExternalBackupAt?'warn':'safe'}">${x[1]}</strong><p>${x[2]}</p></div>`).join('');$('#dailyBackupSwitch').classList.toggle('on',!!state.settings.autoDailyDownload);$('#everyChangeSwitch').classList.toggle('on',!!state.settings.everyChangeDownload);$('#snapshotList').innerHTML=snaps.slice(0,12).map(s=>`<div class="snapshot"><div><strong>${new Date(s.at).toLocaleString('zh-CN')}</strong><br><small>${esc(s.reason)}</small></div><button class="btn ghost" data-restore-snapshot="${s.id}">恢复</button></div>`).join('')||'<div class="empty">还没有版本快照。</div>';$('#diagnostics').innerHTML=`应用版本：1.9.25（像素农场主题与记梦笔记本）<br>数据结构版本：${state.schemaVersion}<br>账目：${state.ledger.records.length}笔<br>家务：${state.chores.items.length}项<br>日历记录：${Object.keys(state.modules.calendar.entries||{}).length}天<br>梦境记录：${Object.values(dreamsData().entries||{}).filter(dreamMeaningful).length}篇<br>餐厅与外卖：${restaurantData().items.length}次<br>树屋居民：${tamagotchiData().current?.name||'尚未领养'}<br>愿望：${state.modules.wishlist.items.length}件<br>数独完成：${state.modules.brain.sudoku.stats.completed||0}题<br>空当接龙胜利：${state.modules.brain.freecell.stats.won||0}局<br>扫雷胜利：${state.modules.brain.minesweeper.stats.won||0}局<br>推箱子通关：${state.modules.brain.sokoban.stats.won||0}关<br>当前来源：${location.protocol}<br>最近更新：${new Date(state.updatedAt).toLocaleString('zh-CN')}`;$('#backupBadge').textContent=state.settings.lastExternalBackupAt?`外部备份：${new Date(state.settings.lastExternalBackupAt).toLocaleDateString('zh-CN')}`:'外部备份尚未建立'}
 
 const SUDOKU_LEVELS={easy:{label:'简单',clues:42},medium:{label:'中等',clues:34},hard:{label:'困难',clues:28}};
 let sudokuSelected=-1,sudokuChecked=false,sudokuTimer=null;
@@ -1918,8 +1973,20 @@ function applyRestaurantLedgerImport(){const id=$('#restaurantLedgerLink').value
 function compressRestaurantPhoto(file,maxSide=1280,quality=.78){return new Promise((resolve,reject)=>{const reader=new FileReader();reader.onerror=()=>reject(new Error('读取图片失败'));reader.onload=()=>{const img=new Image();img.onerror=()=>reject(new Error('图片格式无法读取'));img.onload=()=>{const scale=Math.min(1,maxSide/Math.max(img.width,img.height)),w=Math.max(1,Math.round(img.width*scale)),h=Math.max(1,Math.round(img.height*scale)),canvas=document.createElement('canvas');canvas.width=w;canvas.height=h;canvas.getContext('2d').drawImage(img,0,0,w,h);resolve(canvas.toDataURL('image/jpeg',quality))};img.src=reader.result};reader.readAsDataURL(file)})}
 async function recordRestaurantExpense(r){if(restaurantLedgerRecord(r))return toast('这条记录已经关联账单啦');const amount=Number(r.amount||0);if(!amount)return toast('先编辑并填写消费金额');if(!confirm(`把“${r.restaurantName}”的 ${money(amount)} 记入账本吗？`))return;const pools=Object.keys(state.ledger.budgets),pool=pools.includes('基础生活')?'基础生活':pools[0]||'',category=state.ledger.categories.includes('餐饮外卖')?'餐饮外卖':state.ledger.categories[0],nature=state.ledger.natures.includes('幸福微需')?'幸福微需':state.ledger.natures[0],firstDish=r.dishes?.[0]?`（${r.dishes[0]}）`:'';const rec={id:uid('ledger'),createdAt:nowISO(),updatedAt:nowISO(),date:r.date,type:'支出',pool,category,amount,account:state.ledger.accounts[0]||'其他',nature,note:`${r.channel}：${r.restaurantName}${firstDish}`};state.ledger.records.push(rec);r.ledgerRecordId=rec.id;r.updatedAt=nowISO();const reward=claimDailyActivityReward('ledger',r.date);$('#ledgerMonth').value=r.date.slice(0,7);await persist(`餐厅记录记账：${r.restaurantName}`,true,true);if(reward)toast(`今日记账完成 · +${reward}积分`)}
 
-function renderAll(){renderHome();renderDreams();renderActivityRewardButtons();renderCalendar();renderWishlistHome();renderRestaurantsHome();renderPetHome();renderLedger();renderRestaurants();renderVillage();renderWishlist();renderChores();renderSudoku();renderFreecell();renderMines();renderSokoban();renderBrainTabs();renderBackup()}
-function setView(v){currentView=v;document.querySelector('.hero-shell')?.classList.toggle('hidden',v!=='home');$$('.view').forEach(x=>x.classList.toggle('active',x.id===`view-${v}`));$$('.nav-btn').forEach(x=>x.classList.toggle('active',x.dataset.view===v));window.scrollTo({top:0,behavior:'smooth'});if(v==='calendar'){renderCalendar();renderActivityRewardButtons()};if(v==='dream')renderDreams();if(v==='restaurants')renderRestaurants();if(v==='village'){processTamagotchiTime();renderVillage();setTimeout(()=>$('#petMain')?.scrollIntoView({behavior:'smooth',block:'start'}),80)}if(v==='wishlist')renderWishlist();if(v==='backup')renderBackup();if(v==='brain'){renderBrainTabs();renderSudoku();renderFreecell();renderMines();renderSokoban();startSudokuClock();startFreecellClock();startMineClock()}}
+
+function dreamsData(){state.modules=state.modules||{};if(!state.modules.dreams||typeof state.modules.dreams!=='object')state.modules.dreams={enabled:true,selectedDate:today(),entries:{}};const D=state.modules.dreams;D.enabled=true;D.entries=(D.entries&&typeof D.entries==='object'&&!Array.isArray(D.entries))?D.entries:{};D.selectedDate=/^\d{4}-\d{2}-\d{2}$/.test(D.selectedDate||'')?D.selectedDate:today();return D}
+function dreamSelectedDate(){const D=dreamsData(),input=$('#dreamDate');const value=input?.value||D.selectedDate||today();return /^\d{4}-\d{2}-\d{2}$/.test(value)?value:today()}
+function dreamEntry(date){const raw=dreamsData().entries[date];return raw?{date,title:String(raw.title||''),text:String(raw.text||''),keywords:String(raw.keywords||''),updatedAt:String(raw.updatedAt||'')}:null}
+function dreamMeaningful(entry){return !!entry&&(entry.title.trim()||entry.text.trim()||entry.keywords.trim())}
+function renderDreamHome(){const el=$('#homeDreamSummary');if(!el)return;const entries=Object.values(dreamsData().entries||{}).filter(dreamMeaningful).sort((a,b)=>String(b.date).localeCompare(String(a.date)));if(!entries.length){el.textContent='醒来后把梦留在纸页上，之后也能按日期翻看。';return}const latest=entries[0];el.textContent=`已经留下 ${entries.length} 篇梦境；最近一篇是 ${latest.date}${latest.title?`《${latest.title}》`:''}。`}
+function renderDreams(){const D=dreamsData(),date=D.selectedDate||today(),entry=dreamEntry(date);const input=$('#dreamDate');if(!input)return;input.value=date;$('#dreamTitle').value=entry?.title||'';$('#dreamText').value=entry?.text||'';$('#dreamKeywords').value=entry?.keywords||'';const status=$('#dreamSaveStatus');if(entry&&dreamMeaningful(entry)){status.textContent=entry.updatedAt?`已保存 · ${new Date(entry.updatedAt).toLocaleString('zh-CN',{month:'numeric',day:'numeric',hour:'2-digit',minute:'2-digit'})}`:'已经保存';status.classList.add('saved')}else{status.textContent='这一天还没有保存';status.classList.remove('saved')}const recent=Object.values(D.entries||{}).filter(dreamMeaningful).sort((a,b)=>String(b.date).localeCompare(String(a.date))).slice(0,18);$('#dreamRecentList').innerHTML=recent.map(e=>`<article class="dream-card" data-dream-open="${esc(e.date)}"><h3>${esc(e.date)}${e.title?` · ${esc(e.title)}`:''}</h3><p>${esc((e.text||'').slice(0,110))}${(e.text||'').length>110?'……':''}</p>${e.keywords?`<small>关键词：${esc(e.keywords)}</small>`:''}</article>`).join('')||'<div class="dream-empty">笔记本还是空白的。今晚醒来后，写下第一段梦吧。</div>';renderDreamHome()}
+async function saveDream(){const D=dreamsData(),date=dreamSelectedDate(),title=$('#dreamTitle').value.trim(),text=$('#dreamText').value.trim(),keywords=$('#dreamKeywords').value.trim();D.selectedDate=date;if(!title&&!text&&!keywords){delete D.entries[date];await persist(`清空${date}梦境`,true,true);renderDreams();toast('这一天的梦境已经清空');return}D.entries[date]={date,title,text,keywords,updatedAt:nowISO()};await persist(`保存${date}梦境`,true,true);renderDreams();toast('梦境已经夹进笔记本里')}
+async function clearDream(){const D=dreamsData(),date=dreamSelectedDate(),entry=dreamEntry(date);if(entry&&dreamMeaningful(entry)&&!confirm(`确定清空 ${date} 的梦境吗？`))return;delete D.entries[date];D.selectedDate=date;await persist(`清空${date}梦境`,true,true);renderDreams();toast('这一天恢复成空白纸页')}
+function moveDreamDate(delta){const D=dreamsData();D.selectedDate=addDateDays(dreamSelectedDate(),delta);renderDreams();$('#dreamText')?.focus()}
+function openDreamDate(date){const D=dreamsData();if(!/^\d{4}-\d{2}-\d{2}$/.test(date||''))return;D.selectedDate=date;renderDreams();window.scrollTo({top:0,behavior:'smooth'})}
+
+function renderAll(){renderHome();renderCalendar();renderDreams();renderActivityRewardButtons();renderWishlistHome();renderRestaurantsHome();renderPetHome();renderLedger();renderRestaurants();renderVillage();renderWishlist();renderChores();renderSudoku();renderFreecell();renderMines();renderSokoban();renderBrainTabs();renderBackup()}
+function setView(v){currentView=v;document.querySelector('.hero-shell')?.classList.toggle('hidden',v!=='home');$$('.view').forEach(x=>x.classList.toggle('active',x.id===`view-${v}`));$$('.nav-btn').forEach(x=>x.classList.toggle('active',x.dataset.view===v));window.scrollTo({top:0,behavior:'smooth'});if(v==='calendar'){renderCalendar();renderActivityRewardButtons()};if(v==='dreams')renderDreams();if(v==='restaurants')renderRestaurants();if(v==='village'){processTamagotchiTime();renderVillage();setTimeout(()=>$('#petMain')?.scrollIntoView({behavior:'smooth',block:'start'}),80)}if(v==='wishlist')renderWishlist();if(v==='backup')renderBackup();if(v==='brain'){renderBrainTabs();renderSudoku();renderFreecell();renderMines();renderSokoban();startSudokuClock();startFreecellClock();startMineClock()}}
 function initSelects(){const L=state.ledger,pools=Object.keys(L.budgets);$('#ledgerPool').innerHTML=pools.map(x=>`<option>${esc(x)}</option>`).join('');$('#ledgerPoolFilter').innerHTML='<option value="">全部预算池</option>'+pools.map(x=>`<option>${esc(x)}</option>`).join('');$('#ledgerCategory').innerHTML=L.categories.map(x=>`<option>${esc(x)}</option>`).join('');$('#ledgerAccount').innerHTML=L.accounts.map(x=>`<option>${esc(x)}</option>`).join('');$('#ledgerNature').innerHTML=L.natures.map(x=>`<option>${esc(x)}</option>`).join('');$('#wishPool').innerHTML=pools.map(x=>`<option>${esc(x)}</option>`).join('');$('#wishPoolFilter').innerHTML='<option value="">全部预算池</option>'+pools.map(x=>`<option>${esc(x)}</option>`).join('');$('#wishCategory').innerHTML=L.categories.map(x=>`<option>${esc(x)}</option>`).join('')}
 function setLedgerType(t){$('#ledgerType').value=t;$$('[data-ledger-type]').forEach(b=>b.classList.toggle('active',b.dataset.ledgerType===t));$('#ledgerPoolField').classList.toggle('hidden',t!=='支出');$('#ledgerNatureField').classList.toggle('hidden',t!=='支出');if(t==='收入')$('#ledgerCategory').value='退款/补贴';if(t==='转账')$('#ledgerCategory').value='其他'}
 function openLedger(record=null,copy=false){$('#ledgerForm').reset();$('#ledgerEditId').value=record&&!copy?record.id:'';$('#ledgerDialogTitle').textContent=record&&!copy?'编辑记录':'记一笔';$('#ledgerDate').value=copy?today():(record?.date||today());setLedgerType(record?.type||'支出');$('#ledgerPool').value=record?.pool||Object.keys(state.ledger.budgets)[0];$('#ledgerCategory').value=record?.category||state.ledger.categories[0];$('#ledgerAmount').value=record?.amount||'';$('#ledgerAccount').value=record?.account||state.ledger.accounts[0];$('#ledgerNature').value=record?.nature||state.ledger.natures[0];$('#ledgerNote').value=record?.note||'';$('#ledgerDialog').showModal()}
@@ -1945,7 +2012,6 @@ $('#moodAddThoughtBtn').onclick=addMoodThought;
 ['Morning','Afternoon','Evening'].forEach(k=>$(`#moodColor${k}`).oninput=renderMoodColorPreview);
 $('#moodThoughtInput').onkeydown=e=>{if((e.ctrlKey||e.metaKey)&&e.key==='Enter'){e.preventDefault();addMoodThought()}};
 $('#moodEntryList').onclick=e=>{const b=e.target.closest('[data-mood-delete]');if(b)deleteMoodThought(b.dataset.moodDelete)};
-$('#dreamBookBtn').onclick=toggleDreamBook;$('#dreamPrevBtn').onclick=()=>shiftDreamDate(-1);$('#dreamNextBtn').onclick=()=>shiftDreamDate(1);$('#dreamTodayBtn').onclick=()=>chooseDreamDate(today());$('#dreamDate').onchange=e=>chooseDreamDate(e.target.value);$('#dreamSaveBtn').onclick=saveDream;$('#dreamClearBtn').onclick=clearDream;$('#dreamContent').onkeydown=e=>{if((e.ctrlKey||e.metaKey)&&e.key==='Enter'){e.preventDefault();saveDream()}};$('#dreamRecentList').onclick=e=>{const b=e.target.closest('[data-dream-date]');if(b)chooseDreamDate(b.dataset.dreamDate)};
 $('#ledgerForm').onsubmit=async e=>{e.preventDefault();const t=$('#ledgerType').value,a=Number($('#ledgerAmount').value);if(!a||a<=0)return toast('请填写正确金额');const payload={date:$('#ledgerDate').value,type:t,pool:t==='支出'?$('#ledgerPool').value:'',category:$('#ledgerCategory').value,amount:a,account:$('#ledgerAccount').value,nature:t==='支出'?$('#ledgerNature').value:'',note:$('#ledgerNote').value.trim(),updatedAt:nowISO()};const id=$('#ledgerEditId').value;if(id){Object.assign(state.ledger.records.find(r=>r.id===id),payload)}else state.ledger.records.push({id:uid('ledger'),createdAt:nowISO(),...payload});const reward=!id?claimDailyActivityReward('ledger',payload.date):0;$('#ledgerDialog').close();$('#ledgerMonth').value=payload.date.slice(0,7);await persist(id?'编辑账目':'新增账目',true,true);if(reward)toast(`今日记账完成 · +${reward}积分`)};
 $('#recordList').onclick=async e=>{const b=e.target.closest('[data-ledger-action]');if(!b)return;const r=state.ledger.records.find(x=>x.id===b.dataset.id);if(b.dataset.ledgerAction==='edit')openLedger(r);if(b.dataset.ledgerAction==='copy')openLedger(r,true);if(b.dataset.ledgerAction==='delete'&&confirm(`删除“${r.note||r.category}”吗？`)){state.ledger.records=state.ledger.records.filter(x=>x.id!==r.id);await persist('删除账目',true,true)}};
 $('#choreForm').onsubmit=async e=>{e.preventDefault();const payload={name:$('#choreName').value.trim(),icon:$('#choreIcon').value.trim()||'🧹',interval:Number($('#choreInterval').value),lastDone:$('#choreLastDone').value,note:$('#choreNote').value.trim()};const id=$('#choreEditId').value;if(id)Object.assign(state.chores.items.find(x=>x.id===id),payload);else state.chores.items.push({id:uid('chore'),history:[],...payload});$('#choreDialog').close();await persist(id?'编辑家务':'新增家务',true,true)};
@@ -2058,6 +2124,7 @@ $('#petEmojiPicker').onclick=e=>{const b=e.target.closest('[data-pet-emoji]');if
 $('#petSetupForm').onsubmit=async e=>{e.preventDefault();await createTamagotchiPet()};
 $('#ledgerMonth').onchange=renderAll;$('#ledgerTypeFilter').onchange=renderLedger;$('#ledgerPoolFilter').onchange=renderLedger;$('#ledgerSearch').oninput=renderLedger;$('#choreSearch').oninput=renderChores;$('#choreFilter').onchange=renderChores;
 $('#editBudgetBtn').onclick=()=>{const month=selectedMonth(),monthSaving=Math.max(0,Number(state.ledger.monthlySavings?.[month])||0);$('#budgetEditor').innerHTML=`<div class="budget-editor-head">💰 存款记录 · ${esc(month)}</div><div class="field"><label>现有存款</label><input id="currentSavingsInput" type="number" min="0" step="0.01" inputmode="decimal" value="${Math.max(0,Number(state.ledger.currentSavings)||0)}"></div><div class="field"><label>${esc(month)} 当月存款</label><input id="monthlySavingsInput" data-month="${esc(month)}" type="number" min="0" step="0.01" inputmode="decimal" value="${monthSaving}"></div><div class="budget-editor-head">📊 月度预算池</div>`+Object.entries(state.ledger.budgets).map(([k,v])=>`<div class="field"><label>${esc(k)}</label><input type="number" min="0" step="10" data-budget="${esc(k)}" value="${Number(v)}"></div>`).join('');$('#budgetDialog').showModal()};$('#saveBudgetBtn').onclick=async()=>{state.ledger.currentSavings=Math.max(0,Number($('#currentSavingsInput')?.value)||0);state.ledger.monthlySavings=state.ledger.monthlySavings||{};const monthInput=$('#monthlySavingsInput');if(monthInput)state.ledger.monthlySavings[monthInput.dataset.month]=Math.max(0,Number(monthInput.value)||0);$$('#budgetEditor [data-budget]').forEach(i=>state.ledger.budgets[i.dataset.budget]=Math.max(0,Number(i.value)||0));$('#budgetDialog').close();initSelects();await persist('调整月预算与存款',true,true)};
+$('#dreamPrevBtn').onclick=()=>moveDreamDate(-1);$('#dreamNextBtn').onclick=()=>moveDreamDate(1);$('#dreamTodayBtn').onclick=()=>openDreamDate(today());$('#dreamDate').onchange=e=>openDreamDate(e.target.value);$('#dreamSaveBtn').onclick=saveDream;$('#dreamClearBtn').onclick=clearDream;$('#dreamNotebook').onclick=e=>{if(!e.target.closest('input,textarea,button'))$('#dreamText')?.focus()};$('#dreamRecentList').onclick=e=>{const card=e.target.closest('[data-dream-open]');if(card)openDreamDate(card.dataset.dreamOpen)};
 $('#dailyBackupSwitch').onclick=async()=>{state.settings.autoDailyDownload=!state.settings.autoDailyDownload;$('#dailyBackupSwitch').classList.toggle('on',state.settings.autoDailyDownload);await persist('修改备份设置',true,true)};$('#everyChangeSwitch').onclick=async()=>{state.settings.everyChangeDownload=!state.settings.everyChangeDownload;$('#everyChangeSwitch').classList.toggle('on',state.settings.everyChangeDownload);await persist('修改备份设置',true,true)};
 $('#importFile').onchange=async e=>{const f=e.target.files?.[0];if(!f)return;try{await importBackup(f)}catch(err){alert(err.message)}finally{e.target.value=''}};$('#persistBtn').onclick=async()=>{try{const ok=await navigator.storage?.persist?.();toast(ok?'已获得持久存储权限':'浏览器未授予持久权限，请保留外部备份')}catch{toast('当前浏览器不支持该功能')}};$('#exportCsvBtn').onclick=exportCsv;
 $('#snapshotList').onclick=async e=>{const b=e.target.closest('[data-restore-snapshot]');if(!b)return;const s=await idbGet('snapshots',b.dataset.restoreSnapshot);if(!s)return;if(confirm(`恢复到 ${new Date(s.at).toLocaleString('zh-CN')} 的状态吗？当前状态会先下载备份。`)){downloadBackup('恢复前保护备份');state=clone(s.data);await persist('恢复版本快照',false,true);initSelects();toast('已恢复版本')}};
