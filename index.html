@@ -871,6 +871,150 @@ dialog{border:4px solid #4a2818!important;border-radius:4px!important;background
 }
 @media(max-width:390px){.nav-btn{font-size:7px!important}.nav-btn span{font-size:14px!important}.brand h1{font-size:29px!important}.dream-date-bar{gap:5px}.dream-date-bar .btn{padding:8px 7px!important}.dream-date-bar input{width:145px}}
 
+
+/* v1.9.26：柔和木质阅读风格 */
+:root{
+  --bg:#efe6d8;--paper:#f7f1e8;--paper2:#fcf8f1;--ink:#433328;--muted:#7a6757;
+  --line:#d7c7b1;--sage:#7a8f73;--sage2:#5f7359;--soft:#ece4d7;--gold:#c59d68;
+  --warn:#c98c57;--danger:#b86d63;--ok:#6f8f73;--shadow:0 14px 32px rgba(88,66,42,.10);
+  --radius:20px;--wood-dark:#6c4c35;--wood:#a97a57;--wood-light:#d4b08f;--cream:#fbf5eb;
+}
+html{image-rendering:auto!important;background:#e8dfd0}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif!important;
+  font-weight:500;
+  color:var(--ink);
+  background:
+    radial-gradient(circle at top left,rgba(208,226,203,.38),transparent 27%),
+    radial-gradient(circle at bottom right,rgba(226,201,170,.34),transparent 30%),
+    linear-gradient(180deg,rgba(255,249,240,.78),rgba(244,236,224,.92)),
+    repeating-linear-gradient(90deg,rgba(168,128,95,.018) 0 24px,rgba(255,255,255,0) 24px 48px),
+    var(--bg)!important;
+}
+.app{padding-top:24px}
+header{align-items:flex-start;gap:22px;margin-bottom:18px}
+.brand h1{font-size:clamp(31px,5.7vw,48px);letter-spacing:-.03em;line-height:1.08;color:var(--ink);text-shadow:none}
+.brand p{max-width:760px;font-size:15px;line-height:1.8;color:var(--muted)}
+.mascot{filter:drop-shadow(0 8px 16px rgba(115,85,58,.14));opacity:.95}
+.banner{
+  border-radius:18px!important;border:1px solid #e4d0b1!important;
+  background:linear-gradient(180deg,#fff5e8,#f7ead8)!important;color:#6a4c31!important;
+  box-shadow:0 8px 20px rgba(123,93,64,.08)
+}
+.panel,.module-card,.quick-row,.backup-card,.snapshot,.budget,.calendar-day,.dream-notebook,.restaurant-card,.wish-card,.chore-card,.game-history-row,.brain-card,.pet-card,.resident-card,.module-entry,.memory-card{
+  border-radius:var(--radius)!important;
+}
+.panel{
+  background:linear-gradient(180deg,rgba(252,248,241,.97),rgba(246,239,228,.95))!important;
+  border:1px solid rgba(215,199,177,.95)!important;
+  box-shadow:var(--shadow)!important;
+  backdrop-filter:none!important;
+}
+.top-actions{
+  background:linear-gradient(180deg,rgba(255,250,244,.72),rgba(248,242,233,.45));
+  border-radius:20px;
+}
+.card,.section{padding:20px}
+.section-head h2,.module-card h3,h3,h4{color:#4d3a2e}
+.label,.sub,.section-head span,.module-card p,.quick-sub,.empty,.backup-card p,.snapshot small,.budget-meta,.chart-row span,.brand p,small{color:var(--muted)!important}
+.kpi-card{background:linear-gradient(180deg,rgba(255,252,248,.88),rgba(245,237,225,.82))}
+.kpi-card:after{background:rgba(122,143,115,.12)!important}
+.value{font-weight:800;color:#3f3025}
+.module-card,.quick-row,.backup-card,.snapshot,.budget,.game-history-row{
+  background:rgba(255,251,246,.9)!important;border:1px solid var(--line)!important;
+  box-shadow:0 6px 18px rgba(98,75,51,.05)
+}
+.btn{
+  border-radius:14px!important;padding:10px 15px!important;font-weight:700!important;
+  box-shadow:none!important;border:1px solid transparent;transition:background .15s ease,color .15s ease,border-color .15s ease,transform .12s ease;
+}
+.btn.primary{background:linear-gradient(180deg,#8ba17f,#6f8667)!important;color:#fff!important;border-color:#708567!important}
+.btn.primary:hover{background:linear-gradient(180deg,#93a988,#768d6f)!important}
+.btn.soft{background:linear-gradient(180deg,#f2eadf,#e8ddcf)!important;color:#5f7359!important;border-color:#d8cab8!important}
+.btn.ghost{background:rgba(255,251,246,.75)!important;border-color:#d7c7b1!important;color:#6f5d50!important}
+.btn.danger{background:linear-gradient(180deg,#f8ece8,#f3ded8)!important;color:#9b5c53!important;border-color:#e1b8ae!important}
+.status-pill{
+  background:linear-gradient(180deg,#f3ece1,#ebe0d2)!important;color:#5f7359!important;
+  border:1px solid #dbcebc;font-weight:700
+}
+input,select,textarea{
+  background:rgba(255,252,248,.96)!important;color:var(--ink)!important;
+  border:1px solid var(--line)!important;border-radius:14px!important;outline:none!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.8);
+}
+input:not([type=color]):not([type=checkbox]):not([type=radio]),select,textarea{
+  padding:10px 12px!important;line-height:1.65!important
+}
+textarea{min-height:118px}
+input:focus,select:focus,textarea:focus{border-color:#bfa789!important;box-shadow:0 0 0 3px rgba(197,157,104,.15)!important}
+.calendar-toolbar input[type="month"]{background:rgba(255,252,248,.96)!important}
+.calendar-weekdays{font-size:12px;color:#887461!important}
+.calendar-day{
+  background:linear-gradient(180deg,rgba(255,252,248,.96),rgba(246,239,228,.98))!important;
+  border:1px solid var(--line)!important;
+  box-shadow:0 4px 12px rgba(98,75,51,.04)
+}
+.calendar-day .day-num,.calendar-day strong{color:#4a392d}
+.bar{background:#e9e2d6!important}.bar span{background:linear-gradient(90deg,#88a07e,#6f8667)!important}
+.budget.over{background:#fbefeb!important;border-color:#e6c1ba!important}
+nav,.bottom-nav{
+  background:rgba(249,244,236,.96)!important;border:1px solid #d9c8b2!important;
+  box-shadow:0 16px 36px rgba(83,61,41,.12)!important;backdrop-filter:blur(10px)!important;
+  border-radius:24px!important
+}
+.nav-btn{color:#786557!important;border-radius:14px!important;font-weight:700!important}
+.nav-btn.active{background:linear-gradient(180deg,#efe5d6,#e5d7c4)!important;color:#5d7257!important}
+.nav-btn span{filter:none}
+dialog{
+  border-radius:24px!important;background:#faf6ef!important;box-shadow:0 30px 80px rgba(65,48,33,.18)!important
+}
+.dialog-card,.modal-card{background:#faf6ef!important}
+.dream-date-bar{
+  border:1px solid #d9c8b2!important;background:linear-gradient(180deg,#faf3e8,#efe3d0)!important;box-shadow:none!important;
+  border-radius:18px!important
+}
+.dream-notebook{
+  max-width:900px;
+  background:linear-gradient(180deg,#8e684e,#7d5c46)!important;
+  border:1px solid #6f503c!important;box-shadow:0 14px 30px rgba(83,61,41,.14)!important;
+  border-radius:26px!important;padding:24px 24px 24px 54px!important;
+}
+.dream-notebook:before{
+  left:22px!important;top:18px!important;bottom:18px!important;width:10px!important;
+  background:repeating-linear-gradient(180deg,#d7c0a6 0 10px,#7d5c46 10px 16px)!important;border:0!important;border-radius:8px
+}
+.dream-page{
+  background:linear-gradient(180deg,#fffdf9,#f8f2e8)!important;border:1px solid #e4d7c7!important;border-radius:18px!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.8)
+}
+.dream-page textarea,.dream-page input{background:transparent!important;border-color:#e6dccf!important}
+.brain-tab,.game-chip,.fc-slot,.fc-foundation,.ms-cell,.soko-cell,.sudoku-cell,.game-toolbar button{
+  border-radius:12px!important
+}
+.brain-tab{background:rgba(255,251,246,.9)!important;border:1px solid var(--line)!important;color:#725f4f!important}
+.brain-tab.active{background:linear-gradient(180deg,#efe5d6,#e4d6c2)!important;color:#5f7359!important;border-color:#d1bea5!important}
+.game-shell,.brain-layout .panel,.fc-panel,.ms-board-wrap,.soko-board-wrap,.sudoku-wrap{background:rgba(255,251,246,.84)!important}
+.fc-column,.ms-board,.soko-board,.sudoku-grid{background:#f5ecdf!important;border-color:#d7c7b1!important}
+.fc-card,.fc-free-card{
+  box-shadow:0 4px 10px rgba(86,66,46,.10)!important;border-radius:11px!important;border-color:#d8ccbd!important
+}
+#view-home .section,#view-calendar .section,#view-ledger .section,#view-chores .section,#view-dreams .section,#view-restaurants .section,#view-wishlist .section,#view-brain .section,#view-residents .section,#view-backup .section{
+  background:linear-gradient(180deg,rgba(252,248,241,.98),rgba(246,239,228,.95))!important;
+}
+@media(max-width:900px){
+  .app{width:min(100% - 18px,1180px);padding-top:18px}
+  header{gap:14px}
+  .brand h1{font-size:clamp(27px,7vw,38px)}
+}
+@media(max-width:640px){
+  body{font-size:15px}
+  .brand p{font-size:14px;line-height:1.72}
+  .panel,.module-card,.quick-row,.backup-card,.snapshot,.calendar-day{border-radius:18px!important}
+  .card,.section{padding:16px}
+  nav,.bottom-nav{border-radius:20px!important}
+  .dream-notebook{padding:18px 16px 18px 44px!important}
+}
+
 </style>
 </head>
 <body>
@@ -1701,7 +1845,7 @@ function petWanderTick(){
  if(currentView!=='village'||petDecorMode||petBusy||petGamePanel||selectedPetTool||isPetNight())return;const T=tamagotchiData(),p=T.current,el=document.querySelector('[data-pet-avatar]');if(!T.wanderEnabled||!p?.alive||!el||el.classList.contains('leave')||el.classList.contains('visit')||el.classList.contains('sleeping'))return;const scene=T.scene||'forest',anchor=petPosition(scene),current=petWanderLivePositions[scene]||{...anchor,facing:1},rangeX=scene==='home'?20:30,rangeY=scene==='home'?12:17,stepX=scene==='home'?13:18,stepY=scene==='home'?8:11,minX=Math.max(10,anchor.x-rangeX),maxX=Math.min(90,anchor.x+rangeX),minY=Math.max(35,anchor.y-rangeY),maxY=Math.min(82,anchor.y+rangeY),x=Math.max(minX,Math.min(maxX,current.x+(Math.random()*2-1)*stepX)),y=Math.max(minY,Math.min(maxY,current.y+(Math.random()*2-1)*stepY)),dx=x-current.x,facing=Math.abs(dx)<.3?Number(current.facing||1):(dx>0?-1:1);petWanderLivePositions[scene]={x,y,scale:Number(anchor.scale||1),z:Number(anchor.z||30),facing};el.classList.add('wander-step');el.style.setProperty('--pet-x',`${x}%`);el.style.setProperty('--pet-y',`${y}%`);el.style.setProperty('--pet-facing',facing);setTimeout(()=>el?.classList.remove('wander-step'),3000)
 }
 function startPetWandering(){clearInterval(petWanderTimer);petWanderTimer=setInterval(petWanderTick,6200);setTimeout(petWanderTick,1800)}
-async function renderBackup(){const snaps=(await idbAll('snapshots')).sort((a,b)=>String(b.at).localeCompare(String(a.at)));let persisted=false;try{persisted=await navigator.storage?.persisted?.()}catch{};const external=state.settings.lastExternalBackupAt?new Date(state.settings.lastExternalBackupAt).toLocaleString('zh-CN'):'从未';$('#backupCards').innerHTML=[['主数据库','IndexedDB','浏览器内主要数据仓'],['本地镜像','已同步','localStorage 副本'],['版本快照',`${snaps.length}份`,'保留最近50次修改'],['外部备份',external,persisted?'浏览器存储已获持久权限':'仍建议保留下载的JSON']].map((x,i)=>`<div class="backup-card"><div class="label">${x[0]}</div><strong class="${i===3&&!state.settings.lastExternalBackupAt?'warn':'safe'}">${x[1]}</strong><p>${x[2]}</p></div>`).join('');$('#dailyBackupSwitch').classList.toggle('on',!!state.settings.autoDailyDownload);$('#everyChangeSwitch').classList.toggle('on',!!state.settings.everyChangeDownload);$('#snapshotList').innerHTML=snaps.slice(0,12).map(s=>`<div class="snapshot"><div><strong>${new Date(s.at).toLocaleString('zh-CN')}</strong><br><small>${esc(s.reason)}</small></div><button class="btn ghost" data-restore-snapshot="${s.id}">恢复</button></div>`).join('')||'<div class="empty">还没有版本快照。</div>';$('#diagnostics').innerHTML=`应用版本：1.9.25（像素农场主题与记梦笔记本）<br>数据结构版本：${state.schemaVersion}<br>账目：${state.ledger.records.length}笔<br>家务：${state.chores.items.length}项<br>日历记录：${Object.keys(state.modules.calendar.entries||{}).length}天<br>梦境记录：${Object.values(dreamsData().entries||{}).filter(dreamMeaningful).length}篇<br>餐厅与外卖：${restaurantData().items.length}次<br>树屋居民：${tamagotchiData().current?.name||'尚未领养'}<br>愿望：${state.modules.wishlist.items.length}件<br>数独完成：${state.modules.brain.sudoku.stats.completed||0}题<br>空当接龙胜利：${state.modules.brain.freecell.stats.won||0}局<br>扫雷胜利：${state.modules.brain.minesweeper.stats.won||0}局<br>推箱子通关：${state.modules.brain.sokoban.stats.won||0}关<br>当前来源：${location.protocol}<br>最近更新：${new Date(state.updatedAt).toLocaleString('zh-CN')}`;$('#backupBadge').textContent=state.settings.lastExternalBackupAt?`外部备份：${new Date(state.settings.lastExternalBackupAt).toLocaleDateString('zh-CN')}`:'外部备份尚未建立'}
+async function renderBackup(){const snaps=(await idbAll('snapshots')).sort((a,b)=>String(b.at).localeCompare(String(a.at)));let persisted=false;try{persisted=await navigator.storage?.persisted?.()}catch{};const external=state.settings.lastExternalBackupAt?new Date(state.settings.lastExternalBackupAt).toLocaleString('zh-CN'):'从未';$('#backupCards').innerHTML=[['主数据库','IndexedDB','浏览器内主要数据仓'],['本地镜像','已同步','localStorage 副本'],['版本快照',`${snaps.length}份`,'保留最近50次修改'],['外部备份',external,persisted?'浏览器存储已获持久权限':'仍建议保留下载的JSON']].map((x,i)=>`<div class="backup-card"><div class="label">${x[0]}</div><strong class="${i===3&&!state.settings.lastExternalBackupAt?'warn':'safe'}">${x[1]}</strong><p>${x[2]}</p></div>`).join('');$('#dailyBackupSwitch').classList.toggle('on',!!state.settings.autoDailyDownload);$('#everyChangeSwitch').classList.toggle('on',!!state.settings.everyChangeDownload);$('#snapshotList').innerHTML=snaps.slice(0,12).map(s=>`<div class="snapshot"><div><strong>${new Date(s.at).toLocaleString('zh-CN')}</strong><br><small>${esc(s.reason)}</small></div><button class="btn ghost" data-restore-snapshot="${s.id}">恢复</button></div>`).join('')||'<div class="empty">还没有版本快照。</div>';$('#diagnostics').innerHTML=`应用版本：1.9.26（柔和木质阅读风格）<br>数据结构版本：${state.schemaVersion}<br>账目：${state.ledger.records.length}笔<br>家务：${state.chores.items.length}项<br>日历记录：${Object.keys(state.modules.calendar.entries||{}).length}天<br>梦境记录：${Object.values(dreamsData().entries||{}).filter(dreamMeaningful).length}篇<br>餐厅与外卖：${restaurantData().items.length}次<br>树屋居民：${tamagotchiData().current?.name||'尚未领养'}<br>愿望：${state.modules.wishlist.items.length}件<br>数独完成：${state.modules.brain.sudoku.stats.completed||0}题<br>空当接龙胜利：${state.modules.brain.freecell.stats.won||0}局<br>扫雷胜利：${state.modules.brain.minesweeper.stats.won||0}局<br>推箱子通关：${state.modules.brain.sokoban.stats.won||0}关<br>当前来源：${location.protocol}<br>最近更新：${new Date(state.updatedAt).toLocaleString('zh-CN')}`;$('#backupBadge').textContent=state.settings.lastExternalBackupAt?`外部备份：${new Date(state.settings.lastExternalBackupAt).toLocaleDateString('zh-CN')}`:'外部备份尚未建立'}
 
 const SUDOKU_LEVELS={easy:{label:'简单',clues:42},medium:{label:'中等',clues:34},hard:{label:'困难',clues:28}};
 let sudokuSelected=-1,sudokuChecked=false,sudokuTimer=null;
