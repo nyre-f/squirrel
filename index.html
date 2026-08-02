@@ -1028,7 +1028,7 @@ dialog{border-color:#66513f!important;background:#eee0b5!important;box-shadow:0 
 @media(max-width:520px){.reader-shelf-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.reader-shelf-book{min-height:128px;padding:9px 7px}.reader-shelf-book h3{font-size:13px}.reader-shelf-book small{font-size:9px}.reader-shelf-detail{padding:12px}}
 
 
-/* v1.9.29：保留 EPUB 原始插图比例，净化标注图标 */
+/* v1.9.30：保留 EPUB 原始插图比例，净化标注图标 */
 .reader-content img.reader-book-image,
 .reader-content svg.reader-book-image{
   display:block!important;
@@ -1059,71 +1059,99 @@ dialog{border-color:#66513f!important;background:#eee0b5!important;box-shadow:0 
 .reader-content .reader-hidden-annotation{display:none!important}
 
 
-/* v1.9.30：脑力房紧凑按钮与题库布局 */
-#view-brain .section-head span{font-size:12px}
-#view-brain .btn{padding:8px 10px;font-size:13px;min-height:40px;border-radius:10px}
-#view-brain select,
-#view-brain input[type="number"]{min-height:40px;padding:8px 10px;font-size:13px;border-radius:10px}
-#view-brain .panel.section{padding:12px}
-#view-brain .brain-controls,
-#view-brain .sudoku-controls{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;align-items:stretch}
-#view-brain .brain-controls > *,
-#view-brain .sudoku-controls > *{min-width:0;width:100%;margin:0}
-#view-brain .sudoku-controls .mine-count-control{min-height:40px;box-sizing:border-box;padding:7px 10px;border-radius:10px}
-#view-brain .sudoku-controls .mine-count-control input{width:56px}
-#view-brain .brain-layout{gap:12px}
-#view-brain .sudoku-status,
-#view-brain .game-status{gap:8px}
-#view-brain .sudoku-stat,
-#view-brain .game-stat{padding:10px 9px;border-radius:12px}
-#view-brain .sudoku-stat strong,
-#view-brain .game-stat strong{font-size:18px}
-#view-brain .number-key{padding:10px 4px;font-size:16px;border-radius:10px}
-#view-brain .game-message{font-size:12px;line-height:1.55;margin-top:8px}
-
-#view-brain .fc-library{display:grid;gap:10px}
-#view-brain .fc-difficulty-switch{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
-#view-brain .fc-difficulty-switch button{min-height:38px;padding:8px 6px;font-size:13px;border-radius:10px}
-#view-brain .fc-puzzle-nav{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;align-items:stretch}
-#view-brain .fc-puzzle-nav > *{margin:0;width:100%}
-#view-brain .fc-puzzle-nav .fc-puzzle-number{grid-column:1/-1;display:flex;align-items:center;justify-content:center;gap:8px;padding:6px 10px;min-height:44px;border:1px solid var(--line);border-radius:16px;background:#fff;font-size:15px;font-weight:850}
-#view-brain .fc-puzzle-number input{width:92px;min-height:44px;text-align:center;font-size:20px;font-weight:900;padding:4px 8px;border-radius:8px}
-#view-brain #newFreecellBtn,
-#view-brain #newSokobanBtn{grid-column:1/-1}
-#view-brain .fc-library-note{display:none!important}
-#view-brain .fc-recent-puzzles{margin-top:0;gap:6px}
-#view-brain .fc-recent-label{font-size:12px}
-#view-brain .fc-recent-puzzle{padding:6px 10px;font-size:12px;border-radius:999px}
-#view-brain .fc-action-controls{grid-template-columns:repeat(2,minmax(0,1fr))}
-#view-brain .fc-action-controls > :last-child{grid-column:1/-1}
-#view-brain .freecell-wrap{margin-top:8px}
-#view-brain .fc-card{font-size:12px}
-
-#view-brain .sokoban-controls{margin:8px 0 0}
-#view-brain .sokoban-dpad{grid-template-columns:repeat(3,44px);grid-template-rows:repeat(3,40px);gap:4px}
-#view-brain .sokoban-dpad button{border-radius:10px;font-size:17px}
-
-@media (min-width:760px){
-  #view-brain .brain-controls,
-  #view-brain .sudoku-controls{grid-template-columns:repeat(3,minmax(0,1fr))}
-  #view-brain .fc-puzzle-nav{grid-template-columns:repeat(3,minmax(0,1fr))}
-  #view-brain .fc-action-controls{grid-template-columns:repeat(3,minmax(0,1fr))}
-  #view-brain .fc-action-controls > :last-child{grid-column:auto}
+/* v1.9.30 游戏区紧凑化 */
+.fc-library-note{display:none!important}
+.brain-game .section-head span{font-size:12px}
+.fc-library,.soko-library{gap:10px}
+.fc-difficulty-switch{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.fc-difficulty-switch button{min-height:44px;padding:8px 6px;font-size:14px;border-width:3px}
+.fc-puzzle-nav{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px;align-items:stretch}
+.fc-puzzle-nav .fc-puzzle-number{grid-column:1/4;min-height:46px;margin:0;padding:6px 10px;font-size:16px;border-radius:16px;display:flex;align-items:center;justify-content:center;gap:8px}
+.fc-puzzle-nav .fc-puzzle-number input{width:74px;min-height:36px;font-size:18px;padding:2px 6px}
+.fc-puzzle-nav #newFreecellBtn,.fc-puzzle-nav #newSokobanBtn{grid-column:4/7;min-height:46px}
+.fc-puzzle-nav #prevFreecellPuzzleBtn,.fc-puzzle-nav #nextFreecellPuzzleBtn,.fc-puzzle-nav #randomFreecellPuzzleBtn,.fc-puzzle-nav #prevSokobanPuzzleBtn,.fc-puzzle-nav #nextSokobanPuzzleBtn,.fc-puzzle-nav #randomSokobanPuzzleBtn{min-height:40px;font-size:14px;padding:6px 6px}
+.fc-puzzle-nav #prevFreecellPuzzleBtn,.fc-puzzle-nav #prevSokobanPuzzleBtn{grid-column:1/3}
+.fc-puzzle-nav #nextFreecellPuzzleBtn,.fc-puzzle-nav #nextSokobanPuzzleBtn{grid-column:3/5}
+.fc-puzzle-nav #randomFreecellPuzzleBtn,.fc-puzzle-nav #randomSokobanPuzzleBtn{grid-column:5/7}
+.sudoku-controls.brain-controls{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;align-items:stretch}
+.sudoku-controls.brain-controls > *{min-width:0}
+.sudoku-controls.brain-controls .btn,
+.sudoku-controls.brain-controls select,
+.sudoku-controls.brain-controls label{min-height:40px;padding:6px 8px;font-size:14px;border-width:3px}
+.sudoku-controls.brain-controls select{padding-right:28px}
+.sudoku-controls.brain-controls .mine-count-control{display:flex;align-items:center;justify-content:center;gap:6px}
+.sudoku-controls.brain-controls .mine-count-control input{width:58px;min-height:30px;font-size:14px;padding:2px 4px}
+.fc-action-controls{grid-template-columns:repeat(3,minmax(0,1fr))}
+#brain-game-sokoban .sudoku-controls.brain-controls{grid-template-columns:repeat(3,minmax(0,1fr))}
+#brain-game-sokoban .sudoku-controls.brain-controls .btn{min-height:40px}
+.sokoban-controls{margin-top:8px;display:flex;justify-content:center}
+.sokoban-dpad{transform:scale(.92);transform-origin:center top}
+.game-message{font-size:13px;line-height:1.45;margin-top:8px}
+.fc-recent-puzzles{gap:8px}.fc-recent-puzzle{padding:6px 10px;font-size:13px}
+@media (max-width:480px){
+  .brain-game .panel.section{padding:10px}
+  .fc-difficulty-switch button{min-height:40px;font-size:13px}
+  .fc-puzzle-nav{gap:7px}
+  .fc-puzzle-nav .fc-puzzle-number{min-height:42px;font-size:15px}
+  .fc-puzzle-nav .fc-puzzle-number input{width:62px;min-height:32px;font-size:17px}
+  .fc-puzzle-nav #newFreecellBtn,.fc-puzzle-nav #newSokobanBtn{min-height:42px;font-size:15px}
+  .fc-puzzle-nav #prevFreecellPuzzleBtn,.fc-puzzle-nav #nextFreecellPuzzleBtn,.fc-puzzle-nav #randomFreecellPuzzleBtn,.fc-puzzle-nav #prevSokobanPuzzleBtn,.fc-puzzle-nav #nextSokobanPuzzleBtn,.fc-puzzle-nav #randomSokobanPuzzleBtn{min-height:36px;font-size:13px}
+  .sudoku-controls.brain-controls{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .fc-action-controls{grid-template-columns:repeat(2,minmax(0,1fr))}
+  #brain-game-sokoban .sudoku-controls.brain-controls{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .sudoku-controls.brain-controls .btn,
+  .sudoku-controls.brain-controls select,
+  .sudoku-controls.brain-controls label{min-height:38px;font-size:13px;padding:5px 6px}
+  .sokoban-dpad{transform:scale(.86)}
 }
-@media (max-width:420px){
-  #view-brain .btn{padding:7px 8px;font-size:12px;min-height:38px}
-  #view-brain select,
-  #view-brain input[type="number"]{min-height:38px;font-size:12px}
-  #view-brain .fc-difficulty-switch button{font-size:12px;padding:7px 4px}
-  #view-brain .fc-puzzle-nav{grid-template-columns:repeat(2,minmax(0,1fr))}
-  #view-brain .fc-puzzle-nav .fc-puzzle-number,
-  #view-brain #newFreecellBtn,
-  #view-brain #newSokobanBtn{grid-column:1/-1}
-  #view-brain #randomFreecellPuzzleBtn,
-  #view-brain #randomSokobanPuzzleBtn{grid-column:1/-1}
-  #view-brain .fc-puzzle-number input{width:82px;font-size:18px}
-  #view-brain .sudoku-status,
-  #view-brain .game-status{grid-template-columns:repeat(2,minmax(0,1fr))}
+
+
+/* v1.9.30：四款脑力游戏控制区紧凑整理 */
+#view-brain .brain-tabs{gap:5px!important;margin-bottom:8px!important}
+#view-brain .brain-tab{min-height:34px!important;padding:5px 3px!important;font-size:11px!important;line-height:1.15!important}
+#view-brain .brain-game>.panel.section:first-child{padding:9px!important}
+#view-brain .section-head{margin-bottom:7px!important;gap:5px!important}
+#view-brain .section-head h2{font-size:17px!important;line-height:1.2!important}
+#view-brain .section-head>span{display:none!important}
+#view-brain .fc-library{padding:7px!important;margin:0 0 7px!important;border-radius:7px!important;box-shadow:2px 2px 0 rgba(74,54,39,.16)!important}
+#view-brain .fc-difficulty-switch{gap:5px!important;margin-bottom:6px!important}
+#view-brain .fc-difficulty-switch button{min-height:31px!important;padding:3px 2px!important;font-size:11px!important;border-width:2px!important;border-radius:4px!important;box-shadow:2px 2px 0 rgba(74,54,39,.18)!important}
+#view-brain .fc-library-note{display:none!important}
+#view-brain .compact-puzzle-nav{display:grid!important;grid-template-columns:1fr!important;gap:5px!important}
+#view-brain .puzzle-main-row{display:grid;grid-template-columns:minmax(0,1fr) 82px;gap:5px;align-items:stretch}
+#view-brain .puzzle-main-row .fc-puzzle-number{min-height:32px!important;padding:2px 5px!important;font-size:12px!important;border-width:2px!important;border-radius:4px!important;box-shadow:2px 2px 0 rgba(74,54,39,.16)!important}
+#view-brain .puzzle-main-row .fc-puzzle-number input{width:58px!important;min-height:25px!important;padding:0 3px!important;font-size:14px!important}
+#view-brain .puzzle-main-row>.btn{min-height:32px!important;padding:3px 5px!important;font-size:11px!important;border-width:2px!important;border-radius:4px!important;box-shadow:2px 2px 0 rgba(74,54,39,.2)!important}
+#view-brain .puzzle-mini-nav{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:5px}
+#view-brain .puzzle-mini-nav>.btn{min-height:29px!important;padding:3px 2px!important;font-size:10.5px!important;line-height:1!important;border-width:2px!important;border-radius:4px!important;box-shadow:2px 2px 0 rgba(74,54,39,.18)!important;white-space:nowrap}
+#view-brain .fc-recent-puzzles{justify-content:flex-start!important;flex-wrap:nowrap!important;overflow-x:auto!important;gap:4px!important;margin-top:5px!important;padding-bottom:2px!important;scrollbar-width:none}
+#view-brain .fc-recent-puzzles::-webkit-scrollbar{display:none}
+#view-brain .fc-recent-label{font-size:10px!important;flex:0 0 auto}
+#view-brain .fc-recent-puzzle{flex:0 0 auto!important;padding:3px 6px!important;font-size:9.5px!important;border-width:2px!important;border-radius:4px!important;box-shadow:1px 1px 0 rgba(74,54,39,.16)!important}
+#view-brain .brain-controls{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:5px!important;margin:5px 0 7px!important}
+#view-brain .brain-controls>.btn,#view-brain .brain-controls>select,#view-brain .brain-controls>.mine-count-control{width:100%!important;min-height:31px!important;height:31px!important;margin:0!important;padding:3px 4px!important;font-size:10.5px!important;line-height:1!important;border-width:2px!important;border-radius:4px!important;box-shadow:2px 2px 0 rgba(74,54,39,.18)!important;box-sizing:border-box!important}
+#view-brain .brain-controls>select{appearance:auto!important;text-align:center!important;text-align-last:center!important}
+#view-brain .mine-count-control{gap:3px!important;justify-content:center!important;white-space:nowrap!important}
+#view-brain .mine-count-control input{width:34px!important;min-height:22px!important;padding:0!important;font-size:11px!important;text-align:center!important}
+#view-brain .number-pad{gap:4px!important;margin-top:4px!important}
+#view-brain .number-key{min-height:32px!important;padding:3px!important;font-size:14px!important;border-width:2px!important;border-radius:3px!important;box-shadow:1px 1px 0 rgba(74,54,39,.16)!important}
+#view-brain .number-key.erase{font-size:10px!important}
+#view-brain .game-message,#view-brain .sudoku-message{padding:6px 7px!important;margin-top:6px!important;font-size:10.5px!important;line-height:1.35!important;border-radius:4px!important}
+#view-brain .game-status,#view-brain .sudoku-status{gap:4px!important;margin-top:6px!important}
+#view-brain .game-stat,#view-brain .sudoku-stat{min-height:48px!important;padding:5px 3px!important;border-radius:4px!important}
+#view-brain .game-stat .label,#view-brain .sudoku-stat .label{font-size:9px!important}
+#view-brain .game-stat strong,#view-brain .sudoku-stat strong{font-size:13px!important;margin-top:2px!important}
+#view-brain .sokoban-controls{margin-top:3px!important;height:92px!important;overflow:hidden!important}
+#view-brain .sokoban-dpad{grid-template-columns:repeat(3,43px)!important;grid-template-rows:repeat(3,39px)!important;gap:3px!important;transform:none!important}
+#view-brain .sokoban-dpad button{font-size:16px!important;border-width:2px!important;border-radius:4px!important;box-shadow:2px 2px 0 rgba(74,54,39,.18)!important}
+#view-brain .brain-layout{gap:7px!important}
+#view-brain .sudoku-side .panel.card{display:none!important}
+@media(max-width:480px){
+ #view-brain .brain-game>.panel.section:first-child{padding:7px!important}
+ #view-brain .brain-controls{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+ #view-brain .brain-controls>.btn,#view-brain .brain-controls>select,#view-brain .brain-controls>.mine-count-control{font-size:9.8px!important;padding:2px!important}
+ #view-brain .puzzle-main-row{grid-template-columns:minmax(0,1fr) 72px}
+ #view-brain .puzzle-mini-nav>.btn{font-size:10px!important}
 }
 
 </style>
@@ -1364,11 +1392,11 @@ dialog{border-color:#66513f!important;background:#eee0b5!important;box-shadow:0 
       <div class="section-head"><h2>🧩 小松鼠数独</h2><span>专注、工作记忆与逻辑排除</span></div>
       <div class="sudoku-controls brain-controls">
         <select id="sudokuDifficulty" aria-label="数独难度"><option value="easy">简单</option><option value="medium" selected>中等</option><option value="hard">困难</option></select>
-        <button class="btn primary" id="newSudokuBtn">新题目</button>
+        <button class="btn primary" id="newSudokuBtn">新题</button>
         <button class="btn soft" id="checkSudokuBtn">检查</button>
-        <button class="btn soft" id="hintSudokuBtn">提示一格</button>
+        <button class="btn soft" id="hintSudokuBtn">提示</button>
         <button class="btn ghost" id="pauseSudokuBtn">暂停</button>
-        <button class="btn ghost" id="resetSudokuBtn">重置本题</button>
+        <button class="btn ghost" id="resetSudokuBtn">重置</button>
       </div>
       <div class="brain-layout">
         <div class="sudoku-shell">
@@ -1394,25 +1422,29 @@ dialog{border-color:#66513f!important;background:#eee0b5!important;box-shadow:0 
           <button type="button" data-fc-difficulty="medium">🌿 中等</button>
           <button type="button" data-fc-difficulty="hard">🌲 困难</button>
         </div>
-        <div class="fc-puzzle-nav">
-          <button class="btn ghost" id="prevFreecellPuzzleBtn" type="button">← 上一题</button>
-          <label class="fc-puzzle-number">第
-            <input id="freecellPuzzleNo" type="number" inputmode="numeric" min="1" max="999999" step="1" value="1" aria-label="空当接龙题号">
-            题
-          </label>
-          <button class="btn primary" id="newFreecellBtn" type="button">开始此题</button>
-          <button class="btn ghost" id="nextFreecellPuzzleBtn" type="button">下一题 →</button>
-          <button class="btn soft" id="randomFreecellPuzzleBtn" type="button">随机一题</button>
+        <div class="fc-puzzle-nav compact-puzzle-nav">
+          <div class="puzzle-main-row">
+            <label class="fc-puzzle-number">第
+              <input id="freecellPuzzleNo" type="number" inputmode="numeric" min="1" max="999999" step="1" value="1" aria-label="空当接龙题号">
+              题
+            </label>
+            <button class="btn primary" id="newFreecellBtn" type="button">开始</button>
+          </div>
+          <div class="puzzle-mini-nav">
+            <button class="btn ghost" id="prevFreecellPuzzleBtn" type="button">← 上一题</button>
+            <button class="btn ghost" id="nextFreecellPuzzleBtn" type="button">下一题 →</button>
+            <button class="btn soft" id="randomFreecellPuzzleBtn" type="button">随机</button>
+          </div>
         </div>
         <div class="fc-library-note" id="freecellLibraryNote"></div>
         <div class="fc-recent-puzzles" id="freecellRecentPuzzles"></div>
       </div>
       <div class="sudoku-controls brain-controls fc-action-controls">
-        <button class="btn soft" id="undoFreecellBtn">撤销一步</button>
-        <button class="btn soft" id="autoFreecellBtn">自动收牌：开</button>
-        <button class="btn soft" id="collectFreecellNowBtn">立即收牌</button>
+        <button class="btn soft" id="undoFreecellBtn">撤销</button>
+        <button class="btn soft" id="autoFreecellBtn">自动：开</button>
+        <button class="btn soft" id="collectFreecellNowBtn">收牌</button>
         <button class="btn ghost" id="pauseFreecellBtn">暂停</button>
-        <button class="btn ghost" id="resetFreecellBtn">重置本局</button>
+        <button class="btn ghost" id="resetFreecellBtn">重置</button>
       </div>
       <div class="freecell-wrap">
         <div class="freecell-board">
@@ -1435,10 +1467,10 @@ dialog{border-color:#66513f!important;background:#eee0b5!important;box-shadow:0 
         <label class="mine-count-control">地雷数
           <input id="mineCount" type="number" inputmode="numeric" min="1" step="1" value="20" aria-label="自定义地雷数量">
         </label>
-        <button class="btn primary" id="newMineBtn">新雷区</button>
-        <button class="btn soft" id="mineFlagBtn">🚩 插旗模式：关</button>
+        <button class="btn primary" id="newMineBtn">开局</button>
+        <button class="btn soft" id="mineFlagBtn">🚩 插旗：关</button>
         <button class="btn ghost" id="pauseMineBtn">暂停</button>
-        <button class="btn ghost" id="resetMineBtn">重置本局</button>
+        <button class="btn ghost" id="resetMineBtn">重置</button>
       </div>
       <div class="mine-wrap"><div class="mine-grid" id="mineGrid" role="grid" aria-label="扫雷棋盘"></div></div>
       <div class="game-message" id="mineMessage">点“新雷区”开始。第一次点击一定安全。</div>
@@ -1456,23 +1488,27 @@ dialog{border-color:#66513f!important;background:#eee0b5!important;box-shadow:0 
           <button type="button" data-soko-difficulty="medium">🌿 中等</button>
           <button type="button" data-soko-difficulty="hard">🌲 困难</button>
         </div>
-        <div class="fc-puzzle-nav">
-          <button class="btn ghost" id="prevSokobanPuzzleBtn" type="button">← 上一题</button>
-          <label class="fc-puzzle-number">第
-            <input id="sokobanPuzzleNo" type="number" inputmode="numeric" min="1" max="999999" step="1" value="1" aria-label="推箱子题号">
-            题
-          </label>
-          <button class="btn primary" id="newSokobanBtn" type="button">开始此题</button>
-          <button class="btn ghost" id="nextSokobanPuzzleBtn" type="button">下一题 →</button>
-          <button class="btn soft" id="randomSokobanPuzzleBtn" type="button">随机一题</button>
+        <div class="fc-puzzle-nav compact-puzzle-nav">
+          <div class="puzzle-main-row">
+            <label class="fc-puzzle-number">第
+              <input id="sokobanPuzzleNo" type="number" inputmode="numeric" min="1" max="999999" step="1" value="1" aria-label="推箱子题号">
+              题
+            </label>
+            <button class="btn primary" id="newSokobanBtn" type="button">开始</button>
+          </div>
+          <div class="puzzle-mini-nav">
+            <button class="btn ghost" id="prevSokobanPuzzleBtn" type="button">← 上一题</button>
+            <button class="btn ghost" id="nextSokobanPuzzleBtn" type="button">下一题 →</button>
+            <button class="btn soft" id="randomSokobanPuzzleBtn" type="button">随机</button>
+          </div>
         </div>
         <div class="fc-library-note" id="sokobanLibraryNote"></div>
         <div class="fc-recent-puzzles" id="sokobanRecentPuzzles"></div>
       </div>
       <div class="sudoku-controls brain-controls">
-        <button class="btn soft" id="undoSokobanBtn">撤销一步</button>
+        <button class="btn soft" id="undoSokobanBtn">撤销</button>
         <button class="btn ghost" id="pauseSokobanBtn">暂停</button>
-        <button class="btn ghost" id="resetSokobanBtn">重置本题</button>
+        <button class="btn ghost" id="resetSokobanBtn">重置</button>
       </div>
       <div class="sokoban-wrap"><div class="sokoban-board" id="sokobanBoard" role="grid" aria-label="推箱子棋盘"></div></div>
       <div class="sokoban-controls"><div class="sokoban-dpad">
@@ -2057,7 +2093,7 @@ function petWanderTick(){
  if(currentView!=='village'||petDecorMode||petBusy||petGamePanel||selectedPetTool||isPetNight())return;const T=tamagotchiData(),p=T.current,el=document.querySelector('[data-pet-avatar]');if(!T.wanderEnabled||!p?.alive||!el||el.classList.contains('leave')||el.classList.contains('visit')||el.classList.contains('sleeping'))return;const scene=T.scene||'forest',anchor=petPosition(scene),current=petWanderLivePositions[scene]||{...anchor,facing:1},rangeX=scene==='home'?20:30,rangeY=scene==='home'?12:17,stepX=scene==='home'?13:18,stepY=scene==='home'?8:11,minX=Math.max(10,anchor.x-rangeX),maxX=Math.min(90,anchor.x+rangeX),minY=Math.max(35,anchor.y-rangeY),maxY=Math.min(82,anchor.y+rangeY),x=Math.max(minX,Math.min(maxX,current.x+(Math.random()*2-1)*stepX)),y=Math.max(minY,Math.min(maxY,current.y+(Math.random()*2-1)*stepY)),dx=x-current.x,facing=Math.abs(dx)<.3?Number(current.facing||1):(dx>0?-1:1);petWanderLivePositions[scene]={x,y,scale:Number(anchor.scale||1),z:Number(anchor.z||30),facing};el.classList.add('wander-step');el.style.setProperty('--pet-x',`${x}%`);el.style.setProperty('--pet-y',`${y}%`);el.style.setProperty('--pet-facing',facing);setTimeout(()=>el?.classList.remove('wander-step'),3000)
 }
 function startPetWandering(){clearInterval(petWanderTimer);petWanderTimer=setInterval(petWanderTick,6200);setTimeout(petWanderTick,1800)}
-async function renderBackup(){const snaps=(await idbAll('snapshots')).sort((a,b)=>String(b.at).localeCompare(String(a.at)));let persisted=false;try{persisted=await navigator.storage?.persisted?.()}catch{};const external=state.settings.lastExternalBackupAt?new Date(state.settings.lastExternalBackupAt).toLocaleString('zh-CN'):'从未';$('#backupCards').innerHTML=[['主数据库','IndexedDB','浏览器内主要数据仓'],['本地镜像','已同步','localStorage 副本'],['版本快照',`${snaps.length}份`,'保留最近50次修改'],['外部备份',external,persisted?'浏览器存储已获持久权限':'仍建议保留下载的JSON']].map((x,i)=>`<div class="backup-card"><div class="label">${x[0]}</div><strong class="${i===3&&!state.settings.lastExternalBackupAt?'warn':'safe'}">${x[1]}</strong><p>${x[2]}</p></div>`).join('');$('#dailyBackupSwitch').classList.toggle('on',!!state.settings.autoDailyDownload);$('#everyChangeSwitch').classList.toggle('on',!!state.settings.everyChangeDownload);$('#snapshotList').innerHTML=snaps.slice(0,12).map(s=>`<div class="snapshot"><div><strong>${new Date(s.at).toLocaleString('zh-CN')}</strong><br><small>${esc(s.reason)}</small></div><button class="btn ghost" data-restore-snapshot="${s.id}">恢复</button></div>`).join('')||'<div class="empty">还没有版本快照。</div>';$('#diagnostics').innerHTML=`应用版本：1.9.30（脑力房紧凑布局）<br>数据结构版本：${state.schemaVersion}<br>阅读器：${readerData().bookMeta?esc(readerData().bookMeta.title||readerData().bookMeta.name):'当前无缓存'} · 小松鼠书架 ${readerLibrary().length} 本<br>账目：${state.ledger.records.length}笔<br>家务：${state.chores.items.length}项<br>日历记录：${Object.keys(state.modules.calendar.entries||{}).length}天<br>梦境记录：${Object.values(dreamsData().entries||{}).filter(dreamMeaningful).length}篇<br>餐厅与外卖：${restaurantData().items.length}次<br>树屋居民：${tamagotchiData().current?.name||'尚未领养'}<br>愿望：${state.modules.wishlist.items.length}件<br>数独完成：${state.modules.brain.sudoku.stats.completed||0}题<br>空当接龙胜利：${state.modules.brain.freecell.stats.won||0}局<br>扫雷胜利：${state.modules.brain.minesweeper.stats.won||0}局<br>推箱子通关：${state.modules.brain.sokoban.stats.won||0}关<br>当前来源：${location.protocol}<br>最近更新：${new Date(state.updatedAt).toLocaleString('zh-CN')}`;$('#backupBadge').textContent=state.settings.lastExternalBackupAt?`外部备份：${new Date(state.settings.lastExternalBackupAt).toLocaleDateString('zh-CN')}`:'外部备份尚未建立'}
+async function renderBackup(){const snaps=(await idbAll('snapshots')).sort((a,b)=>String(b.at).localeCompare(String(a.at)));let persisted=false;try{persisted=await navigator.storage?.persisted?.()}catch{};const external=state.settings.lastExternalBackupAt?new Date(state.settings.lastExternalBackupAt).toLocaleString('zh-CN'):'从未';$('#backupCards').innerHTML=[['主数据库','IndexedDB','浏览器内主要数据仓'],['本地镜像','已同步','localStorage 副本'],['版本快照',`${snaps.length}份`,'保留最近50次修改'],['外部备份',external,persisted?'浏览器存储已获持久权限':'仍建议保留下载的JSON']].map((x,i)=>`<div class="backup-card"><div class="label">${x[0]}</div><strong class="${i===3&&!state.settings.lastExternalBackupAt?'warn':'safe'}">${x[1]}</strong><p>${x[2]}</p></div>`).join('');$('#dailyBackupSwitch').classList.toggle('on',!!state.settings.autoDailyDownload);$('#everyChangeSwitch').classList.toggle('on',!!state.settings.everyChangeDownload);$('#snapshotList').innerHTML=snaps.slice(0,12).map(s=>`<div class="snapshot"><div><strong>${new Date(s.at).toLocaleString('zh-CN')}</strong><br><small>${esc(s.reason)}</small></div><button class="btn ghost" data-restore-snapshot="${s.id}">恢复</button></div>`).join('')||'<div class="empty">还没有版本快照。</div>';$('#diagnostics').innerHTML=`应用版本：1.9.30（紧凑游戏控制栏）<br>数据结构版本：${state.schemaVersion}<br>阅读器：${readerData().bookMeta?esc(readerData().bookMeta.title||readerData().bookMeta.name):'当前无缓存'} · 小松鼠书架 ${readerLibrary().length} 本<br>账目：${state.ledger.records.length}笔<br>家务：${state.chores.items.length}项<br>日历记录：${Object.keys(state.modules.calendar.entries||{}).length}天<br>梦境记录：${Object.values(dreamsData().entries||{}).filter(dreamMeaningful).length}篇<br>餐厅与外卖：${restaurantData().items.length}次<br>树屋居民：${tamagotchiData().current?.name||'尚未领养'}<br>愿望：${state.modules.wishlist.items.length}件<br>数独完成：${state.modules.brain.sudoku.stats.completed||0}题<br>空当接龙胜利：${state.modules.brain.freecell.stats.won||0}局<br>扫雷胜利：${state.modules.brain.minesweeper.stats.won||0}局<br>推箱子通关：${state.modules.brain.sokoban.stats.won||0}关<br>当前来源：${location.protocol}<br>最近更新：${new Date(state.updatedAt).toLocaleString('zh-CN')}`;$('#backupBadge').textContent=state.settings.lastExternalBackupAt?`外部备份：${new Date(state.settings.lastExternalBackupAt).toLocaleDateString('zh-CN')}`:'外部备份尚未建立'}
 
 const SUDOKU_LEVELS={easy:{label:'简单',clues:42},medium:{label:'中等',clues:34},hard:{label:'困难',clues:28}};
 let sudokuSelected=-1,sudokuChecked=false,sudokuTimer=null;
@@ -2269,7 +2305,7 @@ async function moveFreecellTo(dest){const cur=freecellData().current;if(!cur||cu
 async function undoFreecell(){const cur=freecellData().current;if(cur?.paused)return toast('请先继续牌局');if(!cur||!cur.undo?.length)return toast('没有可以撤销的步骤');captureFreecellTime(cur);const s=cur.undo.pop();fcRestoreSnapshot(cur,s);freecellSelected=null;await persist('撤销空当接龙',false,false)}
 async function autoFreecell(){const F=freecellData(),cur=F.current;if(cur?.paused)return toast('请先继续牌局');F.autoCollect=F.autoCollect===false;await persist(F.autoCollect?'开启自动收牌':'关闭自动收牌',false,false);toast(`自动收牌已${F.autoCollect?'开启':'关闭'}`);if(F.autoCollect)await runFreecellAutoCollect({manual:false,pushUndo:true,reason:'开启自动收牌'})}
 async function resetFreecell(){const cur=freecellData().current;if(!cur)return;if(!confirm('把当前牌局恢复到刚发牌时吗？'))return;fcRestoreSnapshot(cur,cur.initial);cur.undo=[];cur.elapsedSeconds=0;cur.runningSince=nowISO();cur.paused=false;freecellSelected=null;await persist('重置空当接龙',false,false);scheduleFreecellAutoCollect(220)}
-function renderFreecell(){const F=freecellData(),cur=F.current,stats=F.stats||{},difficulty=fcDifficulty(F.libraryDifficulty),puzzleNo=fcPuzzleNumber(F.libraryPuzzleNo);document.querySelector('.freecell-wrap')?.classList.toggle('game-paused',!!cur?.paused);$('#pauseFreecellBtn').textContent=cur?.paused?'继续':'暂停';$('#pauseFreecellBtn').disabled=!cur||cur.status!=='playing';$('#autoFreecellBtn').textContent=`自动收牌：${F.autoCollect===false?'关':'开'}`;$('#autoFreecellBtn').classList.toggle('flag-active',F.autoCollect!==false);$('#collectFreecellNowBtn').disabled=!cur||cur.status!=='playing'||!!cur.paused;$$('[data-fc-difficulty]').forEach(btn=>btn.classList.toggle('active',btn.dataset.fcDifficulty===difficulty));const numberInput=$('#freecellPuzzleNo');if(numberInput&&document.activeElement!==numberInput)numberInput.value=puzzleNo;const info=FC_DIFFICULTIES[difficulty];$('#freecellLibraryNote').innerHTML=`${info.icon} <strong>${info.label}题库</strong>｜${esc(info.description)}<br>输入 1—999999 任意题号；同一难度和题号永远生成同一副牌。`;
+function renderFreecell(){const F=freecellData(),cur=F.current,stats=F.stats||{},difficulty=fcDifficulty(F.libraryDifficulty),puzzleNo=fcPuzzleNumber(F.libraryPuzzleNo);document.querySelector('.freecell-wrap')?.classList.toggle('game-paused',!!cur?.paused);$('#pauseFreecellBtn').textContent=cur?.paused?'继续':'暂停';$('#pauseFreecellBtn').disabled=!cur||cur.status!=='playing';$('#autoFreecellBtn').textContent=`自动收牌：${F.autoCollect===false?'关':'开'}`;$('#autoFreecellBtn').classList.toggle('flag-active',F.autoCollect!==false);$('#collectFreecellNowBtn').disabled=!cur||cur.status!=='playing'||!!cur.paused;$$('[data-fc-difficulty]').forEach(btn=>btn.classList.toggle('active',btn.dataset.fcDifficulty===difficulty));const numberInput=$('#freecellPuzzleNo');if(numberInput&&document.activeElement!==numberInput)numberInput.value=puzzleNo;const info=FC_DIFFICULTIES[difficulty];$('#freecellLibraryNote').innerHTML='';
  const completed=F.completedPuzzles||{},recent=Array.isArray(F.recentPuzzles)?F.recentPuzzles:[];$('#freecellRecentPuzzles').innerHTML=recent.length?`<span class="fc-recent-label">最近：</span>${recent.map(x=>{const done=(completed[x.difficulty]||[]).includes(Number(x.puzzleNo));return `<button class="fc-recent-puzzle" data-fc-recent-difficulty="${x.difficulty}" data-fc-recent-number="${x.puzzleNo}">${done?'✓ ':''}${fcDifficultyLabel(x.difficulty)} ${x.puzzleNo}</button>`}).join('')}`:'';
  $('#freecellStatus').innerHTML=[['当前题目',cur?fcCurrentPuzzleLabel(cur):`${info.label} · 第${puzzleNo}题`],['已胜利',stats.won||0],['最佳步数',stats.bestMoves??'—'],['当前用时',cur?formatTime(fcElapsed(cur)):'00:00']].map(x=>`<div class="game-stat"><div class="label">${x[0]}</div><strong>${x[1]}</strong></div>`).join('');
  const top=[];for(let i=0;i<4;i++){const c=cur?.freecells?.[i];top.push(`<button class="fc-slot ${freecellSelected?.zone==='free'&&freecellSelected.index===i?'selected':''}" data-fc-free="${i}">${c?`<span class="fc-free-card ${fcColor(c)}"><span class="fc-free-rank">${fcRank(c.rank)}</span><span class="fc-free-suit">${fcSuit(c.suit).symbol}</span></span>`:'空'}</button>`)}for(const s of FC_SUITS){const rank=cur?.foundations?.[s.key]||0;top.push(`<button class="fc-slot foundation ${rank?'has-card':''}" data-fc-foundation="${s.key}">${rank?`<span class="fc-foundation-card ${s.red?'red':'black'}"><span class="fc-foundation-rank">${fcRank(rank)}</span><span class="fc-foundation-suit">${s.symbol}</span></span>`:`<span class="fc-foundation-empty ${s.red?'red':'black'}"><span class="suit">${s.symbol}</span><small>A → K</small></span>`}</button>`)}$('#freecellTop').innerHTML=top.join('');
