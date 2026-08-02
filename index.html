@@ -740,7 +740,7 @@ dialog{border:0;border-radius:21px;padding:0;width:min(680px,calc(100% - 20px));
 @media(max-width:620px){.savings-summary{grid-template-columns:1fr}.savings-card strong{font-size:21px}}
 
 
-/* v1.9.25：像素田园冒险界面（居民 Emoji 保持原样） */
+/* v1.9.26：像素田园冒险界面（居民 Emoji 保持原样） */
 body.pixel-rpg{
   --bg:#9bc76f;--paper:#f4e8bd;--paper2:#fff4cf;--ink:#253f2c;--muted:#6e6a4a;
   --line:#6f8c5e;--sage:#4e7e49;--sage2:#315c38;--soft:#d7e3b2;--gold:#d8a843;
@@ -826,6 +826,54 @@ body.pixel-rpg:after{content:"";position:fixed;left:0;right:0;bottom:0;height:44
  .pixel-rpg .module-card,.pixel-rpg .quick-row,.pixel-rpg .budget,.pixel-rpg .backup-card,.pixel-rpg .snapshot,.pixel-rpg .game-stat,.pixel-rpg .sudoku-stat{border-width:2px;box-shadow:inset 0 0 0 1px #d8c993,2px 2px 0 #436344}
 }
 
+
+
+/* v1.9.26：像素记梦笔记本 */
+.pixel-rpg .bottom-nav{grid-template-columns:repeat(10,1fr);width:min(850px,calc(100% - 12px))}
+.dream-page{overflow:hidden;position:relative}
+.dream-page:before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.22;background:repeating-linear-gradient(0deg,transparent 0 31px,#b59f67 32px 33px)}
+.dream-page>*{position:relative;z-index:1}
+.dream-date-bar{display:flex;align-items:center;justify-content:center;gap:9px;flex-wrap:wrap;margin:14px 0 18px;padding:12px;background:#7b9f60;border:4px solid #315b39;box-shadow:inset 0 0 0 3px #b5cb87,3px 4px 0 #29482f}
+.dream-date-bar input[type="date"]{min-width:175px;text-align:center;font-weight:900;font-size:16px}
+.dream-book{width:min(720px,96%);min-height:390px;margin:10px auto 18px;display:flex!important;flex-direction:column;align-items:center;justify-content:center;gap:14px;position:relative;padding:44px 48px 42px 78px!important;background:
+  linear-gradient(90deg,#6a3426 0 19px,#9e5133 19px 31px,#c97643 31px 39px,transparent 39px),
+  linear-gradient(135deg,#a94f35,#7d382e 58%,#62302a)!important;
+  border:6px solid #4d2a25!important;border-radius:8px!important;box-shadow:inset 0 0 0 4px #d18a50,inset 0 0 0 10px #7a382d,8px 10px 0 #29482f!important;color:#fff0b7!important;text-align:center;overflow:hidden;cursor:pointer}
+.dream-book:before{content:"";position:absolute;inset:18px 22px 18px 54px;border:4px solid #e0ad61;box-shadow:inset 0 0 0 4px #7a392e;pointer-events:none}
+.dream-book:after{content:"";position:absolute;left:18px;top:0;bottom:0;width:22px;background:repeating-linear-gradient(0deg,#e4a85d 0 12px,#6e322a 12px 20px);border-left:3px solid #4e2823;border-right:3px solid #4e2823;pointer-events:none}
+.dream-book:hover{transform:translate(-2px,-2px)!important;box-shadow:inset 0 0 0 4px #e0a35b,inset 0 0 0 10px #7a382d,10px 12px 0 #29482f!important}
+.dream-book:active{transform:translate(3px,3px)!important;box-shadow:inset 0 0 0 4px #d18a50,inset 0 0 0 10px #7a382d,4px 5px 0 #29482f!important}
+.dream-book-moon{width:84px;height:84px;position:relative;border-radius:50%;background:#f4d76d;box-shadow:inset -18px -7px 0 #c98942,0 0 0 5px #71362d,5px 6px 0 #502923}
+.dream-book-moon:after{content:"";position:absolute;width:62px;height:62px;left:26px;top:-8px;border-radius:50%;background:#8b402f}
+.dream-book-stars{font-size:26px;letter-spacing:12px;color:#f5d76e;text-shadow:3px 3px 0 #542b26;line-height:1}
+.dream-book-date{font-weight:900;color:#f3d88c;text-shadow:2px 2px 0 #4e2823}
+.dream-book-title{font-size:clamp(25px,5vw,38px);max-width:82%;color:#fff0bc;text-shadow:3px 3px 0 #4e2823;line-height:1.2}
+.dream-book-preview{max-width:78%;max-height:74px;overflow:hidden;line-height:1.65;color:#f5deb0;font-weight:700;text-shadow:1px 2px 0 #4e2823}
+.dream-book-hint{position:absolute;bottom:17px;right:30px;font-size:12px;color:#e8c47d;text-shadow:1px 1px 0 #4b2823}
+.dream-editor{width:min(820px,100%);margin:18px auto;padding:18px;background:#fff1c5;border:4px solid #6d865b;box-shadow:inset 0 0 0 3px #d8c993,4px 5px 0 #436344}
+.dream-editor-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.dream-editor label{display:grid;gap:7px;font-weight:900;color:#31513a}
+.dream-editor label.full{grid-column:1/-1}
+.dream-editor textarea{min-height:230px;resize:vertical;line-height:1.75}
+.dream-editor #dreamFeeling{min-height:95px}
+.dream-editor-actions{display:flex;justify-content:flex-end;gap:9px;flex-wrap:wrap;margin-top:14px}
+.dream-recent-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.dream-recent-item{display:block;width:100%;text-align:left;padding:13px 14px!important;background:#fff1c5!important;border:3px solid #6d865b!important;box-shadow:inset 0 0 0 2px #d8c993,3px 4px 0 #436344!important}
+.dream-recent-item strong{display:block;color:#294b31;font-size:16px;margin-bottom:5px}
+.dream-recent-item small{display:block;color:#766b48!important;margin-bottom:7px}
+.dream-recent-item span{display:block;color:#625e46;line-height:1.55;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dream-empty-book{padding:22px;text-align:center;color:#6a664b}
+@media(max-width:680px){
+ .pixel-rpg .bottom-nav{grid-template-columns:repeat(5,1fr);width:calc(100% - 10px)}
+ .pixel-rpg .app{padding-bottom:154px}
+ .pixel-rpg .nav-btn{font-size:9px;padding:6px 1px}.pixel-rpg .nav-btn span{font-size:15px;margin-bottom:1px}
+ .dream-book{min-height:320px;padding:38px 24px 36px 58px!important}
+ .dream-book:before{left:42px;right:14px}.dream-book:after{left:12px;width:18px}
+ .dream-book-title{font-size:27px;max-width:90%}.dream-book-preview{max-width:90%}
+ .dream-editor-grid,.dream-recent-list{grid-template-columns:1fr}
+ .dream-date-bar{gap:6px}.dream-date-bar .btn{flex:1;min-width:90px}.dream-date-bar input[type="date"]{order:-1;width:100%}
+}
+
 </style>
 </head>
 <body class="pixel-rpg">
@@ -842,6 +890,7 @@ body.pixel-rpg:after{content:"";position:fixed;left:0;right:0;bottom:0;height:44
   </div>
   <section class="panel section"><div class="section-head"><h2>生活模块</h2><span>以后继续往这里长</span></div><div class="module-cards">
     <article class="module-card"><h3>🗓️ 日历计划本</h3><p id="homeCalendarSummary">记录今天做了什么，也把之后的计划安稳放进日历。</p><button class="btn soft" style="margin-top:10px" data-open-view="calendar">打开日历本</button></article>
+    <article class="module-card"><h3>🌙 记梦笔记本</h3><p id="homeDreamSummary">点开大笔记本，把醒来后还记得的梦安静收好。</p><button class="btn soft" style="margin-top:10px" data-open-view="dream">打开记梦本</button></article>
     <article class="module-card"><h3>🍽️ 餐厅与外卖</h3><p id="homeRestaurantSummary">把堂食、外卖和推荐菜都收进自己的味觉地图。</p><button class="btn soft" style="margin-top:10px" data-open-view="restaurants">打开探店记录</button></article><article class="module-card"><h3>🐣 树屋居民</h3><p id="homePetSummary">领养一位会吃饭、睡觉、交朋友和慢慢长大的小居民。</p><button class="btn soft" style="margin-top:10px" data-open-view="village">去树屋看看</button></article><article class="module-card"><h3>🌿 植物照护</h3><p>记录浇水、补光、黑斑、新叶和照片。下一阶段加入。</p></article>
     <article class="module-card"><h3>🧠 脑力训练</h3><p>数独、空当接龙、扫雷和推箱子已上线，进度与成绩会一起进入完整备份。</p><button class="btn soft" style="margin-top:10px" data-open-view="brain">进入脑力房</button></article><article class="module-card"><h3>🎁 愿望冷静箱</h3><p id="homeWishSummary">先把想买的东西放进来，等冷静期结束再决定。</p><button class="btn soft" style="margin-top:10px" data-open-view="wishlist">打开愿望箱</button></article>
   </div></section>
@@ -927,6 +976,44 @@ body.pixel-rpg:after{content:"";position:fixed;left:0;right:0;bottom:0;height:44
 <section class="view" id="view-chores">
   <section class="panel section"><div class="section-head"><h2>家务记录</h2><span>完成哪一项，就只更新哪一项</span></div><div class="toolbar"><input id="choreSearch" placeholder="搜索马桶、枕套、冰箱……"><select id="choreFilter"><option value="">全部状态</option><option value="due">优先打扫</option><option value="soon">快到期</option><option value="ok">暂时不用</option></select></div><div class="chores" id="choreList"></div></section>
 </section>
+
+<section class="view" id="view-dream">
+  <section class="panel section dream-page">
+    <div class="section-head"><div><h2>🌙 记梦笔记本</h2><span>醒来以后，趁梦还没有散掉</span></div><span id="dreamSavedCount">0篇梦境</span></div>
+    <div class="dream-date-bar">
+      <button class="btn ghost" id="dreamPrevBtn">‹ 前一天</button>
+      <input id="dreamDate" type="date" aria-label="选择梦境日期">
+      <button class="btn ghost" id="dreamNextBtn">后一天 ›</button>
+      <button class="btn soft" id="dreamTodayBtn">回到今天</button>
+    </div>
+    <button class="dream-book" id="dreamBookBtn" type="button" aria-expanded="false" aria-controls="dreamEditor">
+      <span class="dream-book-stars" aria-hidden="true">✦ · ✦</span>
+      <span class="dream-book-moon" aria-hidden="true"></span>
+      <span class="dream-book-date" id="dreamBookDate">今天的梦</span>
+      <strong class="dream-book-title" id="dreamBookTitle">点开笔记本记录梦境</strong>
+      <span class="dream-book-preview" id="dreamBookPreview">哪怕只记得一个画面、一句话，也可以写下来。</span>
+      <span class="dream-book-hint">点击翻开笔记本</span>
+    </button>
+    <div class="dream-editor hidden" id="dreamEditor">
+      <div class="dream-editor-grid">
+        <label>梦的标题<input id="dreamTitle" maxlength="80" placeholder="例如：下雪的森林、会说话的小猫"></label>
+        <label>醒来时的心情<input id="dreamMood" maxlength="80" placeholder="例如：安心、奇怪、舍不得醒来"></label>
+        <label class="full">梦里发生了什么<textarea id="dreamContent" maxlength="12000" placeholder="把记得的画面、人物、声音和故事写下来……"></textarea></label>
+        <label class="full">醒来后的碎碎念<textarea id="dreamFeeling" maxlength="2000" placeholder="这个梦让你想到什么？也可以留空。"></textarea></label>
+      </div>
+      <div class="dream-editor-actions">
+        <button class="btn ghost" id="dreamCloseBtn" type="button">合上笔记本</button>
+        <button class="btn danger hidden" id="dreamDeleteBtn" type="button">删除这篇梦</button>
+        <button class="btn primary" id="dreamSaveBtn" type="button">保存梦境</button>
+      </div>
+    </div>
+  </section>
+  <section class="panel section">
+    <div class="section-head"><h2>近期的梦</h2><span>点击记录即可翻回那一天</span></div>
+    <div class="dream-recent-list" id="dreamRecentList"></div>
+  </section>
+</section>
+
 
 
 <section class="view" id="view-wishlist">
@@ -1104,7 +1191,7 @@ body.pixel-rpg:after{content:"";position:fixed;left:0;right:0;bottom:0;height:44
 </section>
 </main>
 
-<nav class="bottom-nav"><button class="nav-btn active" data-view="home"><span>🏠</span>首页</button><button class="nav-btn" data-view="calendar"><span>🗓️</span>日历</button><button class="nav-btn" data-view="ledger"><span>💰</span>记账</button><button class="nav-btn" data-view="chores"><span>🧹</span>家务</button><button class="nav-btn" data-view="restaurants"><span>🍽️</span>探店</button><button class="nav-btn" data-view="wishlist"><span>🎁</span>愿望</button><button class="nav-btn" data-view="brain"><span>🧩</span>脑力</button><button class="nav-btn" data-view="village"><span>🐣</span>居民</button><button class="nav-btn" data-view="backup"><span>🛡️</span>备份</button></nav>
+<nav class="bottom-nav"><button class="nav-btn active" data-view="home"><span>🏠</span>首页</button><button class="nav-btn" data-view="calendar"><span>🗓️</span>日历</button><button class="nav-btn" data-view="ledger"><span>💰</span>记账</button><button class="nav-btn" data-view="chores"><span>🧹</span>家务</button><button class="nav-btn" data-view="dream"><span>🌙</span>记梦</button><button class="nav-btn" data-view="restaurants"><span>🍽️</span>探店</button><button class="nav-btn" data-view="wishlist"><span>🎁</span>愿望</button><button class="nav-btn" data-view="brain"><span>🧩</span>脑力</button><button class="nav-btn" data-view="village"><span>🐣</span>居民</button><button class="nav-btn" data-view="backup"><span>🛡️</span>备份</button></nav>
 
 
 <dialog id="restaurantDialog"><form method="dialog" class="dialog-inner" id="restaurantForm">
@@ -1165,7 +1252,7 @@ body.pixel-rpg:after{content:"";position:fixed;left:0;right:0;bottom:0;height:44
 <dialog id="budgetDialog"><div class="dialog-inner"><h3>调整月预算与存款</h3><div id="budgetEditor" class="grid"></div><div class="dialog-actions"><button class="btn ghost" data-close="budgetDialog">取消</button><button class="btn primary" id="saveBudgetBtn">保存预算</button></div></div></dialog>
 <div class="toast" id="toast"></div>
 <script>
-const SEED={"app":"squirrel-life-housekeeper","schemaVersion":31,"createdAt":"2026-07-26T10:46:08.637104+00:00","updatedAt":"2026-07-26T10:46:08.637104+00:00","ledger":{"budgets":{"基础生活":0,"小额幸福":0,"临时愿望":0,"医疗应急":0,"月底缓冲":0},"categories":["餐饮外卖","买菜食材","零食饮品","交通","话费","水电","日用品","游戏","书籍","家居","植物","娃娃","美容护理","衣物","医疗","退款/补贴","其他"],"accounts":["生活卡","储蓄卡","现金","其他"],"natures":["必需","幸福微需","幸福"],"records":[],"currentSavings":0.0,"monthlySavings":{}},"chores":{"items":[{"id":"chore-toilet","name":"马桶","icon":"🚽","interval":3,"lastDone":"","note":"刷洗内壁、外侧和底座","history":[]},{"id":"chore-shower","name":"淋浴间","icon":"🚿","interval":7,"lastDone":"","note":"地漏、墙面和玻璃","history":[]},{"id":"chore-floor","name":"地面","icon":"🧹","interval":4,"lastDone":"","note":"扫地或拖地","history":[]},{"id":"chore-pillowcase","name":"枕套","icon":"🛏️","interval":7,"lastDone":"","note":"单独换洗","history":[]},{"id":"chore-sheet","name":"床单","icon":"🛏️","interval":14,"lastDone":"","note":"单独换洗","history":[]},{"id":"chore-duvet","name":"被套","icon":"🛏️","interval":21,"lastDone":"","note":"单独换洗","history":[]},{"id":"chore-fridge","name":"冰箱冷藏间","icon":"🧊","interval":30,"lastDone":"","note":"内壁、隔板、抽屉和过期食品","history":[]}]},"modules":{"plants":{"enabled":false,"items":[]},"pantry":{"enabled":false,"items":[]},"habits":{"enabled":false,"items":[]},"brain":{"enabled":true,"sudoku":{"stats":{"played":0,"completed":0,"bestSeconds":null},"current":null,"history":[]},"activeGame":"sudoku","freecell":{"stats":{"played":0,"won":0,"bestMoves":null,"bestSeconds":null},"current":null,"history":[],"autoCollect":true,"libraryDifficulty":"easy","libraryPuzzleNo":1,"recentPuzzles":[],"completedPuzzles":{"easy":[],"medium":[],"hard":[]}},"minesweeper":{"stats":{"played":0,"won":0,"lost":0,"bestSeconds":{"easy":null,"medium":null,"hard":null}},"current":null,"history":[]},"sokoban":{"stats":{"played":0,"won":0,"bestMoves":null,"bestPushes":null},"current":null,"history":[],"libraryDifficulty":"easy","libraryPuzzleNo":1,"recentPuzzles":[],"completedPuzzles":{"easy":[],"medium":[],"hard":[]},"difficultyRevision":3}},"wishlist":{"enabled":true,"defaultCooldownDays":7,"items":[]},"calendar":{"enabled":true,"visibleMonth":"","selectedDate":"","entries":{}},"tamagotchi":{"enabled":true,"current":null,"residents":[{"id":"resident-milu","name":"米露","emoji":"🐰","personality":"温柔的面包师，喜欢分享胡萝卜面包。","friendship":18,"lastTalkDate":""},{"id":"resident-lili","name":"栗栗","emoji":"🐿️","personality":"活泼的收集家，总能找到亮晶晶的小东西。","friendship":22,"lastTalkDate":""},{"id":"resident-achi","name":"阿赤","emoji":"🦊","personality":"有点傲娇的邮差，熟悉村里的每条小路。","friendship":12,"lastTalkDate":""},{"id":"resident-mimi","name":"蜜蜜","emoji":"🐻","personality":"慢吞吞的蜂蜜店老板，最擅长安慰别人。","friendship":15,"lastTalkDate":""},{"id":"resident-doudou","name":"豆豆","emoji":"🐹","personality":"热心的小修理匠，什么坏掉了都想试着修。","friendship":10,"lastTalkDate":""},{"id":"resident-fio","name":"菲奥","emoji":"🦉","personality":"安静寡言的夜巡者，总会在树屋熄灯前确认大家平安回家。","friendship":16,"lastTalkDate":""},{"id":"resident-xiaoha","name":"小哈","emoji":"🐶","personality":"热情又可靠的小狗居民，喜欢在村口迎接大家，也会陪朋友散步和找东西。","friendship":14,"lastTalkDate":""}],"event":null,"lastEventDate":"","lastEventSummary":"","scene":"forest","history":[],"memorials":[],"decorCoins":100,"decorWalletInitialized":true,"decorPresetVersion":2,"decorUnlocked":["flower-yellow","mushroom-red"],"decorPlacements":{"forest":[],"home":[],"meadow":[],"village":[]},"decorInitializedScenes":{},"decorBaseSeeded":false,"foodInventory":{"carrot":2,"apple":1,"bread":1},"foodStarterGranted":true,"toyUnlocked":["ball"],"activityRewards":{"ledger":[],"calendar":[]},"wanderEnabled":true}},"settings":{"autoDailyDownload":true,"lastExternalBackupAt":"","lastExternalBackupDay":"","theme":"sage","currency":"CNY"}};
+const SEED={"app":"squirrel-life-housekeeper","schemaVersion":32,"createdAt":"2026-07-26T10:46:08.637104+00:00","updatedAt":"2026-07-26T10:46:08.637104+00:00","ledger":{"budgets":{"基础生活":0,"小额幸福":0,"临时愿望":0,"医疗应急":0,"月底缓冲":0},"categories":["餐饮外卖","买菜食材","零食饮品","交通","话费","水电","日用品","游戏","书籍","家居","植物","娃娃","美容护理","衣物","医疗","退款/补贴","其他"],"accounts":["生活卡","储蓄卡","现金","其他"],"natures":["必需","幸福微需","幸福"],"records":[],"currentSavings":0.0,"monthlySavings":{}},"chores":{"items":[{"id":"chore-toilet","name":"马桶","icon":"🚽","interval":3,"lastDone":"","note":"刷洗内壁、外侧和底座","history":[]},{"id":"chore-shower","name":"淋浴间","icon":"🚿","interval":7,"lastDone":"","note":"地漏、墙面和玻璃","history":[]},{"id":"chore-floor","name":"地面","icon":"🧹","interval":4,"lastDone":"","note":"扫地或拖地","history":[]},{"id":"chore-pillowcase","name":"枕套","icon":"🛏️","interval":7,"lastDone":"","note":"单独换洗","history":[]},{"id":"chore-sheet","name":"床单","icon":"🛏️","interval":14,"lastDone":"","note":"单独换洗","history":[]},{"id":"chore-duvet","name":"被套","icon":"🛏️","interval":21,"lastDone":"","note":"单独换洗","history":[]},{"id":"chore-fridge","name":"冰箱冷藏间","icon":"🧊","interval":30,"lastDone":"","note":"内壁、隔板、抽屉和过期食品","history":[]}]},"modules":{"plants":{"enabled":false,"items":[]},"pantry":{"enabled":false,"items":[]},"habits":{"enabled":false,"items":[]},"brain":{"enabled":true,"sudoku":{"stats":{"played":0,"completed":0,"bestSeconds":null},"current":null,"history":[]},"activeGame":"sudoku","freecell":{"stats":{"played":0,"won":0,"bestMoves":null,"bestSeconds":null},"current":null,"history":[],"autoCollect":true,"libraryDifficulty":"easy","libraryPuzzleNo":1,"recentPuzzles":[],"completedPuzzles":{"easy":[],"medium":[],"hard":[]}},"minesweeper":{"stats":{"played":0,"won":0,"lost":0,"bestSeconds":{"easy":null,"medium":null,"hard":null}},"current":null,"history":[]},"sokoban":{"stats":{"played":0,"won":0,"bestMoves":null,"bestPushes":null},"current":null,"history":[],"libraryDifficulty":"easy","libraryPuzzleNo":1,"recentPuzzles":[],"completedPuzzles":{"easy":[],"medium":[],"hard":[]},"difficultyRevision":3}},"wishlist":{"enabled":true,"defaultCooldownDays":7,"items":[]},"calendar":{"enabled":true,"visibleMonth":"","selectedDate":"","entries":{}},"tamagotchi":{"enabled":true,"current":null,"residents":[{"id":"resident-milu","name":"米露","emoji":"🐰","personality":"温柔的面包师，喜欢分享胡萝卜面包。","friendship":18,"lastTalkDate":""},{"id":"resident-lili","name":"栗栗","emoji":"🐿️","personality":"活泼的收集家，总能找到亮晶晶的小东西。","friendship":22,"lastTalkDate":""},{"id":"resident-achi","name":"阿赤","emoji":"🦊","personality":"有点傲娇的邮差，熟悉村里的每条小路。","friendship":12,"lastTalkDate":""},{"id":"resident-mimi","name":"蜜蜜","emoji":"🐻","personality":"慢吞吞的蜂蜜店老板，最擅长安慰别人。","friendship":15,"lastTalkDate":""},{"id":"resident-doudou","name":"豆豆","emoji":"🐹","personality":"热心的小修理匠，什么坏掉了都想试着修。","friendship":10,"lastTalkDate":""},{"id":"resident-fio","name":"菲奥","emoji":"🦉","personality":"安静寡言的夜巡者，总会在树屋熄灯前确认大家平安回家。","friendship":16,"lastTalkDate":""},{"id":"resident-xiaoha","name":"小哈","emoji":"🐶","personality":"热情又可靠的小狗居民，喜欢在村口迎接大家，也会陪朋友散步和找东西。","friendship":14,"lastTalkDate":""}],"event":null,"lastEventDate":"","lastEventSummary":"","scene":"forest","history":[],"memorials":[],"decorCoins":100,"decorWalletInitialized":true,"decorPresetVersion":2,"decorUnlocked":["flower-yellow","mushroom-red"],"decorPlacements":{"forest":[],"home":[],"meadow":[],"village":[]},"decorInitializedScenes":{},"decorBaseSeeded":false,"foodInventory":{"carrot":2,"apple":1,"bread":1},"foodStarterGranted":true,"toyUnlocked":["ball"],"activityRewards":{"ledger":[],"calendar":[]},"wanderEnabled":true}},"settings":{"autoDailyDownload":true,"lastExternalBackupAt":"","lastExternalBackupDay":"","theme":"sage","currency":"CNY"}};
 const APP_ID='squirrel-life-housekeeper';
 const DB_NAME='SquirrelLifeHousekeeperDB';
 const DB_VERSION=1;
@@ -1198,7 +1285,7 @@ function migrate(input){
    return fresh;
  }
  if(!s||s.app!==APP_ID)return clone(SEED);
- s.schemaVersion=31;
+ s.schemaVersion=32;
  s.ledger=s.ledger||clone(SEED.ledger);
  s.ledger.budgets={...clone(SEED.ledger.budgets),...(s.ledger.budgets||{})};
  s.ledger.currentSavings=Math.max(0,Number(s.ledger.currentSavings)||0);
@@ -1262,9 +1349,9 @@ function migrate(input){
  return s;
 }
 async function loadState(){db=await openDB();const primary=await idbGet('state','current').catch(()=>null);let mirror=null;try{mirror=JSON.parse(localStorage.getItem(MIRROR_KEY)||'null')}catch{};const choices=[primary,mirror].filter(Boolean).map(migrate);state=choices.sort((a,b)=>String(b.updatedAt||'').localeCompare(String(a.updatedAt||'')))[0]||clone(SEED);await persist('启动同步',false,false)}
-function backupPayload(){return {app:APP_ID,schemaVersion:31,exportedAt:nowISO(),data:clone(state)}}
+function backupPayload(){return {app:APP_ID,schemaVersion:32,exportedAt:nowISO(),data:clone(state)}}
 function downloadBackup(label='手动备份'){const payload=JSON.stringify(backupPayload(),null,2);const blob=new Blob([payload],{type:'application/json;charset=utf-8'});const u=URL.createObjectURL(blob);const a=document.createElement('a');const d=new Date();const stamp=`${today()}_${String(d.getHours()).padStart(2,'0')}${String(d.getMinutes()).padStart(2,'0')}`;a.href=u;a.download=`小松鼠生活管家_${stamp}.json`;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),1000);toast(`${label}已生成`)}
-async function persist(reason='保存',userAction=true,makeSnapshot=true){state.app=APP_ID;state.schemaVersion=31;state.updatedAt=nowISO();let shouldDownload=false;if(userAction){const day=today();if(state.settings.everyChangeDownload)shouldDownload=true;else if(state.settings.autoDailyDownload&&state.settings.lastExternalBackupDay!==day)shouldDownload=true;if(shouldDownload){state.settings.lastExternalBackupDay=day;state.settings.lastExternalBackupAt=nowISO();downloadBackup(state.settings.everyChangeDownload?'修改备份':'今日自动备份')}}
+async function persist(reason='保存',userAction=true,makeSnapshot=true){state.app=APP_ID;state.schemaVersion=32;state.updatedAt=nowISO();let shouldDownload=false;if(userAction){const day=today();if(state.settings.everyChangeDownload)shouldDownload=true;else if(state.settings.autoDailyDownload&&state.settings.lastExternalBackupDay!==day)shouldDownload=true;if(shouldDownload){state.settings.lastExternalBackupDay=day;state.settings.lastExternalBackupAt=nowISO();downloadBackup(state.settings.everyChangeDownload?'修改备份':'今日自动备份')}}
  localStorage.setItem(MIRROR_KEY,JSON.stringify(state));await idbPut('state',clone(state),'current');if(makeSnapshot){const snap={id:`${Date.now()}-${Math.random()}`,at:nowISO(),reason,data:clone(state)};await idbPut('snapshots',snap);const all=(await idbAll('snapshots')).sort((a,b)=>String(b.at).localeCompare(String(a.at)));for(const old of all.slice(50))await idbDelete('snapshots',old.id)}renderAll()}
 function daysSince(s){if(!s)return null;const d=new Date(`${s}T00:00:00`);const n=new Date();const t=new Date(n.getFullYear(),n.getMonth(),n.getDate());return Math.max(0,Math.floor((t-d)/86400000))}
 function urgency(c){const d=daysSince(c.lastDone);return d===null?Infinity:d/Math.max(1,Number(c.interval))}
@@ -1314,6 +1401,39 @@ function renderLedger(){const records=monthRecords();const expenses=records.filt
 function group(arr,keyFn){const m={};arr.forEach(r=>{const k=keyFn(r)||'其他';m[k]=(m[k]||0)+Number(r.amount||0)});return m}
 function renderChart(sel,map,sortByValue=false){let entries=Object.entries(map);entries.sort(sortByValue?(a,b)=>b[1]-a[1]:(a,b)=>b[1]-a[1]);entries=entries.slice(0,10);const max=Math.max(1,...entries.map(x=>x[1]));$(sel).innerHTML=entries.map(([k,v])=>`<div class="chart-row"><div class="chart-label">${esc(k)}</div><div class="chart-track"><span style="width:${v/max*100}%"></span></div><div class="chart-value">${money(v)}</div></div>`).join('')||'<div class="empty">暂无支出数据。</div>'}
 function renderChores(){const q=$('#choreSearch').value.trim().toLowerCase(),filter=$('#choreFilter').value;const items=[...state.chores.items].filter(c=>(!q||`${c.name} ${c.note}`.toLowerCase().includes(q))&&(!filter||choreStatus(c).key===filter)).sort((a,b)=>urgency(b)-urgency(a));$('#choreList').innerHTML=items.map(c=>{const d=daysSince(c.lastDone),st=choreStatus(c);return `<article class="chore"><div class="chore-main"><div class="chore-title">${esc(c.icon)} ${esc(c.name)}</div><div class="chore-note">${esc(c.note||'暂无备注')}</div></div><div><div class="meta-label">上次完成</div><div class="meta-value">${c.lastDone||'未记录'}</div></div><div><div class="meta-label">已经过去 / 周期</div><div class="meta-value">${d===null?'—':d+'天'} / ${c.interval}天</div></div><div><span class="tag ${st.key}">${st.text}</span><div class="actions" style="margin-top:8px"><button class="icon-btn done" data-chore-action="done" data-id="${c.id}">刚刚完成</button><button class="icon-btn" data-chore-action="edit" data-id="${c.id}">编辑</button><button class="icon-btn" data-chore-action="delete" data-id="${c.id}">删除</button></div></div></article>`}).join('')||'<div class="empty">没有符合条件的家务。</div>'}
+
+
+
+let dreamSelectedDate=today(),dreamEditorOpen=false;
+function dreamData(){
+ state.modules=state.modules&&typeof state.modules==='object'?state.modules:{};
+ let D=state.modules.dreamJournal;
+ if(!D||typeof D!=='object')D=state.modules.dreamJournal={enabled:true,entries:{}};
+ D.enabled=true;D.entries=D.entries&&typeof D.entries==='object'?D.entries:{};
+ return D
+}
+function normalizeDreamEntry(e,date=''){
+ e=e&&typeof e==='object'?e:{};
+ return {date:e.date||date,title:String(e.title||''),mood:String(e.mood||''),content:String(e.content||''),feeling:String(e.feeling||''),createdAt:e.createdAt||'',updatedAt:e.updatedAt||''}
+}
+function dreamEntry(date){const D=dreamData(),e=D.entries[date];return e?normalizeDreamEntry(e,date):null}
+function dreamDateText(date){const d=localDate(date);if(!d)return date;const names=['日','一','二','三','四','五','六'];return `${d.getFullYear()}年${d.getMonth()+1}月${d.getDate()}日 · 星期${names[d.getDay()]}`}
+function dreamPreview(e){return String(e?.content||e?.feeling||'').replace(/\s+/g,' ').trim()}
+function renderDreamHome(){const entries=Object.values(dreamData().entries).map(e=>normalizeDreamEntry(e,e.date)).filter(e=>e.date).sort((a,b)=>b.date.localeCompare(a.date)),el=$('#homeDreamSummary');if(!el)return;const todays=dreamEntry(today());el.textContent=todays?`今天已经记下「${todays.title||'一场梦'}」。`:(entries[0]?`最近一篇：${entries[0].date} · ${entries[0].title||'没有标题的梦'}`:'点开大笔记本，把醒来后还记得的梦安静收好。')}
+function renderDream(){
+ const D=dreamData();if(!/^\d{4}-\d{2}-\d{2}$/.test(dreamSelectedDate||''))dreamSelectedDate=today();
+ const e=dreamEntry(dreamSelectedDate),entries=Object.values(D.entries).map(x=>normalizeDreamEntry(x,x.date)).filter(x=>x.date).sort((a,b)=>b.date.localeCompare(a.date));
+ const dateInput=$('#dreamDate');if(!dateInput)return;dateInput.value=dreamSelectedDate;
+ $('#dreamSavedCount').textContent=`${entries.length}篇梦境`;
+ $('#dreamBookDate').textContent=dreamDateText(dreamSelectedDate);
+ $('#dreamBookTitle').textContent=e?(e.title||'没有标题的梦'):(dreamSelectedDate===today()?'点开笔记本记录今天的梦':'这一天还没有梦境记录');
+ $('#dreamBookPreview').textContent=e?(dreamPreview(e)||e.mood||'这篇梦只留下了一个标题。'):'哪怕只记得一个画面、一句话，也可以写下来。';
+ $('#dreamBookBtn').setAttribute('aria-expanded',String(dreamEditorOpen));
+ $('#dreamEditor').classList.toggle('hidden',!dreamEditorOpen);
+ $('#dreamDeleteBtn').classList.toggle('hidden',!e);
+ $('#dreamTitle').value=e?.title||'';$('#dreamMood').value=e?.mood||'';$('#dreamContent').value=e?.content||'';$('#dreamFeeling').value=e?.feeling||'';
+ $('#dreamRecentList').innerHTML=entries.slice(0,18).map(x=>`<button class="dream-recent-item" type="button" data-dream-date="${esc(x.date)}"><strong>${esc(x.title||'没有标题的梦')}</strong><small>${esc(dreamDateText(x.date))}${x.mood?` · ${esc(x.mood)}`:''}</small><span>${esc(dreamPreview(x)||'只留下了标题。')}</span></button>`).join('')||'<div class="empty" style="grid-column:1/-1">还没有梦境记录。下一次醒来时，可以先记下一两个关键词。</div>';
+}
 
 function wishlistData(){return state.modules.wishlist}
 function localDate(s){if(!s)return null;const p=String(s).split('-').map(Number);if(p.length!==3||p.some(x=>!Number.isFinite(x)))return null;return new Date(p[0],p[1]-1,p[2])}
@@ -1623,7 +1743,7 @@ function petWanderTick(){
  if(currentView!=='village'||petDecorMode||petBusy||petGamePanel||selectedPetTool||isPetNight())return;const T=tamagotchiData(),p=T.current,el=document.querySelector('[data-pet-avatar]');if(!T.wanderEnabled||!p?.alive||!el||el.classList.contains('leave')||el.classList.contains('visit')||el.classList.contains('sleeping'))return;const scene=T.scene||'forest',anchor=petPosition(scene),current=petWanderLivePositions[scene]||{...anchor,facing:1},rangeX=scene==='home'?20:30,rangeY=scene==='home'?12:17,stepX=scene==='home'?13:18,stepY=scene==='home'?8:11,minX=Math.max(10,anchor.x-rangeX),maxX=Math.min(90,anchor.x+rangeX),minY=Math.max(35,anchor.y-rangeY),maxY=Math.min(82,anchor.y+rangeY),x=Math.max(minX,Math.min(maxX,current.x+(Math.random()*2-1)*stepX)),y=Math.max(minY,Math.min(maxY,current.y+(Math.random()*2-1)*stepY)),dx=x-current.x,facing=Math.abs(dx)<.3?Number(current.facing||1):(dx>0?-1:1);petWanderLivePositions[scene]={x,y,scale:Number(anchor.scale||1),z:Number(anchor.z||30),facing};el.classList.add('wander-step');el.style.setProperty('--pet-x',`${x}%`);el.style.setProperty('--pet-y',`${y}%`);el.style.setProperty('--pet-facing',facing);setTimeout(()=>el?.classList.remove('wander-step'),3000)
 }
 function startPetWandering(){clearInterval(petWanderTimer);petWanderTimer=setInterval(petWanderTick,6200);setTimeout(petWanderTick,1800)}
-async function renderBackup(){const snaps=(await idbAll('snapshots')).sort((a,b)=>String(b.at).localeCompare(String(a.at)));let persisted=false;try{persisted=await navigator.storage?.persisted?.()}catch{};const external=state.settings.lastExternalBackupAt?new Date(state.settings.lastExternalBackupAt).toLocaleString('zh-CN'):'从未';$('#backupCards').innerHTML=[['主数据库','IndexedDB','浏览器内主要数据仓'],['本地镜像','已同步','localStorage 副本'],['版本快照',`${snaps.length}份`,'保留最近50次修改'],['外部备份',external,persisted?'浏览器存储已获持久权限':'仍建议保留下载的JSON']].map((x,i)=>`<div class="backup-card"><div class="label">${x[0]}</div><strong class="${i===3&&!state.settings.lastExternalBackupAt?'warn':'safe'}">${x[1]}</strong><p>${x[2]}</p></div>`).join('');$('#dailyBackupSwitch').classList.toggle('on',!!state.settings.autoDailyDownload);$('#everyChangeSwitch').classList.toggle('on',!!state.settings.everyChangeDownload);$('#snapshotList').innerHTML=snaps.slice(0,12).map(s=>`<div class="snapshot"><div><strong>${new Date(s.at).toLocaleString('zh-CN')}</strong><br><small>${esc(s.reason)}</small></div><button class="btn ghost" data-restore-snapshot="${s.id}">恢复</button></div>`).join('')||'<div class="empty">还没有版本快照。</div>';$('#diagnostics').innerHTML=`应用版本：1.9.25（像素田园界面）<br>数据结构版本：${state.schemaVersion}<br>账目：${state.ledger.records.length}笔<br>家务：${state.chores.items.length}项<br>日历记录：${Object.keys(state.modules.calendar.entries||{}).length}天<br>餐厅与外卖：${restaurantData().items.length}次<br>树屋居民：${tamagotchiData().current?.name||'尚未领养'}<br>愿望：${state.modules.wishlist.items.length}件<br>数独完成：${state.modules.brain.sudoku.stats.completed||0}题<br>空当接龙胜利：${state.modules.brain.freecell.stats.won||0}局<br>扫雷胜利：${state.modules.brain.minesweeper.stats.won||0}局<br>推箱子通关：${state.modules.brain.sokoban.stats.won||0}关<br>当前来源：${location.protocol}<br>最近更新：${new Date(state.updatedAt).toLocaleString('zh-CN')}`;$('#backupBadge').textContent=state.settings.lastExternalBackupAt?`外部备份：${new Date(state.settings.lastExternalBackupAt).toLocaleDateString('zh-CN')}`:'外部备份尚未建立'}
+async function renderBackup(){const snaps=(await idbAll('snapshots')).sort((a,b)=>String(b.at).localeCompare(String(a.at)));let persisted=false;try{persisted=await navigator.storage?.persisted?.()}catch{};const external=state.settings.lastExternalBackupAt?new Date(state.settings.lastExternalBackupAt).toLocaleString('zh-CN'):'从未';$('#backupCards').innerHTML=[['主数据库','IndexedDB','浏览器内主要数据仓'],['本地镜像','已同步','localStorage 副本'],['版本快照',`${snaps.length}份`,'保留最近50次修改'],['外部备份',external,persisted?'浏览器存储已获持久权限':'仍建议保留下载的JSON']].map((x,i)=>`<div class="backup-card"><div class="label">${x[0]}</div><strong class="${i===3&&!state.settings.lastExternalBackupAt?'warn':'safe'}">${x[1]}</strong><p>${x[2]}</p></div>`).join('');$('#dailyBackupSwitch').classList.toggle('on',!!state.settings.autoDailyDownload);$('#everyChangeSwitch').classList.toggle('on',!!state.settings.everyChangeDownload);$('#snapshotList').innerHTML=snaps.slice(0,12).map(s=>`<div class="snapshot"><div><strong>${new Date(s.at).toLocaleString('zh-CN')}</strong><br><small>${esc(s.reason)}</small></div><button class="btn ghost" data-restore-snapshot="${s.id}">恢复</button></div>`).join('')||'<div class="empty">还没有版本快照。</div>';$('#diagnostics').innerHTML=`应用版本：1.9.26（像素田园界面与记梦笔记本）<br>数据结构版本：${state.schemaVersion}<br>账目：${state.ledger.records.length}笔<br>家务：${state.chores.items.length}项<br>日历记录：${Object.keys(state.modules.calendar.entries||{}).length}天<br>餐厅与外卖：${restaurantData().items.length}次<br>树屋居民：${tamagotchiData().current?.name||'尚未领养'}<br>愿望：${state.modules.wishlist.items.length}件<br>梦境记录：${Object.keys(dreamData().entries||{}).length}篇<br>数独完成：${state.modules.brain.sudoku.stats.completed||0}题<br>空当接龙胜利：${state.modules.brain.freecell.stats.won||0}局<br>扫雷胜利：${state.modules.brain.minesweeper.stats.won||0}局<br>推箱子通关：${state.modules.brain.sokoban.stats.won||0}关<br>当前来源：${location.protocol}<br>最近更新：${new Date(state.updatedAt).toLocaleString('zh-CN')}`;$('#backupBadge').textContent=state.settings.lastExternalBackupAt?`外部备份：${new Date(state.settings.lastExternalBackupAt).toLocaleDateString('zh-CN')}`:'外部备份尚未建立'}
 
 const SUDOKU_LEVELS={easy:{label:'简单',clues:42},medium:{label:'中等',clues:34},hard:{label:'困难',clues:28}};
 let sudokuSelected=-1,sudokuChecked=false,sudokuTimer=null;
@@ -1895,8 +2015,8 @@ function applyRestaurantLedgerImport(){const id=$('#restaurantLedgerLink').value
 function compressRestaurantPhoto(file,maxSide=1280,quality=.78){return new Promise((resolve,reject)=>{const reader=new FileReader();reader.onerror=()=>reject(new Error('读取图片失败'));reader.onload=()=>{const img=new Image();img.onerror=()=>reject(new Error('图片格式无法读取'));img.onload=()=>{const scale=Math.min(1,maxSide/Math.max(img.width,img.height)),w=Math.max(1,Math.round(img.width*scale)),h=Math.max(1,Math.round(img.height*scale)),canvas=document.createElement('canvas');canvas.width=w;canvas.height=h;canvas.getContext('2d').drawImage(img,0,0,w,h);resolve(canvas.toDataURL('image/jpeg',quality))};img.src=reader.result};reader.readAsDataURL(file)})}
 async function recordRestaurantExpense(r){if(restaurantLedgerRecord(r))return toast('这条记录已经关联账单啦');const amount=Number(r.amount||0);if(!amount)return toast('先编辑并填写消费金额');if(!confirm(`把“${r.restaurantName}”的 ${money(amount)} 记入账本吗？`))return;const pools=Object.keys(state.ledger.budgets),pool=pools.includes('基础生活')?'基础生活':pools[0]||'',category=state.ledger.categories.includes('餐饮外卖')?'餐饮外卖':state.ledger.categories[0],nature=state.ledger.natures.includes('幸福微需')?'幸福微需':state.ledger.natures[0],firstDish=r.dishes?.[0]?`（${r.dishes[0]}）`:'';const rec={id:uid('ledger'),createdAt:nowISO(),updatedAt:nowISO(),date:r.date,type:'支出',pool,category,amount,account:state.ledger.accounts[0]||'其他',nature,note:`${r.channel}：${r.restaurantName}${firstDish}`};state.ledger.records.push(rec);r.ledgerRecordId=rec.id;r.updatedAt=nowISO();const reward=claimDailyActivityReward('ledger',r.date);$('#ledgerMonth').value=r.date.slice(0,7);await persist(`餐厅记录记账：${r.restaurantName}`,true,true);if(reward)toast(`今日记账完成 · +${reward}积分`)}
 
-function renderAll(){renderHome();renderCalendar();renderActivityRewardButtons();renderWishlistHome();renderRestaurantsHome();renderPetHome();renderLedger();renderRestaurants();renderVillage();renderWishlist();renderChores();renderSudoku();renderFreecell();renderMines();renderSokoban();renderBrainTabs();renderBackup()}
-function setView(v){currentView=v;document.querySelector('.hero-shell')?.classList.toggle('hidden',v!=='home');$$('.view').forEach(x=>x.classList.toggle('active',x.id===`view-${v}`));$$('.nav-btn').forEach(x=>x.classList.toggle('active',x.dataset.view===v));window.scrollTo({top:0,behavior:'smooth'});if(v==='calendar'){renderCalendar();renderActivityRewardButtons()};if(v==='restaurants')renderRestaurants();if(v==='village'){processTamagotchiTime();renderVillage();setTimeout(()=>$('#petMain')?.scrollIntoView({behavior:'smooth',block:'start'}),80)}if(v==='wishlist')renderWishlist();if(v==='backup')renderBackup();if(v==='brain'){renderBrainTabs();renderSudoku();renderFreecell();renderMines();renderSokoban();startSudokuClock();startFreecellClock();startMineClock()}}
+function renderAll(){renderHome();renderCalendar();renderActivityRewardButtons();renderWishlistHome();renderRestaurantsHome();renderPetHome();renderDreamHome();renderLedger();renderRestaurants();renderVillage();renderWishlist();renderChores();renderDream();renderSudoku();renderFreecell();renderMines();renderSokoban();renderBrainTabs();renderBackup()}
+function setView(v){currentView=v;document.querySelector('.hero-shell')?.classList.toggle('hidden',v!=='home');$$('.view').forEach(x=>x.classList.toggle('active',x.id===`view-${v}`));$$('.nav-btn').forEach(x=>x.classList.toggle('active',x.dataset.view===v));window.scrollTo({top:0,behavior:'smooth'});if(v==='calendar'){renderCalendar();renderActivityRewardButtons()};if(v==='restaurants')renderRestaurants();if(v==='village'){processTamagotchiTime();renderVillage();setTimeout(()=>$('#petMain')?.scrollIntoView({behavior:'smooth',block:'start'}),80)}if(v==='wishlist')renderWishlist();if(v==='dream')renderDream();if(v==='backup')renderBackup();if(v==='brain'){renderBrainTabs();renderSudoku();renderFreecell();renderMines();renderSokoban();startSudokuClock();startFreecellClock();startMineClock()}}
 function initSelects(){const L=state.ledger,pools=Object.keys(L.budgets);$('#ledgerPool').innerHTML=pools.map(x=>`<option>${esc(x)}</option>`).join('');$('#ledgerPoolFilter').innerHTML='<option value="">全部预算池</option>'+pools.map(x=>`<option>${esc(x)}</option>`).join('');$('#ledgerCategory').innerHTML=L.categories.map(x=>`<option>${esc(x)}</option>`).join('');$('#ledgerAccount').innerHTML=L.accounts.map(x=>`<option>${esc(x)}</option>`).join('');$('#ledgerNature').innerHTML=L.natures.map(x=>`<option>${esc(x)}</option>`).join('');$('#wishPool').innerHTML=pools.map(x=>`<option>${esc(x)}</option>`).join('');$('#wishPoolFilter').innerHTML='<option value="">全部预算池</option>'+pools.map(x=>`<option>${esc(x)}</option>`).join('');$('#wishCategory').innerHTML=L.categories.map(x=>`<option>${esc(x)}</option>`).join('')}
 function setLedgerType(t){$('#ledgerType').value=t;$$('[data-ledger-type]').forEach(b=>b.classList.toggle('active',b.dataset.ledgerType===t));$('#ledgerPoolField').classList.toggle('hidden',t!=='支出');$('#ledgerNatureField').classList.toggle('hidden',t!=='支出');if(t==='收入')$('#ledgerCategory').value='退款/补贴';if(t==='转账')$('#ledgerCategory').value='其他'}
 function openLedger(record=null,copy=false){$('#ledgerForm').reset();$('#ledgerEditId').value=record&&!copy?record.id:'';$('#ledgerDialogTitle').textContent=record&&!copy?'编辑记录':'记一笔';$('#ledgerDate').value=copy?today():(record?.date||today());setLedgerType(record?.type||'支出');$('#ledgerPool').value=record?.pool||Object.keys(state.ledger.budgets)[0];$('#ledgerCategory').value=record?.category||state.ledger.categories[0];$('#ledgerAmount').value=record?.amount||'';$('#ledgerAccount').value=record?.account||state.ledger.accounts[0];$('#ledgerNature').value=record?.nature||state.ledger.natures[0];$('#ledgerNote').value=record?.note||'';$('#ledgerDialog').showModal()}
@@ -1904,7 +2024,17 @@ function openChore(c=null){$('#choreForm').reset();$('#choreEditId').value=c?.id
 async function importBackup(file){const text=await file.text();let parsed;try{parsed=JSON.parse(text)}catch{throw new Error('这不是有效的JSON备份')};downloadBackup('导入前保护备份');state=migrate(parsed);state.updatedAt=nowISO();await persist('导入备份',false,true);initSelects();$('#ledgerMonth').value=monthNow();toast('备份已导入')}
 function exportCsv(){const rows=monthRecords().sort((a,b)=>a.date.localeCompare(b.date));const data=[['日期','类型','预算池','二级分类','金额','账户','性质','备注'],...rows.map(r=>[r.date,r.type,r.pool,r.category,Number(r.amount).toFixed(2),r.account,r.nature,r.note])];const q=v=>/[",\n]/.test(String(v??''))?`"${String(v??'').replaceAll('"','""')}"`:String(v??'');const csv='\ufeff'+data.map(r=>r.map(q).join(',')).join('\r\n');const b=new Blob([csv],{type:'text/csv;charset=utf-8'}),u=URL.createObjectURL(b),a=document.createElement('a');a.href=u;a.download=`小松鼠账单_${selectedMonth()}.csv`;a.click();setTimeout(()=>URL.revokeObjectURL(u),1000)}
 async function init(){if(location.protocol==='file:')$('#fileBanner').classList.remove('hidden');await loadState();const petChanged=processTamagotchiTime();initSelects();$('#restaurantMonth').value=monthNow();$('#ledgerMonth').value=state.ledger.records.some(r=>r.date?.startsWith(monthNow()))?monthNow():[...new Set(state.ledger.records.map(r=>r.date.slice(0,7)))].sort().reverse()[0]||monthNow();syncMineCountInput(false);renderAll();if(petChanged){localStorage.setItem(MIRROR_KEY,JSON.stringify(state));await idbPut('state',clone(state),'current')}startSudokuClock();startFreecellClock();startMineClock();startPetWandering();setInterval(async()=>{if(processTamagotchiTime())await persist('树屋居民时间流逝',false,false)},300000);if('true'==='true'&&'serviceWorker' in navigator)navigator.serviceWorker.register('./sw.js').catch(()=>{});window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredInstall=e;$('#installBtn').classList.remove('hidden')})}
-$$('.nav-btn').forEach(b=>b.onclick=()=>setView(b.dataset.view));$$('[data-brain-game]').forEach(b=>b.onclick=()=>setBrainGame(b.dataset.brainGame));$$('[data-open-view]').forEach(b=>b.onclick=()=>setView(b.dataset.openView));$('#quickLedgerBtn').onclick=()=>openLedger();$('#quickChoreBtn').onclick=()=>openChore();$('#quickWishBtn').onclick=()=>{setView('wishlist');openWish()};$('#quickRestaurantBtn').onclick=()=>{setView('restaurants');openRestaurant()};$('#backupNowBtn').onclick=()=>{state.settings.lastExternalBackupAt=nowISO();state.settings.lastExternalBackupDay=today();downloadBackup();persist('手动外部备份',false,true)};$('#backupPageBtn').onclick=$('#backupNowBtn').onclick;$('#installBtn').onclick=async()=>{if(deferredInstall){deferredInstall.prompt();await deferredInstall.userChoice;deferredInstall=null;$('#installBtn').classList.add('hidden')}};$$('[data-close]').forEach(b=>b.onclick=()=>document.getElementById(b.dataset.close).close());$$('[data-ledger-type]').forEach(b=>b.onclick=()=>setLedgerType(b.dataset.ledgerType));
+$$('.nav-btn').forEach(b=>b.onclick=()=>setView(b.dataset.view));
+$('#dreamPrevBtn').onclick=()=>{dreamSelectedDate=addDateDays(dreamSelectedDate,-1);dreamEditorOpen=false;renderDream()};
+$('#dreamNextBtn').onclick=()=>{dreamSelectedDate=addDateDays(dreamSelectedDate,1);dreamEditorOpen=false;renderDream()};
+$('#dreamTodayBtn').onclick=()=>{dreamSelectedDate=today();dreamEditorOpen=false;renderDream()};
+$('#dreamDate').onchange=e=>{dreamSelectedDate=e.target.value||today();dreamEditorOpen=false;renderDream()};
+$('#dreamBookBtn').onclick=()=>{dreamEditorOpen=true;renderDream();setTimeout(()=>$('#dreamContent')?.focus(),30)};
+$('#dreamCloseBtn').onclick=()=>{dreamEditorOpen=false;renderDream()};
+$('#dreamSaveBtn').onclick=async()=>{const title=$('#dreamTitle').value.trim(),mood=$('#dreamMood').value.trim(),content=$('#dreamContent').value.trim(),feeling=$('#dreamFeeling').value.trim();if(!title&&!content&&!feeling){toast('至少写下一点梦境内容吧');$('#dreamContent').focus();return}const D=dreamData(),old=D.entries[dreamSelectedDate],stamp=nowISO();D.entries[dreamSelectedDate]={date:dreamSelectedDate,title,mood,content,feeling,createdAt:old?.createdAt||stamp,updatedAt:stamp};dreamEditorOpen=false;await persist(`保存梦境：${dreamSelectedDate}`,true,true);toast('梦境已经收进笔记本')};
+$('#dreamDeleteBtn').onclick=async()=>{if(!dreamEntry(dreamSelectedDate))return;if(!confirm(`删除 ${dreamSelectedDate} 的梦境记录吗？`))return;delete dreamData().entries[dreamSelectedDate];dreamEditorOpen=false;await persist(`删除梦境：${dreamSelectedDate}`,true,true);toast('这篇梦境已经删除')};
+$('#dreamRecentList').onclick=e=>{const b=e.target.closest('[data-dream-date]');if(!b)return;dreamSelectedDate=b.dataset.dreamDate;dreamEditorOpen=false;renderDream();window.scrollTo({top:0,behavior:'smooth'})};
+$$('[data-brain-game]').forEach(b=>b.onclick=()=>setBrainGame(b.dataset.brainGame));$$('[data-open-view]').forEach(b=>b.onclick=()=>setView(b.dataset.openView));$('#quickLedgerBtn').onclick=()=>openLedger();$('#quickChoreBtn').onclick=()=>openChore();$('#quickWishBtn').onclick=()=>{setView('wishlist');openWish()};$('#quickRestaurantBtn').onclick=()=>{setView('restaurants');openRestaurant()};$('#backupNowBtn').onclick=()=>{state.settings.lastExternalBackupAt=nowISO();state.settings.lastExternalBackupDay=today();downloadBackup();persist('手动外部备份',false,true)};$('#backupPageBtn').onclick=$('#backupNowBtn').onclick;$('#installBtn').onclick=async()=>{if(deferredInstall){deferredInstall.prompt();await deferredInstall.userChoice;deferredInstall=null;$('#installBtn').classList.add('hidden')}};$$('[data-close]').forEach(b=>b.onclick=()=>document.getElementById(b.dataset.close).close());$$('[data-ledger-type]').forEach(b=>b.onclick=()=>setLedgerType(b.dataset.ledgerType));
 $('#calendarGrid').onclick=e=>{const b=e.target.closest('[data-calendar-date]');if(b)selectCalendarDate(b.dataset.calendarDate)};
 $('#calendarPrevBtn').onclick=async()=>{calendarCaptureEditor();const C=calendarData();C.visibleMonth=calendarShiftMonth(C.visibleMonth,-1);C.selectedDate=`${C.visibleMonth}-01`;await persist('查看上个月',false,false)};
 $('#calendarNextBtn').onclick=async()=>{calendarCaptureEditor();const C=calendarData();C.visibleMonth=calendarShiftMonth(C.visibleMonth,1);C.selectedDate=`${C.visibleMonth}-01`;await persist('查看下个月',false,false)};
