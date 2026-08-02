@@ -1028,7 +1028,7 @@ dialog{border-color:#66513f!important;background:#eee0b5!important;box-shadow:0 
 @media(max-width:520px){.reader-shelf-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.reader-shelf-book{min-height:128px;padding:9px 7px}.reader-shelf-book h3{font-size:13px}.reader-shelf-book small{font-size:9px}.reader-shelf-detail{padding:12px}}
 
 
-/* v1.9.30：保留 EPUB 原始插图比例，净化标注图标 */
+/* v1.9.31：保留 EPUB 原始插图比例，净化标注图标 */
 .reader-content img.reader-book-image,
 .reader-content svg.reader-book-image{
   display:block!important;
@@ -1059,7 +1059,7 @@ dialog{border-color:#66513f!important;background:#eee0b5!important;box-shadow:0 
 .reader-content .reader-hidden-annotation{display:none!important}
 
 
-/* v1.9.30 游戏区紧凑化 */
+/* v1.9.31 游戏区紧凑化 */
 .fc-library-note{display:none!important}
 .brain-game .section-head span{font-size:12px}
 .fc-library,.soko-library{gap:10px}
@@ -1106,7 +1106,7 @@ dialog{border-color:#66513f!important;background:#eee0b5!important;box-shadow:0 
 }
 
 
-/* v1.9.30：四款脑力游戏控制区紧凑整理 */
+/* v1.9.31：四款脑力游戏控制区紧凑整理 */
 #view-brain .brain-tabs{gap:5px!important;margin-bottom:8px!important}
 #view-brain .brain-tab{min-height:34px!important;padding:5px 3px!important;font-size:11px!important;line-height:1.15!important}
 #view-brain .brain-game>.panel.section:first-child{padding:9px!important}
@@ -1152,6 +1152,18 @@ dialog{border-color:#66513f!important;background:#eee0b5!important;box-shadow:0 
  #view-brain .brain-controls>.btn,#view-brain .brain-controls>select,#view-brain .brain-controls>.mine-count-control{font-size:9.8px!important;padding:2px!important}
  #view-brain .puzzle-main-row{grid-template-columns:minmax(0,1fr) 72px}
  #view-brain .puzzle-mini-nav>.btn{font-size:10px!important}
+}
+
+
+/* v1.9.31：题库导航等宽，开始与暂停移至下方操作栏 */
+#view-brain .puzzle-main-row{display:block!important}
+#view-brain .puzzle-main-row .fc-puzzle-number{width:100%!important;box-sizing:border-box!important}
+#view-brain .puzzle-mini-nav{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+#view-brain .puzzle-mini-nav>.btn{width:100%!important;min-width:0!important;box-sizing:border-box!important;padding-left:2px!important;padding-right:2px!important}
+#view-brain .game-compact-actions{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+#view-brain .game-compact-actions>.btn{width:100%!important;min-width:0!important}
+@media(max-width:420px){
+ #view-brain .game-compact-actions{grid-template-columns:repeat(3,minmax(0,1fr))!important}
 }
 
 </style>
@@ -1428,22 +1440,22 @@ dialog{border-color:#66513f!important;background:#eee0b5!important;box-shadow:0 
               <input id="freecellPuzzleNo" type="number" inputmode="numeric" min="1" max="999999" step="1" value="1" aria-label="空当接龙题号">
               题
             </label>
-            <button class="btn primary" id="newFreecellBtn" type="button">开始</button>
           </div>
           <div class="puzzle-mini-nav">
-            <button class="btn ghost" id="prevFreecellPuzzleBtn" type="button">← 上一题</button>
-            <button class="btn ghost" id="nextFreecellPuzzleBtn" type="button">下一题 →</button>
-            <button class="btn soft" id="randomFreecellPuzzleBtn" type="button">随机</button>
+            <button class="btn ghost" id="prevFreecellPuzzleBtn" type="button">上一题</button>
+            <button class="btn ghost" id="nextFreecellPuzzleBtn" type="button">下一题</button>
+            <button class="btn ghost" id="randomFreecellPuzzleBtn" type="button">随机</button>
           </div>
         </div>
         <div class="fc-library-note" id="freecellLibraryNote"></div>
         <div class="fc-recent-puzzles" id="freecellRecentPuzzles"></div>
       </div>
-      <div class="sudoku-controls brain-controls fc-action-controls">
+      <div class="sudoku-controls brain-controls fc-action-controls game-compact-actions">
+        <button class="btn primary" id="newFreecellBtn" type="button">开始</button>
+        <button class="btn ghost" id="pauseFreecellBtn">暂停</button>
         <button class="btn soft" id="undoFreecellBtn">撤销</button>
         <button class="btn soft" id="autoFreecellBtn">自动：开</button>
         <button class="btn soft" id="collectFreecellNowBtn">收牌</button>
-        <button class="btn ghost" id="pauseFreecellBtn">暂停</button>
         <button class="btn ghost" id="resetFreecellBtn">重置</button>
       </div>
       <div class="freecell-wrap">
@@ -1494,20 +1506,20 @@ dialog{border-color:#66513f!important;background:#eee0b5!important;box-shadow:0 
               <input id="sokobanPuzzleNo" type="number" inputmode="numeric" min="1" max="999999" step="1" value="1" aria-label="推箱子题号">
               题
             </label>
-            <button class="btn primary" id="newSokobanBtn" type="button">开始</button>
           </div>
           <div class="puzzle-mini-nav">
-            <button class="btn ghost" id="prevSokobanPuzzleBtn" type="button">← 上一题</button>
-            <button class="btn ghost" id="nextSokobanPuzzleBtn" type="button">下一题 →</button>
-            <button class="btn soft" id="randomSokobanPuzzleBtn" type="button">随机</button>
+            <button class="btn ghost" id="prevSokobanPuzzleBtn" type="button">上一题</button>
+            <button class="btn ghost" id="nextSokobanPuzzleBtn" type="button">下一题</button>
+            <button class="btn ghost" id="randomSokobanPuzzleBtn" type="button">随机</button>
           </div>
         </div>
         <div class="fc-library-note" id="sokobanLibraryNote"></div>
         <div class="fc-recent-puzzles" id="sokobanRecentPuzzles"></div>
       </div>
-      <div class="sudoku-controls brain-controls">
-        <button class="btn soft" id="undoSokobanBtn">撤销</button>
+      <div class="sudoku-controls brain-controls game-compact-actions">
+        <button class="btn primary" id="newSokobanBtn" type="button">开始</button>
         <button class="btn ghost" id="pauseSokobanBtn">暂停</button>
+        <button class="btn soft" id="undoSokobanBtn">撤销</button>
         <button class="btn ghost" id="resetSokobanBtn">重置</button>
       </div>
       <div class="sokoban-wrap"><div class="sokoban-board" id="sokobanBoard" role="grid" aria-label="推箱子棋盘"></div></div>
@@ -2093,7 +2105,7 @@ function petWanderTick(){
  if(currentView!=='village'||petDecorMode||petBusy||petGamePanel||selectedPetTool||isPetNight())return;const T=tamagotchiData(),p=T.current,el=document.querySelector('[data-pet-avatar]');if(!T.wanderEnabled||!p?.alive||!el||el.classList.contains('leave')||el.classList.contains('visit')||el.classList.contains('sleeping'))return;const scene=T.scene||'forest',anchor=petPosition(scene),current=petWanderLivePositions[scene]||{...anchor,facing:1},rangeX=scene==='home'?20:30,rangeY=scene==='home'?12:17,stepX=scene==='home'?13:18,stepY=scene==='home'?8:11,minX=Math.max(10,anchor.x-rangeX),maxX=Math.min(90,anchor.x+rangeX),minY=Math.max(35,anchor.y-rangeY),maxY=Math.min(82,anchor.y+rangeY),x=Math.max(minX,Math.min(maxX,current.x+(Math.random()*2-1)*stepX)),y=Math.max(minY,Math.min(maxY,current.y+(Math.random()*2-1)*stepY)),dx=x-current.x,facing=Math.abs(dx)<.3?Number(current.facing||1):(dx>0?-1:1);petWanderLivePositions[scene]={x,y,scale:Number(anchor.scale||1),z:Number(anchor.z||30),facing};el.classList.add('wander-step');el.style.setProperty('--pet-x',`${x}%`);el.style.setProperty('--pet-y',`${y}%`);el.style.setProperty('--pet-facing',facing);setTimeout(()=>el?.classList.remove('wander-step'),3000)
 }
 function startPetWandering(){clearInterval(petWanderTimer);petWanderTimer=setInterval(petWanderTick,6200);setTimeout(petWanderTick,1800)}
-async function renderBackup(){const snaps=(await idbAll('snapshots')).sort((a,b)=>String(b.at).localeCompare(String(a.at)));let persisted=false;try{persisted=await navigator.storage?.persisted?.()}catch{};const external=state.settings.lastExternalBackupAt?new Date(state.settings.lastExternalBackupAt).toLocaleString('zh-CN'):'从未';$('#backupCards').innerHTML=[['主数据库','IndexedDB','浏览器内主要数据仓'],['本地镜像','已同步','localStorage 副本'],['版本快照',`${snaps.length}份`,'保留最近50次修改'],['外部备份',external,persisted?'浏览器存储已获持久权限':'仍建议保留下载的JSON']].map((x,i)=>`<div class="backup-card"><div class="label">${x[0]}</div><strong class="${i===3&&!state.settings.lastExternalBackupAt?'warn':'safe'}">${x[1]}</strong><p>${x[2]}</p></div>`).join('');$('#dailyBackupSwitch').classList.toggle('on',!!state.settings.autoDailyDownload);$('#everyChangeSwitch').classList.toggle('on',!!state.settings.everyChangeDownload);$('#snapshotList').innerHTML=snaps.slice(0,12).map(s=>`<div class="snapshot"><div><strong>${new Date(s.at).toLocaleString('zh-CN')}</strong><br><small>${esc(s.reason)}</small></div><button class="btn ghost" data-restore-snapshot="${s.id}">恢复</button></div>`).join('')||'<div class="empty">还没有版本快照。</div>';$('#diagnostics').innerHTML=`应用版本：1.9.30（紧凑游戏控制栏）<br>数据结构版本：${state.schemaVersion}<br>阅读器：${readerData().bookMeta?esc(readerData().bookMeta.title||readerData().bookMeta.name):'当前无缓存'} · 小松鼠书架 ${readerLibrary().length} 本<br>账目：${state.ledger.records.length}笔<br>家务：${state.chores.items.length}项<br>日历记录：${Object.keys(state.modules.calendar.entries||{}).length}天<br>梦境记录：${Object.values(dreamsData().entries||{}).filter(dreamMeaningful).length}篇<br>餐厅与外卖：${restaurantData().items.length}次<br>树屋居民：${tamagotchiData().current?.name||'尚未领养'}<br>愿望：${state.modules.wishlist.items.length}件<br>数独完成：${state.modules.brain.sudoku.stats.completed||0}题<br>空当接龙胜利：${state.modules.brain.freecell.stats.won||0}局<br>扫雷胜利：${state.modules.brain.minesweeper.stats.won||0}局<br>推箱子通关：${state.modules.brain.sokoban.stats.won||0}关<br>当前来源：${location.protocol}<br>最近更新：${new Date(state.updatedAt).toLocaleString('zh-CN')}`;$('#backupBadge').textContent=state.settings.lastExternalBackupAt?`外部备份：${new Date(state.settings.lastExternalBackupAt).toLocaleDateString('zh-CN')}`:'外部备份尚未建立'}
+async function renderBackup(){const snaps=(await idbAll('snapshots')).sort((a,b)=>String(b.at).localeCompare(String(a.at)));let persisted=false;try{persisted=await navigator.storage?.persisted?.()}catch{};const external=state.settings.lastExternalBackupAt?new Date(state.settings.lastExternalBackupAt).toLocaleString('zh-CN'):'从未';$('#backupCards').innerHTML=[['主数据库','IndexedDB','浏览器内主要数据仓'],['本地镜像','已同步','localStorage 副本'],['版本快照',`${snaps.length}份`,'保留最近50次修改'],['外部备份',external,persisted?'浏览器存储已获持久权限':'仍建议保留下载的JSON']].map((x,i)=>`<div class="backup-card"><div class="label">${x[0]}</div><strong class="${i===3&&!state.settings.lastExternalBackupAt?'warn':'safe'}">${x[1]}</strong><p>${x[2]}</p></div>`).join('');$('#dailyBackupSwitch').classList.toggle('on',!!state.settings.autoDailyDownload);$('#everyChangeSwitch').classList.toggle('on',!!state.settings.everyChangeDownload);$('#snapshotList').innerHTML=snaps.slice(0,12).map(s=>`<div class="snapshot"><div><strong>${new Date(s.at).toLocaleString('zh-CN')}</strong><br><small>${esc(s.reason)}</small></div><button class="btn ghost" data-restore-snapshot="${s.id}">恢复</button></div>`).join('')||'<div class="empty">还没有版本快照。</div>';$('#diagnostics').innerHTML=`应用版本：1.9.30（题库按钮等宽与开始暂停下移）<br>数据结构版本：${state.schemaVersion}<br>阅读器：${readerData().bookMeta?esc(readerData().bookMeta.title||readerData().bookMeta.name):'当前无缓存'} · 小松鼠书架 ${readerLibrary().length} 本<br>账目：${state.ledger.records.length}笔<br>家务：${state.chores.items.length}项<br>日历记录：${Object.keys(state.modules.calendar.entries||{}).length}天<br>梦境记录：${Object.values(dreamsData().entries||{}).filter(dreamMeaningful).length}篇<br>餐厅与外卖：${restaurantData().items.length}次<br>树屋居民：${tamagotchiData().current?.name||'尚未领养'}<br>愿望：${state.modules.wishlist.items.length}件<br>数独完成：${state.modules.brain.sudoku.stats.completed||0}题<br>空当接龙胜利：${state.modules.brain.freecell.stats.won||0}局<br>扫雷胜利：${state.modules.brain.minesweeper.stats.won||0}局<br>推箱子通关：${state.modules.brain.sokoban.stats.won||0}关<br>当前来源：${location.protocol}<br>最近更新：${new Date(state.updatedAt).toLocaleString('zh-CN')}`;$('#backupBadge').textContent=state.settings.lastExternalBackupAt?`外部备份：${new Date(state.settings.lastExternalBackupAt).toLocaleDateString('zh-CN')}`:'外部备份尚未建立'}
 
 const SUDOKU_LEVELS={easy:{label:'简单',clues:42},medium:{label:'中等',clues:34},hard:{label:'困难',clues:28}};
 let sudokuSelected=-1,sudokuChecked=false,sudokuTimer=null;
