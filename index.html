@@ -526,13 +526,6 @@ dialog{border:0;border-radius:21px;padding:0;width:min(680px,calc(100% - 20px));
 .calendar-day.has-mood .calendar-day-meta{width:max-content;max-width:100%;padding:3px 5px;border-radius:7px;background:#ffffffc9}
 .calendar-dot.mood{background:#d16e8b;box-shadow:0 0 0 2px #fff9}
 .mood-journal{display:grid;gap:15px}
-.mood-color-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px}
-.mood-color-card{border:1px solid var(--line);border-radius:15px;background:#fff9;padding:12px;display:grid;gap:8px}
-.mood-color-card strong{display:flex;align-items:center;justify-content:space-between;gap:8px}
-.mood-color-card small{color:var(--muted);line-height:1.4}
-.mood-color-card input[type="color"]{width:100%;height:48px;border:1px solid var(--line);border-radius:11px;padding:3px;background:#fff;cursor:pointer}
-.mood-color-card input[type="color"]::-webkit-color-swatch-wrapper{padding:0}
-.mood-color-card input[type="color"]::-webkit-color-swatch{border:0;border-radius:8px}
 .mood-color-actions{display:flex;justify-content:flex-end;align-items:center;gap:9px;flex-wrap:wrap}
 .mood-preview{height:58px;border:1px solid var(--line);border-radius:13px;overflow:hidden;display:grid;grid-template-rows:repeat(3,1fr);min-width:145px;box-shadow:inset 0 0 0 1px #fff7}
 .mood-preview span{display:block}
@@ -548,7 +541,7 @@ dialog{border:0;border-radius:21px;padding:0;width:min(680px,calc(100% - 20px));
 .mood-entry-main small{display:block;margin-top:5px;color:var(--muted);font-size:11px}
 .mood-entry-delete{border:0;background:transparent;color:#9a5047;font-weight:900;font-size:18px;line-height:1;cursor:pointer;padding:3px 5px}
 .mood-journal-tip{color:var(--muted);font-size:12px;line-height:1.55}
-@media(max-width:760px){.mood-color-grid{grid-template-columns:1fr}.mood-compose{grid-template-columns:1fr}.mood-compose .btn{min-height:44px}.mood-preview{width:100%}.calendar-day{min-height:83px;padding:6px}.calendar-day.has-mood .calendar-day-meta{font-size:9px}}
+@media(max-width:760px){.mood-compose{grid-template-columns:1fr}.mood-compose .btn{min-height:44px}.mood-preview{width:100%}.calendar-day{min-height:83px;padding:6px}.calendar-day.has-mood .calendar-day-meta{font-size:9px}}
 
 
 /* v1.9.18：修复场景背景替换层级 */
@@ -1614,6 +1607,73 @@ body.reader-fullscreen .reader-pdf{
   #view-brain .game-five-actions>.btn{font-size:8.5px!important}
 }
 
+
+/* v1.9.38：日历导航整齐排列与 20 色心情板 */
+#view-calendar .calendar-main-toolbar{
+  display:grid!important;grid-template-columns:1fr!important;gap:6px!important;
+  width:100%!important;padding:7px!important;box-sizing:border-box!important
+}
+#view-calendar .calendar-month-row{
+  display:grid!important;grid-template-columns:minmax(0,1fr) auto!important;
+  align-items:center!important;gap:6px!important;width:100%!important
+}
+#view-calendar .calendar-month-row #calendarMonth{
+  width:100%!important;max-width:none!important;min-width:0!important;margin:0!important
+}
+#view-calendar .calendar-month-row #calendarCheckinBtn{
+  width:auto!important;min-width:108px!important;white-space:nowrap!important;margin:0!important
+}
+#view-calendar .calendar-nav-equal{
+  display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  gap:5px!important;width:100%!important;flex-wrap:nowrap!important
+}
+#view-calendar .calendar-nav-equal>.btn{
+  width:100%!important;min-width:0!important;margin:0!important;white-space:nowrap!important
+}
+#view-calendar .mood-color-picker{display:grid;gap:8px}
+#view-calendar .mood-period-color-tabs{
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:5px
+}
+#view-calendar .mood-period-color-btn{
+  min-width:0;min-height:31px;padding:4px 6px;border:2px solid #80684f;border-radius:4px;
+  background:#f4e6b8;color:var(--ink);font:inherit;font-size:11px;font-weight:850;
+  display:flex;align-items:center;justify-content:center;gap:5px;cursor:pointer;
+  box-shadow:inset 0 0 0 1px #fff2cb
+}
+#view-calendar .mood-period-color-btn.active{
+  background:#dce8c7;border-color:#5d7d45;box-shadow:inset 0 0 0 2px #f3f7df
+}
+#view-calendar .mood-period-dot{
+  width:12px;height:12px;flex:0 0 12px;border-radius:2px;border:1px solid #4d3c2a66
+}
+#view-calendar .mood-palette{
+  display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:5px;
+  padding:7px;border:1px solid var(--line);background:#fff8dc;border-radius:5px
+}
+#view-calendar .mood-swatch{
+  aspect-ratio:1/1;min-width:0;padding:2px;border:2px solid transparent;border-radius:4px;
+  background:#fff;cursor:pointer;box-shadow:none
+}
+#view-calendar .mood-swatch span{
+  display:block;width:100%;height:100%;min-height:22px;border-radius:2px;
+  background:var(--mood-swatch);border:1px solid #4b382844
+}
+#view-calendar .mood-swatch.active{
+  border-color:#4f6f3d;background:#f3f5df;box-shadow:0 0 0 1px #fff inset
+}
+#view-calendar .mood-color-actions{display:grid!important;grid-template-columns:minmax(120px,1fr) auto!important;width:100%}
+#view-calendar .mood-preview{width:100%;min-width:0;height:42px}
+@media(max-width:520px){
+  #view-calendar .calendar-month-row{grid-template-columns:minmax(0,1fr) auto!important}
+  #view-calendar .calendar-month-row #calendarCheckinBtn{min-width:96px!important;font-size:9.5px!important;padding-left:4px!important;padding-right:4px!important}
+  #view-calendar .calendar-nav-equal{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+  #view-calendar .calendar-nav-equal>.btn{font-size:10px!important;padding-left:2px!important;padding-right:2px!important}
+  #view-calendar .mood-palette{grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}
+  #view-calendar .mood-swatch span{min-height:27px}
+  #view-calendar .mood-color-actions{grid-template-columns:minmax(0,1fr) auto!important}
+  #view-calendar .mood-color-actions>.btn{width:auto!important;min-width:92px!important}
+}
+
 </style>
 </head>
 <body>
@@ -1642,9 +1702,9 @@ body.reader-fullscreen .reader-pdf{
   <div class="grid kpi" id="calendarKpis"></div>
   <section class="panel section">
     <div class="section-head"><h2>🗓️ 小松鼠日历计划本</h2><span>过去可以写日记，未来可以排计划</span></div>
-    <div class="calendar-toolbar">
-      <div class="calendar-nav"><button class="btn ghost" id="calendarPrevBtn">‹ 上个月</button><input id="calendarMonth" type="month" aria-label="选择月份"><button class="btn ghost" id="calendarNextBtn">下个月 ›</button></div>
-      <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn soft" id="calendarCheckinBtn">今日打卡 +5🪙</button><button class="btn soft" id="calendarTodayBtn">回到今天</button></div>
+    <div class="calendar-toolbar calendar-main-toolbar">
+      <div class="calendar-month-row"><input id="calendarMonth" type="month" aria-label="选择月份"><button class="btn soft" id="calendarCheckinBtn">今日打卡 +5🪙</button></div>
+      <div class="calendar-nav calendar-nav-equal"><button class="btn ghost" id="calendarPrevBtn">上个月</button><button class="btn soft" id="calendarTodayBtn">回到今天</button><button class="btn ghost" id="calendarNextBtn">下个月</button></div>
     </div>
     <div class="calendar-weekdays"><div>一</div><div>二</div><div>三</div><div>四</div><div>五</div><div>六</div><div>日</div></div>
     <div class="calendar-grid" id="calendarGrid"></div>
@@ -1669,10 +1729,16 @@ body.reader-fullscreen .reader-pdf{
   <section class="panel section mood-journal-section">
     <div class="section-head"><div><h2>🎨 心情记录本</h2><span id="moodJournalDate">上午、下午、晚上各留下一种颜色</span></div><span>碎碎念可以随时追加</span></div>
     <div class="mood-journal">
-      <div class="mood-color-grid">
-        <label class="mood-color-card"><strong><span>🌤️ 上午</span><span>上段</span></strong><input id="moodColorMorning" type="color" value="#f2d7a2" aria-label="上午心情颜色"><small>显示在日历格子的最上方。</small></label>
-        <label class="mood-color-card"><strong><span>☀️ 下午</span><span>中段</span></strong><input id="moodColorAfternoon" type="color" value="#b8d8b2" aria-label="下午心情颜色"><small>显示在日历格子的中间。</small></label>
-        <label class="mood-color-card"><strong><span>🌙 晚上</span><span>下段</span></strong><input id="moodColorEvening" type="color" value="#b9b3d8" aria-label="晚上心情颜色"><small>显示在日历格子的最下方。</small></label>
+      <div class="mood-color-picker">
+        <div class="mood-period-color-tabs" id="moodPeriodColorTabs" aria-label="选择要设置颜色的时段">
+          <button type="button" class="mood-period-color-btn active" data-mood-color-period="morning"><span class="mood-period-dot" id="moodPeriodDotMorning"></span><span>🌤️ 上午</span></button>
+          <button type="button" class="mood-period-color-btn" data-mood-color-period="afternoon"><span class="mood-period-dot" id="moodPeriodDotAfternoon"></span><span>☀️ 下午</span></button>
+          <button type="button" class="mood-period-color-btn" data-mood-color-period="evening"><span class="mood-period-dot" id="moodPeriodDotEvening"></span><span>🌙 晚上</span></button>
+        </div>
+        <div class="mood-palette" id="moodPalette" aria-label="20种心情颜色"></div>
+        <input id="moodColorMorning" type="hidden" value="#f2b8b5">
+        <input id="moodColorAfternoon" type="hidden" value="#a8d4b0">
+        <input id="moodColorEvening" type="hidden" value="#9389b4">
       </div>
       <div class="mood-color-actions"><div class="mood-preview" id="moodColorPreview" aria-label="三段心情颜色预览"></div><button class="btn primary" id="moodSaveColorsBtn">保存三段颜色</button></div>
       <div class="mood-journal-tip">颜色由你自由决定，不必规定“好心情”或“坏心情”必须是什么颜色。一天里的情绪也可以完全不同。</div>
@@ -2069,7 +2135,7 @@ body.reader-fullscreen .reader-pdf{
 <dialog id="budgetDialog"><div class="dialog-inner"><h3>调整月预算与存款</h3><div id="budgetEditor" class="grid"></div><div class="dialog-actions"><button class="btn ghost" data-close="budgetDialog">取消</button><button class="btn primary" id="saveBudgetBtn">保存预算</button></div></div></dialog>
 <div class="toast" id="toast"></div>
 <script>
-const SEED={"app":"squirrel-life-housekeeper","schemaVersion":37,"createdAt":"2026-07-26T10:46:08.637104+00:00","updatedAt":"2026-07-26T10:46:08.637104+00:00","ledger":{"budgets":{"基础生活":0,"小额幸福":0,"临时愿望":0,"医疗应急":0,"月底缓冲":0},"categories":["餐饮外卖","买菜食材","零食饮品","交通","话费","水电","日用品","游戏","书籍","家居","植物","娃娃","美容护理","衣物","医疗","退款/补贴","其他"],"accounts":["生活卡","储蓄卡","现金","其他"],"natures":["必需","幸福微需","幸福"],"records":[],"currentSavings":0.0,"monthlySavings":{}},"chores":{"items":[{"id":"chore-toilet","name":"马桶","icon":"🚽","interval":3,"lastDone":"","note":"刷洗内壁、外侧和底座","history":[]},{"id":"chore-shower","name":"淋浴间","icon":"🚿","interval":7,"lastDone":"","note":"地漏、墙面和玻璃","history":[]},{"id":"chore-floor","name":"地面","icon":"🧹","interval":4,"lastDone":"","note":"扫地或拖地","history":[]},{"id":"chore-pillowcase","name":"枕套","icon":"🛏️","interval":7,"lastDone":"","note":"单独换洗","history":[]},{"id":"chore-sheet","name":"床单","icon":"🛏️","interval":14,"lastDone":"","note":"单独换洗","history":[]},{"id":"chore-duvet","name":"被套","icon":"🛏️","interval":21,"lastDone":"","note":"单独换洗","history":[]},{"id":"chore-fridge","name":"冰箱冷藏间","icon":"🧊","interval":30,"lastDone":"","note":"内壁、隔板、抽屉和过期食品","history":[]}]},"modules":{"plants":{"enabled":false,"items":[]},"pantry":{"enabled":false,"items":[]},"habits":{"enabled":false,"items":[]},"brain":{"enabled":true,"sudoku":{"stats":{"played":0,"completed":0,"bestSeconds":null},"current":null,"history":[]},"activeGame":"sudoku","freecell":{"stats":{"played":0,"won":0,"bestMoves":null,"bestSeconds":null},"current":null,"history":[],"autoCollect":true,"libraryDifficulty":"easy","libraryPuzzleNo":1,"recentPuzzles":[],"completedPuzzles":{"easy":[],"medium":[],"hard":[]}},"minesweeper":{"stats":{"played":0,"won":0,"lost":0,"bestSeconds":{"easy":null,"medium":null,"hard":null}},"current":null,"history":[]},"sokoban":{"stats":{"played":0,"won":0,"bestMoves":null,"bestPushes":null},"current":null,"history":[],"libraryDifficulty":"easy","libraryPuzzleNo":1,"recentPuzzles":[],"completedPuzzles":{"easy":[],"medium":[],"hard":[]},"difficultyRevision":3}},"wishlist":{"enabled":true,"defaultCooldownDays":7,"items":[]},"calendar":{"enabled":true,"visibleMonth":"","selectedDate":"","entries":{}},"dreams":{"enabled":true,"selectedDate":"","entries":{}},"tamagotchi":{"enabled":true,"current":null,"residents":[{"id":"resident-milu","name":"米露","emoji":"🐰","personality":"温柔的面包师，喜欢分享胡萝卜面包。","friendship":18,"lastTalkDate":""},{"id":"resident-lili","name":"栗栗","emoji":"🐿️","personality":"活泼的收集家，总能找到亮晶晶的小东西。","friendship":22,"lastTalkDate":""},{"id":"resident-achi","name":"阿赤","emoji":"🦊","personality":"有点傲娇的邮差，熟悉村里的每条小路。","friendship":12,"lastTalkDate":""},{"id":"resident-mimi","name":"蜜蜜","emoji":"🐻","personality":"慢吞吞的蜂蜜店老板，最擅长安慰别人。","friendship":15,"lastTalkDate":""},{"id":"resident-doudou","name":"豆豆","emoji":"🐹","personality":"热心的小修理匠，什么坏掉了都想试着修。","friendship":10,"lastTalkDate":""},{"id":"resident-fio","name":"菲奥","emoji":"🦉","personality":"安静寡言的夜巡者，总会在树屋熄灯前确认大家平安回家。","friendship":16,"lastTalkDate":""},{"id":"resident-xiaoha","name":"小哈","emoji":"🐶","personality":"热情又可靠的小狗居民，喜欢在村口迎接大家，也会陪朋友散步和找东西。","friendship":14,"lastTalkDate":""}],"event":null,"lastEventDate":"","lastEventSummary":"","scene":"forest","history":[],"memorials":[],"decorCoins":100,"decorWalletInitialized":true,"decorPresetVersion":2,"decorUnlocked":["flower-yellow","mushroom-red"],"decorPlacements":{"forest":[],"home":[],"meadow":[],"village":[]},"decorInitializedScenes":{},"decorBaseSeeded":false,"foodInventory":{"carrot":2,"apple":1,"bread":1},"foodStarterGranted":true,"toyUnlocked":["ball"],"activityRewards":{"ledger":[],"calendar":[]},"wanderEnabled":true},"reader":{"enabled":true,"bookMeta":null,"chapterIndex":0,"fontSize":18,"lineHeight":1.85,"theme":"paper","progressByChapter":{},"lastOpenedAt":"","notesByBook":{},"library":[],"selectedShelfId":""}},"settings":{"autoDailyDownload":true,"lastExternalBackupAt":"","lastExternalBackupDay":"","theme":"sage","currency":"CNY"}};
+const SEED={"app":"squirrel-life-housekeeper","schemaVersion":38,"createdAt":"2026-07-26T10:46:08.637104+00:00","updatedAt":"2026-07-26T10:46:08.637104+00:00","ledger":{"budgets":{"基础生活":0,"小额幸福":0,"临时愿望":0,"医疗应急":0,"月底缓冲":0},"categories":["餐饮外卖","买菜食材","零食饮品","交通","话费","水电","日用品","游戏","书籍","家居","植物","娃娃","美容护理","衣物","医疗","退款/补贴","其他"],"accounts":["生活卡","储蓄卡","现金","其他"],"natures":["必需","幸福微需","幸福"],"records":[],"currentSavings":0.0,"monthlySavings":{}},"chores":{"items":[{"id":"chore-toilet","name":"马桶","icon":"🚽","interval":3,"lastDone":"","note":"刷洗内壁、外侧和底座","history":[]},{"id":"chore-shower","name":"淋浴间","icon":"🚿","interval":7,"lastDone":"","note":"地漏、墙面和玻璃","history":[]},{"id":"chore-floor","name":"地面","icon":"🧹","interval":4,"lastDone":"","note":"扫地或拖地","history":[]},{"id":"chore-pillowcase","name":"枕套","icon":"🛏️","interval":7,"lastDone":"","note":"单独换洗","history":[]},{"id":"chore-sheet","name":"床单","icon":"🛏️","interval":14,"lastDone":"","note":"单独换洗","history":[]},{"id":"chore-duvet","name":"被套","icon":"🛏️","interval":21,"lastDone":"","note":"单独换洗","history":[]},{"id":"chore-fridge","name":"冰箱冷藏间","icon":"🧊","interval":30,"lastDone":"","note":"内壁、隔板、抽屉和过期食品","history":[]}]},"modules":{"plants":{"enabled":false,"items":[]},"pantry":{"enabled":false,"items":[]},"habits":{"enabled":false,"items":[]},"brain":{"enabled":true,"sudoku":{"stats":{"played":0,"completed":0,"bestSeconds":null},"current":null,"history":[]},"activeGame":"sudoku","freecell":{"stats":{"played":0,"won":0,"bestMoves":null,"bestSeconds":null},"current":null,"history":[],"autoCollect":true,"libraryDifficulty":"easy","libraryPuzzleNo":1,"recentPuzzles":[],"completedPuzzles":{"easy":[],"medium":[],"hard":[]}},"minesweeper":{"stats":{"played":0,"won":0,"lost":0,"bestSeconds":{"easy":null,"medium":null,"hard":null}},"current":null,"history":[]},"sokoban":{"stats":{"played":0,"won":0,"bestMoves":null,"bestPushes":null},"current":null,"history":[],"libraryDifficulty":"easy","libraryPuzzleNo":1,"recentPuzzles":[],"completedPuzzles":{"easy":[],"medium":[],"hard":[]},"difficultyRevision":3}},"wishlist":{"enabled":true,"defaultCooldownDays":7,"items":[]},"calendar":{"enabled":true,"visibleMonth":"","selectedDate":"","entries":{}},"dreams":{"enabled":true,"selectedDate":"","entries":{}},"tamagotchi":{"enabled":true,"current":null,"residents":[{"id":"resident-milu","name":"米露","emoji":"🐰","personality":"温柔的面包师，喜欢分享胡萝卜面包。","friendship":18,"lastTalkDate":""},{"id":"resident-lili","name":"栗栗","emoji":"🐿️","personality":"活泼的收集家，总能找到亮晶晶的小东西。","friendship":22,"lastTalkDate":""},{"id":"resident-achi","name":"阿赤","emoji":"🦊","personality":"有点傲娇的邮差，熟悉村里的每条小路。","friendship":12,"lastTalkDate":""},{"id":"resident-mimi","name":"蜜蜜","emoji":"🐻","personality":"慢吞吞的蜂蜜店老板，最擅长安慰别人。","friendship":15,"lastTalkDate":""},{"id":"resident-doudou","name":"豆豆","emoji":"🐹","personality":"热心的小修理匠，什么坏掉了都想试着修。","friendship":10,"lastTalkDate":""},{"id":"resident-fio","name":"菲奥","emoji":"🦉","personality":"安静寡言的夜巡者，总会在树屋熄灯前确认大家平安回家。","friendship":16,"lastTalkDate":""},{"id":"resident-xiaoha","name":"小哈","emoji":"🐶","personality":"热情又可靠的小狗居民，喜欢在村口迎接大家，也会陪朋友散步和找东西。","friendship":14,"lastTalkDate":""}],"event":null,"lastEventDate":"","lastEventSummary":"","scene":"forest","history":[],"memorials":[],"decorCoins":100,"decorWalletInitialized":true,"decorPresetVersion":2,"decorUnlocked":["flower-yellow","mushroom-red"],"decorPlacements":{"forest":[],"home":[],"meadow":[],"village":[]},"decorInitializedScenes":{},"decorBaseSeeded":false,"foodInventory":{"carrot":2,"apple":1,"bread":1},"foodStarterGranted":true,"toyUnlocked":["ball"],"activityRewards":{"ledger":[],"calendar":[]},"wanderEnabled":true},"reader":{"enabled":true,"bookMeta":null,"chapterIndex":0,"fontSize":18,"lineHeight":1.85,"theme":"paper","progressByChapter":{},"lastOpenedAt":"","notesByBook":{},"library":[],"selectedShelfId":""}},"settings":{"autoDailyDownload":true,"lastExternalBackupAt":"","lastExternalBackupDay":"","theme":"sage","currency":"CNY"}};
 const APP_ID='squirrel-life-housekeeper';
 const DB_NAME='SquirrelLifeHousekeeperDB';
 const DB_VERSION=3;
@@ -2103,7 +2169,7 @@ function migrate(input){
    return fresh;
  }
  if(!s||s.app!==APP_ID)return clone(SEED);
- s.schemaVersion=37;
+ s.schemaVersion=38;
  s.ledger=s.ledger||clone(SEED.ledger);
  s.ledger.budgets={...clone(SEED.ledger.budgets),...(s.ledger.budgets||{})};
  s.ledger.currentSavings=Math.max(0,Number(s.ledger.currentSavings)||0);
@@ -2182,9 +2248,9 @@ function migrate(input){
  return s;
 }
 async function loadState(){db=await openDB();const primary=await idbGet('state','current').catch(()=>null);let mirror=null;try{mirror=JSON.parse(localStorage.getItem(MIRROR_KEY)||'null')}catch{};const choices=[primary,mirror].filter(Boolean).map(migrate);state=choices.sort((a,b)=>String(b.updatedAt||'').localeCompare(String(a.updatedAt||'')))[0]||clone(SEED);await persist('启动同步',false,false)}
-function backupPayload(){return {app:APP_ID,schemaVersion:37,exportedAt:nowISO(),data:clone(state)}}
+function backupPayload(){return {app:APP_ID,schemaVersion:38,exportedAt:nowISO(),data:clone(state)}}
 function downloadBackup(label='手动备份'){const payload=JSON.stringify(backupPayload(),null,2);const blob=new Blob([payload],{type:'application/json;charset=utf-8'});const u=URL.createObjectURL(blob);const a=document.createElement('a');const d=new Date();const stamp=`${today()}_${String(d.getHours()).padStart(2,'0')}${String(d.getMinutes()).padStart(2,'0')}`;a.href=u;a.download=`小松鼠生活管家_${stamp}.json`;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),1000);toast(`${label}已生成`)}
-async function persist(reason='保存',userAction=true,makeSnapshot=true){state.app=APP_ID;state.schemaVersion=37;state.updatedAt=nowISO();let shouldDownload=false;if(userAction){const day=today();if(state.settings.everyChangeDownload)shouldDownload=true;else if(state.settings.autoDailyDownload&&state.settings.lastExternalBackupDay!==day)shouldDownload=true;if(shouldDownload){state.settings.lastExternalBackupDay=day;state.settings.lastExternalBackupAt=nowISO();downloadBackup(state.settings.everyChangeDownload?'修改备份':'今日自动备份')}}
+async function persist(reason='保存',userAction=true,makeSnapshot=true){state.app=APP_ID;state.schemaVersion=38;state.updatedAt=nowISO();let shouldDownload=false;if(userAction){const day=today();if(state.settings.everyChangeDownload)shouldDownload=true;else if(state.settings.autoDailyDownload&&state.settings.lastExternalBackupDay!==day)shouldDownload=true;if(shouldDownload){state.settings.lastExternalBackupDay=day;state.settings.lastExternalBackupAt=nowISO();downloadBackup(state.settings.everyChangeDownload?'修改备份':'今日自动备份')}}
  localStorage.setItem(MIRROR_KEY,JSON.stringify(state));await idbPut('state',clone(state),'current');if(makeSnapshot){const snap={id:`${Date.now()}-${Math.random()}`,at:nowISO(),reason,data:clone(state)};await idbPut('snapshots',snap);const all=(await idbAll('snapshots')).sort((a,b)=>String(b.at).localeCompare(String(a.at)));for(const old of all.slice(50))await idbDelete('snapshots',old.id)}renderAll()}
 function daysSince(s){if(!s)return null;const d=new Date(`${s}T00:00:00`);const n=new Date();const t=new Date(n.getFullYear(),n.getMonth(),n.getDate());return Math.max(0,Math.floor((t-d)/86400000))}
 function urgency(c){const d=daysSince(c.lastDone);return d===null?Infinity:d/Math.max(1,Number(c.interval))}
@@ -2196,7 +2262,14 @@ function renderHome(){const m=monthRecords();const exp=m.filter(r=>r.type==='支
 
 /* 日历计划本 */
 const MOOD_PERIODS=[{key:'morning',label:'上午',icon:'🌤️'},{key:'afternoon',label:'下午',icon:'☀️'},{key:'evening',label:'晚上',icon:'🌙'}];
-const MOOD_DEFAULT_COLORS={morning:'#f2d7a2',afternoon:'#b8d8b2',evening:'#b9b3d8'};
+const MOOD_PALETTE=[
+ {value:'#f2b8b5',name:'珊瑚粉'},{value:'#e8a4b8',name:'蔷薇粉'},{value:'#d8a7cd',name:'木槿紫'},{value:'#c7b5e5',name:'雾薰衣草'},{value:'#aebdea',name:'长春花蓝'},
+ {value:'#9fcbe3',name:'晴空蓝'},{value:'#8fd1c2',name:'薄荷湖绿'},{value:'#a8d4b0',name:'嫩叶绿'},{value:'#c9d88f',name:'青苹果'},{value:'#e5d486',name:'麦穗黄'},
+ {value:'#f1c57b',name:'杏子黄'},{value:'#e9a878',name:'蜜桃橙'},{value:'#d58f76',name:'陶土红'},{value:'#c79f84',name:'奶茶棕'},{value:'#b9aaa0',name:'暖雾灰'},
+ {value:'#9fb4a2',name:'桉叶绿'},{value:'#83a7b5',name:'雨水蓝'},{value:'#9389b4',name:'暮色紫'},{value:'#bd8195',name:'莓果红'},{value:'#aebfce',name:'云杉蓝'}
+];
+const MOOD_DEFAULT_COLORS={morning:'#f2b8b5',afternoon:'#a8d4b0',evening:'#9389b4'};
+let moodColorEditingPeriod='morning';
 function moodSafeColor(v,fallback='#f1eee8'){return /^#[0-9a-f]{6}$/i.test(String(v||''))?String(v).toLowerCase():fallback}
 function normalizeCalendarEntry(e,date=''){e=(e&&typeof e==='object')?e:{};e.date=e.date||date;e.todos=Array.isArray(e.todos)?e.todos:[];e.label=String(e.label||'');e.note=String(e.note||'');e.moodColors={morning:moodSafeColor(e.moodColors?.morning,MOOD_DEFAULT_COLORS.morning),afternoon:moodSafeColor(e.moodColors?.afternoon,MOOD_DEFAULT_COLORS.afternoon),evening:moodSafeColor(e.moodColors?.evening,MOOD_DEFAULT_COLORS.evening)};e.moodEntries=Array.isArray(e.moodEntries)?e.moodEntries.filter(x=>x&&String(x.text||'').trim()).map(x=>({id:x.id||uid('mood'),period:MOOD_PERIODS.some(p=>p.key===x.period)?x.period:'morning',text:String(x.text||'').slice(0,1200),clock:String(x.clock||''),createdAt:x.createdAt||nowISO()})):[];e.moodMarked=!!e.moodMarked||e.moodEntries.length>0;return e}
 function calendarData(){return state.modules.calendar}
@@ -2217,8 +2290,15 @@ function moodPeriodInfo(key){return MOOD_PERIODS.find(p=>p.key===key)||MOOD_PERI
 function moodBackground(e){if(!calendarHasMood(e))return'';const c=normalizeCalendarEntry(e,e.date).moodColors;return `<span class="calendar-mood-bg" aria-hidden="true"><i class="calendar-mood-band" style="background:${c.morning}"></i><i class="calendar-mood-band" style="background:${c.afternoon}"></i><i class="calendar-mood-band" style="background:${c.evening}"></i></span>`}
 function renderCalendarHome(){const C=calendarData(),todayEntry=calendarEntry(today()),todayPending=calendarPendingCount(todayEntry),moodCount=todayEntry?.moodEntries?.length||0,future=Object.values(C.entries||{}).flatMap(e=>(e.todos||[]).filter(t=>!t.done).map(t=>({date:e.date,text:t.text}))).filter(x=>x.date>=today()).sort((a,b)=>a.date.localeCompare(b.date));const el=$('#homeCalendarSummary');if(el)el.textContent=todayEntry?.label?`今天：${todayEntry.label}${todayPending?`，还有 ${todayPending} 项待办`:''}`:moodCount?`今天已经留下 ${moodCount} 条心情碎碎念。`:future.length?`下一项：${future[0].date} · ${future[0].text}`:'记录今天做了什么，也把之后的计划安稳放进日历。'}
 function renderCalendar(){const C=calendarData();if(!/^\d{4}-\d{2}$/.test(C.visibleMonth||''))C.visibleMonth=monthNow();const month=C.visibleMonth,selected=calendarSelected(),{days,leading}=calendarMonthDates(month),entries=C.entries||{};$('#calendarMonth').value=month;const monthEntries=Object.values(entries).filter(e=>e.date?.startsWith(month)),recorded=monthEntries.filter(calendarEntryMeaningful).length,pending=Object.values(entries).reduce((n,e)=>n+(e.todos||[]).filter(t=>!t.done).length,0),done=Object.values(entries).reduce((n,e)=>n+(e.todos||[]).filter(t=>t.done).length,0),moodDays=monthEntries.filter(calendarHasMood).length;$('#calendarKpis').innerHTML=[['本月有记录',`${recorded}天`,'标注、日记或心情'],['心情色块',`${moodDays}天`,'三段颜色铺满日期格'],['未完成计划',pending,'所有日期合计'],['已经完成',done,'打勾也算生活痕迹']].map(x=>`<article class="panel card kpi-card"><div class="label">${x[0]}</div><div class="value">${x[1]}</div><div class="sub">${x[2]}</div></article>`).join('');let cells=Array.from({length:leading},()=>'<button class="calendar-day empty" tabindex="-1"></button>');for(let day=1;day<=days;day++){const date=`${month}-${String(day).padStart(2,'0')}`,e=entries[date]?normalizeCalendarEntry(entries[date],date):null,pendingDay=calendarPendingCount(e),doneDay=e?.todos?.filter(t=>t.done).length||0,meta=[],hasMood=calendarHasMood(e);if(e?.note)meta.push('<span class="calendar-dot note" title="有日记"></span>');if(hasMood)meta.push(`<span class="calendar-dot mood" title="${e.moodEntries?.length||0}条心情记录"></span>`);if(pendingDay)meta.push(`<span class="calendar-dot todo"></span><span class="calendar-count">${pendingDay}待办</span>`);else if(doneDay)meta.push('<span class="calendar-dot done" title="待办已完成"></span>');cells.push(`<button class="calendar-day ${hasMood?'has-mood':''} ${date===today()?'today':''} ${date===selected?'selected':''}" data-calendar-date="${date}">${moodBackground(e)}<span class="calendar-day-number">${day}</span>${e?.label?`<span class="calendar-day-label">${esc(e.label)}</span>`:''}<span class="calendar-day-meta">${meta.join('')}</span></button>`)}$('#calendarGrid').innerHTML=cells.join('');renderCalendarDetail();renderCalendarUpcoming();renderCalendarHome()}
-function renderMoodJournal(){const date=calendarSelected(),e=calendarEntry(date),colors=e?.moodColors||MOOD_DEFAULT_COLORS;$('#moodJournalDate').textContent=`${date} · 上中下三段分别代表上午、下午和晚上`;$('#moodColorMorning').value=moodSafeColor(colors.morning,MOOD_DEFAULT_COLORS.morning);$('#moodColorAfternoon').value=moodSafeColor(colors.afternoon,MOOD_DEFAULT_COLORS.afternoon);$('#moodColorEvening').value=moodSafeColor(colors.evening,MOOD_DEFAULT_COLORS.evening);if(!$('#moodThoughtInput').value)$('#moodPeriod').value=date===chinaDate()?moodPeriodNow():'morning';renderMoodColorPreview();const rows=[...(e?.moodEntries||[])].sort((a,b)=>String(b.createdAt).localeCompare(String(a.createdAt)));$('#moodEntryList').innerHTML=rows.map(x=>{const info=moodPeriodInfo(x.period),color=moodSafeColor(colors[x.period],MOOD_DEFAULT_COLORS[x.period]);return `<article class="mood-entry"><div class="mood-entry-period"><span class="mood-entry-color" style="background:${color}"></span>${info.icon}${info.label}</div><div class="mood-entry-main">${esc(x.text)}<small>${esc(x.clock||'补记')} · 记录于 ${moodCreatedLabel(x.createdAt)}</small></div><button class="mood-entry-delete" data-mood-delete="${x.id}" aria-label="删除这条碎碎念">×</button></article>`}).join('')||'<div class="empty">这一天还没有碎碎念。想到什么就随手放进来，不必写成长日记。</div>'}
-function renderMoodColorPreview(){const el=$('#moodColorPreview');if(!el)return;const cs=[['Morning','morning'],['Afternoon','afternoon'],['Evening','evening']].map(([id,key])=>moodSafeColor($(`#moodColor${id}`)?.value,MOOD_DEFAULT_COLORS[key]));el.innerHTML=cs.map(c=>`<span style="background:${c}"></span>`).join('')}
+function renderMoodJournal(){const date=calendarSelected(),e=calendarEntry(date),colors=calendarHasMood(e)?e.moodColors:MOOD_DEFAULT_COLORS;$('#moodJournalDate').textContent=`${date} · 上中下三段分别代表上午、下午和晚上`;$('#moodColorMorning').value=moodSafeColor(colors.morning,MOOD_DEFAULT_COLORS.morning);$('#moodColorAfternoon').value=moodSafeColor(colors.afternoon,MOOD_DEFAULT_COLORS.afternoon);$('#moodColorEvening').value=moodSafeColor(colors.evening,MOOD_DEFAULT_COLORS.evening);if(!$('#moodThoughtInput').value)$('#moodPeriod').value=date===chinaDate()?moodPeriodNow():'morning';renderMoodColorPreview();const rows=[...(e?.moodEntries||[])].sort((a,b)=>String(b.createdAt).localeCompare(String(a.createdAt)));$('#moodEntryList').innerHTML=rows.map(x=>{const info=moodPeriodInfo(x.period),color=moodSafeColor(colors[x.period],MOOD_DEFAULT_COLORS[x.period]);return `<article class="mood-entry"><div class="mood-entry-period"><span class="mood-entry-color" style="background:${color}"></span>${info.icon}${info.label}</div><div class="mood-entry-main">${esc(x.text)}<small>${esc(x.clock||'补记')} · 记录于 ${moodCreatedLabel(x.createdAt)}</small></div><button class="mood-entry-delete" data-mood-delete="${x.id}" aria-label="删除这条碎碎念">×</button></article>`}).join('')||'<div class="empty">这一天还没有碎碎念。想到什么就随手放进来，不必写成长日记。</div>'}
+function moodInputId(period){return period==='afternoon'?'moodColorAfternoon':period==='evening'?'moodColorEvening':'moodColorMorning'}
+function renderMoodColorPicker(){
+ const current=moodSafeColor($(`#${moodInputId(moodColorEditingPeriod)}`)?.value,MOOD_DEFAULT_COLORS[moodColorEditingPeriod]);
+ $$('#moodPeriodColorTabs [data-mood-color-period]').forEach(b=>b.classList.toggle('active',b.dataset.moodColorPeriod===moodColorEditingPeriod));
+ for(const [id,key] of [['Morning','morning'],['Afternoon','afternoon'],['Evening','evening']]){const dot=$(`#moodPeriodDot${id}`);if(dot)dot.style.background=moodSafeColor($(`#moodColor${id}`)?.value,MOOD_DEFAULT_COLORS[key])}
+ const palette=$('#moodPalette');if(palette)palette.innerHTML=MOOD_PALETTE.map(c=>`<button type="button" class="mood-swatch ${c.value===current?'active':''}" data-mood-palette-color="${c.value}" title="${c.name}" aria-label="${c.name}" style="--mood-swatch:${c.value}"><span></span></button>`).join('')
+}
+function renderMoodColorPreview(){const el=$('#moodColorPreview');if(!el)return;const cs=[['Morning','morning'],['Afternoon','afternoon'],['Evening','evening']].map(([id,key])=>moodSafeColor($(`#moodColor${id}`)?.value,MOOD_DEFAULT_COLORS[key]));el.innerHTML=cs.map(c=>`<span style="background:${c}"></span>`).join('');renderMoodColorPicker()}
 function renderCalendarDetail(){const date=calendarSelected(),e=calendarEntry(date);$('#calendarSelectedTitle').textContent=calendarDateLabel(date);$('#calendarSelectedSub').textContent=date===today()?'今天的小窝记录':date<today()?'可以补写这一天发生的事':'可以提前安排这一天';$('#calendarLabel').value=e?.label||'';$('#calendarNote').value=e?.note||'';$('#calendarTodoList').innerHTML=(e?.todos||[]).map(t=>`<div class="calendar-todo ${t.done?'done':''}" data-calendar-todo="${t.id}"><input type="checkbox" data-calendar-todo-toggle="${t.id}" ${t.done?'checked':''} aria-label="完成待办"><div class="calendar-todo-main">${esc(t.text)}<small>${t.done&&t.completedAt?`完成于 ${new Date(t.completedAt).toLocaleString('zh-CN')}`:'尚未完成'}</small></div><button class="calendar-todo-delete" data-calendar-todo-delete="${t.id}" aria-label="删除">×</button></div>`).join('')||'<div class="empty" style="padding:24px 8px">这一天还没有待办。</div>';renderMoodJournal()}
 async function saveMoodColors(){const date=calendarSelected(),e=calendarEntry(date,true);e.moodColors={morning:moodSafeColor($('#moodColorMorning').value,MOOD_DEFAULT_COLORS.morning),afternoon:moodSafeColor($('#moodColorAfternoon').value,MOOD_DEFAULT_COLORS.afternoon),evening:moodSafeColor($('#moodColorEvening').value,MOOD_DEFAULT_COLORS.evening)};e.moodMarked=true;e.updatedAt=nowISO();await persist(`保存心情颜色：${date}`,true,true);toast('三段心情颜色已经铺进日历格')}
 async function addMoodThought(){const input=$('#moodThoughtInput'),text=input.value.trim();if(!text)return toast('先写下一点此刻的想法');const date=calendarSelected(),e=calendarEntry(date,true),period=MOOD_PERIODS.some(p=>p.key===$('#moodPeriod').value)?$('#moodPeriod').value:moodPeriodNow();e.moodEntries.push({id:uid('mood'),period,text,clock:date===chinaDate()?moodClockNow():'补记',createdAt:nowISO()});e.moodMarked=true;e.updatedAt=nowISO();input.value='';await persist(`记录心情碎碎念：${date}`,true,true);toast('这句话已经放进今天的心情记录本')}
@@ -2543,7 +2623,7 @@ function petWanderTick(){
  if(currentView!=='village'||petDecorMode||petBusy||petGamePanel||selectedPetTool||isPetNight())return;const T=tamagotchiData(),p=T.current,el=document.querySelector('[data-pet-avatar]');if(!T.wanderEnabled||!p?.alive||!el||el.classList.contains('leave')||el.classList.contains('visit')||el.classList.contains('sleeping'))return;const scene=T.scene||'forest',anchor=petPosition(scene),current=petWanderLivePositions[scene]||{...anchor,facing:1},rangeX=scene==='home'?20:30,rangeY=scene==='home'?12:17,stepX=scene==='home'?13:18,stepY=scene==='home'?8:11,minX=Math.max(10,anchor.x-rangeX),maxX=Math.min(90,anchor.x+rangeX),minY=Math.max(35,anchor.y-rangeY),maxY=Math.min(82,anchor.y+rangeY),x=Math.max(minX,Math.min(maxX,current.x+(Math.random()*2-1)*stepX)),y=Math.max(minY,Math.min(maxY,current.y+(Math.random()*2-1)*stepY)),dx=x-current.x,facing=Math.abs(dx)<.3?Number(current.facing||1):(dx>0?-1:1);petWanderLivePositions[scene]={x,y,scale:Number(anchor.scale||1),z:Number(anchor.z||30),facing};el.classList.add('wander-step');el.style.setProperty('--pet-x',`${x}%`);el.style.setProperty('--pet-y',`${y}%`);el.style.setProperty('--pet-facing',facing);setTimeout(()=>el?.classList.remove('wander-step'),3000)
 }
 function startPetWandering(){clearInterval(petWanderTimer);petWanderTimer=setInterval(petWanderTick,6200);setTimeout(petWanderTick,1800)}
-async function renderBackup(){const snaps=(await idbAll('snapshots')).sort((a,b)=>String(b.at).localeCompare(String(a.at)));let persisted=false;try{persisted=await navigator.storage?.persisted?.()}catch{};const external=state.settings.lastExternalBackupAt?new Date(state.settings.lastExternalBackupAt).toLocaleString('zh-CN'):'从未';$('#backupCards').innerHTML=[['主数据库','IndexedDB','浏览器内主要数据仓'],['本地镜像','已同步','localStorage 副本'],['版本快照',`${snaps.length}份`,'保留最近50次修改'],['外部备份',external,persisted?'浏览器存储已获持久权限':'仍建议保留下载的JSON']].map((x,i)=>`<div class="backup-card"><div class="label">${x[0]}</div><strong class="${i===3&&!state.settings.lastExternalBackupAt?'warn':'safe'}">${x[1]}</strong><p>${x[2]}</p></div>`).join('');$('#dailyBackupSwitch').classList.toggle('on',!!state.settings.autoDailyDownload);$('#everyChangeSwitch').classList.toggle('on',!!state.settings.everyChangeDownload);$('#snapshotList').innerHTML=snaps.slice(0,12).map(s=>`<div class="snapshot"><div><strong>${new Date(s.at).toLocaleString('zh-CN')}</strong><br><small>${esc(s.reason)}</small></div><button class="btn ghost" data-restore-snapshot="${s.id}">恢复</button></div>`).join('')||'<div class="empty">还没有版本快照。</div>';$('#diagnostics').innerHTML=`应用版本：1.9.37（脑力控件同排等宽精修）<br>数据结构版本：${state.schemaVersion}<br>阅读器：${readerData().bookMeta?esc(readerData().bookMeta.title||readerData().bookMeta.name):'当前无缓存'} · 小松鼠书架 ${readerLibrary().length} 本<br>账目：${state.ledger.records.length}笔<br>家务：${state.chores.items.length}项<br>日历记录：${Object.keys(state.modules.calendar.entries||{}).length}天<br>梦境记录：${Object.values(dreamsData().entries||{}).filter(dreamMeaningful).length}篇<br>餐厅与外卖：${restaurantData().items.length}次<br>树屋居民：${tamagotchiData().current?.name||'尚未领养'}<br>愿望：${state.modules.wishlist.items.length}件<br>数独完成：${state.modules.brain.sudoku.stats.completed||0}题<br>空当接龙胜利：${state.modules.brain.freecell.stats.won||0}局<br>扫雷胜利：${state.modules.brain.minesweeper.stats.won||0}局<br>推箱子通关：${state.modules.brain.sokoban.stats.won||0}关<br>当前来源：${location.protocol}<br>最近更新：${new Date(state.updatedAt).toLocaleString('zh-CN')}`;$('#backupBadge').textContent=state.settings.lastExternalBackupAt?`外部备份：${new Date(state.settings.lastExternalBackupAt).toLocaleDateString('zh-CN')}`:'外部备份尚未建立'}
+async function renderBackup(){const snaps=(await idbAll('snapshots')).sort((a,b)=>String(b.at).localeCompare(String(a.at)));let persisted=false;try{persisted=await navigator.storage?.persisted?.()}catch{};const external=state.settings.lastExternalBackupAt?new Date(state.settings.lastExternalBackupAt).toLocaleString('zh-CN'):'从未';$('#backupCards').innerHTML=[['主数据库','IndexedDB','浏览器内主要数据仓'],['本地镜像','已同步','localStorage 副本'],['版本快照',`${snaps.length}份`,'保留最近50次修改'],['外部备份',external,persisted?'浏览器存储已获持久权限':'仍建议保留下载的JSON']].map((x,i)=>`<div class="backup-card"><div class="label">${x[0]}</div><strong class="${i===3&&!state.settings.lastExternalBackupAt?'warn':'safe'}">${x[1]}</strong><p>${x[2]}</p></div>`).join('');$('#dailyBackupSwitch').classList.toggle('on',!!state.settings.autoDailyDownload);$('#everyChangeSwitch').classList.toggle('on',!!state.settings.everyChangeDownload);$('#snapshotList').innerHTML=snaps.slice(0,12).map(s=>`<div class="snapshot"><div><strong>${new Date(s.at).toLocaleString('zh-CN')}</strong><br><small>${esc(s.reason)}</small></div><button class="btn ghost" data-restore-snapshot="${s.id}">恢复</button></div>`).join('')||'<div class="empty">还没有版本快照。</div>';$('#diagnostics').innerHTML=`应用版本：1.9.38（日历导航与20色心情板）<br>数据结构版本：${state.schemaVersion}<br>阅读器：${readerData().bookMeta?esc(readerData().bookMeta.title||readerData().bookMeta.name):'当前无缓存'} · 小松鼠书架 ${readerLibrary().length} 本<br>账目：${state.ledger.records.length}笔<br>家务：${state.chores.items.length}项<br>日历记录：${Object.keys(state.modules.calendar.entries||{}).length}天<br>梦境记录：${Object.values(dreamsData().entries||{}).filter(dreamMeaningful).length}篇<br>餐厅与外卖：${restaurantData().items.length}次<br>树屋居民：${tamagotchiData().current?.name||'尚未领养'}<br>愿望：${state.modules.wishlist.items.length}件<br>数独完成：${state.modules.brain.sudoku.stats.completed||0}题<br>空当接龙胜利：${state.modules.brain.freecell.stats.won||0}局<br>扫雷胜利：${state.modules.brain.minesweeper.stats.won||0}局<br>推箱子通关：${state.modules.brain.sokoban.stats.won||0}关<br>当前来源：${location.protocol}<br>最近更新：${new Date(state.updatedAt).toLocaleString('zh-CN')}`;$('#backupBadge').textContent=state.settings.lastExternalBackupAt?`外部备份：${new Date(state.settings.lastExternalBackupAt).toLocaleDateString('zh-CN')}`:'外部备份尚未建立'}
 
 const SUDOKU_LEVELS={easy:{label:'简单',clues:42},medium:{label:'中等',clues:34},hard:{label:'困难',clues:28}};
 let sudokuSelected=-1,sudokuChecked=false,sudokuTimer=null;
@@ -3023,7 +3103,8 @@ $('#calendarTodoList').onclick=e=>{const toggle=e.target.closest('[data-calendar
 $('#calendarUpcoming').onclick=e=>{const b=e.target.closest('[data-calendar-jump]');if(b)selectCalendarDate(b.dataset.calendarJump)};
 $('#moodSaveColorsBtn').onclick=saveMoodColors;
 $('#moodAddThoughtBtn').onclick=addMoodThought;
-['Morning','Afternoon','Evening'].forEach(k=>$(`#moodColor${k}`).oninput=renderMoodColorPreview);
+$('#moodPeriodColorTabs').onclick=e=>{const b=e.target.closest('[data-mood-color-period]');if(!b)return;moodColorEditingPeriod=b.dataset.moodColorPeriod;renderMoodColorPicker()};
+$('#moodPalette').onclick=e=>{const b=e.target.closest('[data-mood-palette-color]');if(!b)return;const input=$(`#${moodInputId(moodColorEditingPeriod)}`);if(input)input.value=b.dataset.moodPaletteColor;renderMoodColorPreview()};
 $('#moodThoughtInput').onkeydown=e=>{if((e.ctrlKey||e.metaKey)&&e.key==='Enter'){e.preventDefault();addMoodThought()}};
 $('#moodEntryList').onclick=e=>{const b=e.target.closest('[data-mood-delete]');if(b)deleteMoodThought(b.dataset.moodDelete)};
 $('#ledgerForm').onsubmit=async e=>{e.preventDefault();const t=$('#ledgerType').value,a=Number($('#ledgerAmount').value);if(!a||a<=0)return toast('请填写正确金额');const payload={date:$('#ledgerDate').value,type:t,pool:t==='支出'?$('#ledgerPool').value:'',category:$('#ledgerCategory').value,amount:a,account:$('#ledgerAccount').value,nature:t==='支出'?$('#ledgerNature').value:'',note:$('#ledgerNote').value.trim(),updatedAt:nowISO()};const id=$('#ledgerEditId').value;if(id){Object.assign(state.ledger.records.find(r=>r.id===id),payload)}else state.ledger.records.push({id:uid('ledger'),createdAt:nowISO(),...payload});const reward=!id?claimDailyActivityReward('ledger',payload.date):0;$('#ledgerDialog').close();$('#ledgerMonth').value=payload.date.slice(0,7);await persist(id?'编辑账目':'新增账目',true,true);if(reward)toast(`今日记账完成 · +${reward}积分`)};
