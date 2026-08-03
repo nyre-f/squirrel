@@ -1243,6 +1243,64 @@ body.reader-fullscreen .reader-pdf{height:calc(100dvh - 230px)!important;min-hei
  body.reader-fullscreen .reader-pdf{height:calc(100dvh - 190px)!important;min-height:480px!important}
 }
 
+
+
+/* v1.9.34：阅读器紧凑按钮与单行工具栏 */
+#view-reader .btn{
+  min-height:30px!important;padding:5px 7px!important;
+  font-size:11px!important;line-height:1.1!important;
+  border-width:2px!important;box-shadow:inset 0 0 0 1px rgba(255,248,218,.5),0 2px 0 #765b43!important;
+  white-space:nowrap
+}
+#view-reader .section-head{margin-bottom:8px!important}
+#view-reader .section-head h2{padding:5px 8px!important;font-size:14px!important}
+#view-reader .section-head span{font-size:10px!important}
+.reader-toolbar{
+  display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;
+  gap:5px!important;padding:7px!important;margin-bottom:8px!important;align-items:center!important
+}
+.reader-toolbar>.btn,.reader-toolbar>label.btn{width:100%!important;min-width:0!important;margin:0!important;text-align:center!important}
+.reader-toolbar .status-pill{
+  grid-column:1/-1!important;width:100%!important;min-height:22px!important;
+  margin:0!important;padding:3px 6px!important;font-size:10px!important;justify-content:center!important
+}
+.reader-note-jump{margin-left:0!important}
+.reader-book-head{display:grid!important;grid-template-columns:minmax(0,1fr) auto!important;gap:7px!important;padding:8px!important;align-items:center!important}
+.reader-book-title{font-size:17px!important}.reader-book-meta{font-size:10px!important;margin-top:3px!important;line-height:1.35!important}
+.reader-settings{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:4px!important;min-width:230px!important}
+.reader-settings .btn{width:100%!important;min-width:0!important;padding:5px 4px!important}
+.reader-chapter-bar{grid-template-columns:70px minmax(0,1fr) 70px!important;gap:4px!important}
+.reader-chapter-bar .btn{width:100%!important;padding:5px 3px!important}
+.reader-chapter-bar select{height:30px!important;padding:3px 5px!important;font-size:11px!important}
+.reader-progress-row{gap:6px!important;padding:4px 1px!important;font-size:10px!important;flex-wrap:nowrap!important}
+.reader-progress-track{height:6px!important;min-width:70px!important}
+.reader-note-actions,.reader-note-card-actions,.reader-shelf-note-actions{display:flex!important;gap:4px!important;flex-wrap:nowrap!important}
+.reader-note-actions .btn,.reader-note-card-actions .btn{min-width:72px!important}
+.reader-shelf-toolbar{display:grid!important;grid-template-columns:auto minmax(0,1fr)!important;gap:6px!important;align-items:center!important;margin-bottom:8px!important}
+.reader-shelf-toolbar .status-pill{min-height:24px!important;padding:3px 6px!important;font-size:10px!important;justify-content:center!important}
+.reader-shelf-actions{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:4px!important;width:min(310px,100%)!important}
+.reader-shelf-actions .btn{width:100%!important;min-width:0!important;padding:5px 3px!important}
+.reader-shelf-note-actions .btn{margin-left:auto!important}
+.reader-note-card{padding:9px!important}.reader-note-card-actions{margin-top:5px!important}
+.reader-note-page{padding-top:12px!important;padding-bottom:12px!important}
+.reader-shelf-detail-head{gap:7px!important}
+@media(max-width:760px){
+  body.reader-fullscreen #view-reader>.panel.section{padding:7px!important}
+  .reader-toolbar{grid-template-columns:repeat(4,minmax(0,1fr))!important}
+  .reader-book-head{grid-template-columns:1fr!important}
+  .reader-settings{min-width:0!important;width:100%!important}
+  .reader-chapter-bar{grid-template-columns:64px minmax(0,1fr) 64px!important}
+  .reader-chapter-bar select{grid-column:auto!important;grid-row:auto!important}
+  .reader-progress-row #readerChapterCount{max-width:74px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .reader-shelf-actions{width:100%!important}
+}
+@media(max-width:390px){
+  #view-reader .btn{font-size:10px!important;padding:4px 3px!important;min-height:28px!important}
+  .reader-toolbar{gap:3px!important;padding:5px!important}
+  .reader-chapter-bar{grid-template-columns:58px minmax(0,1fr) 58px!important;gap:3px!important}
+  .reader-settings{gap:3px!important}
+}
+
 </style>
 </head>
 <body>
@@ -1385,11 +1443,11 @@ body.reader-fullscreen .reader-pdf{height:calc(100dvh - 230px)!important;min-hei
   <section class="panel section">
     <div class="section-head"><h2>📖 小松鼠阅读器</h2><span>缓存里只保留一本书，上传新书会替换旧书</span></div>
     <div class="reader-toolbar">
-      <label class="btn primary" for="readerFile">＋ 上传 / 替换电子书</label>
+      <label class="btn primary" for="readerFile">＋ 上传/换书</label>
       <input id="readerFile" type="file" hidden accept=".txt,.md,.markdown,.html,.htm,.pdf,.epub,text/plain,text/markdown,text/html,application/pdf,application/epub+zip">
-      <button class="btn ghost" id="readerClearBtn">清除当前书籍</button>
-      <button class="btn soft reader-note-jump" id="readerNoteJumpBtn">📝 读书笔记</button>
-      <button class="btn soft" id="readerFinishBtn">✓ 标记读完</button>
+      <button class="btn ghost" id="readerClearBtn">清除</button>
+      <button class="btn soft reader-note-jump" id="readerNoteJumpBtn">📝 笔记</button>
+      <button class="btn soft" id="readerFinishBtn">✓ 读完</button>
       <span class="status-pill" id="readerCacheStatus">正在检查书架……</span>
     </div>
     <div class="reader-empty" id="readerEmpty">
@@ -1406,9 +1464,9 @@ body.reader-fullscreen .reader-pdf{height:calc(100dvh - 230px)!important;min-hei
         </div>
       </div>
       <div class="reader-chapter-bar" id="readerChapterBar">
-        <button class="btn ghost" id="readerPrevChapterBtn">‹ 上一章</button>
+        <button class="btn ghost" id="readerPrevChapterBtn">‹ 上章</button>
         <select id="readerChapterSelect" aria-label="选择章节"></select>
-        <button class="btn ghost" id="readerNextChapterBtn">下一章 ›</button>
+        <button class="btn ghost" id="readerNextChapterBtn">下章 ›</button>
       </div>
       <div class="reader-page-frame">
         <article class="reader-content" id="readerContent" tabindex="0"></article>
@@ -1425,14 +1483,14 @@ body.reader-fullscreen .reader-pdf{height:calc(100dvh - 230px)!important;min-hei
         <input class="reader-note-title" id="readerNoteTitle" maxlength="100" placeholder="这条笔记的小标题（可以不写）">
         <textarea class="reader-note-text" id="readerNoteText" maxlength="5000" placeholder="写下喜欢的句子、读到这里想到的事情，或者对人物和情节的感觉……"></textarea>
         <input type="hidden" id="readerNoteEditId">
-        <div class="reader-note-actions"><button class="btn ghost hidden" id="readerNoteCancelBtn">取消编辑</button><button class="btn primary" id="readerNoteSaveBtn">保存这条笔记</button></div>
+        <div class="reader-note-actions"><button class="btn ghost hidden" id="readerNoteCancelBtn">取消编辑</button><button class="btn primary" id="readerNoteSaveBtn">保存笔记</button></div>
       </div>
     </div>
     <div class="reader-notes-list" id="readerNotesList"></div>
   </section>
   <section class="panel section" id="readerShelfPanel">
     <div class="section-head"><h2>🐿️ 小松鼠书架</h2><span>电子书和纸质书都会留下书名与笔记</span></div>
-    <div class="reader-shelf-toolbar"><button class="btn primary" id="readerAddPaperBtn">＋ 记录纸质书</button><span class="status-pill" id="readerShelfCount">还没有藏书</span></div>
+    <div class="reader-shelf-toolbar"><button class="btn primary" id="readerAddPaperBtn">＋ 纸质书</button><span class="status-pill" id="readerShelfCount">还没有藏书</span></div>
     <div class="reader-shelf-case"><div class="reader-shelf-grid" id="readerShelfGrid"></div></div>
     <div class="reader-shelf-detail hidden" id="readerShelfDetail"></div>
   </section>
@@ -2188,7 +2246,7 @@ function petWanderTick(){
  if(currentView!=='village'||petDecorMode||petBusy||petGamePanel||selectedPetTool||isPetNight())return;const T=tamagotchiData(),p=T.current,el=document.querySelector('[data-pet-avatar]');if(!T.wanderEnabled||!p?.alive||!el||el.classList.contains('leave')||el.classList.contains('visit')||el.classList.contains('sleeping'))return;const scene=T.scene||'forest',anchor=petPosition(scene),current=petWanderLivePositions[scene]||{...anchor,facing:1},rangeX=scene==='home'?20:30,rangeY=scene==='home'?12:17,stepX=scene==='home'?13:18,stepY=scene==='home'?8:11,minX=Math.max(10,anchor.x-rangeX),maxX=Math.min(90,anchor.x+rangeX),minY=Math.max(35,anchor.y-rangeY),maxY=Math.min(82,anchor.y+rangeY),x=Math.max(minX,Math.min(maxX,current.x+(Math.random()*2-1)*stepX)),y=Math.max(minY,Math.min(maxY,current.y+(Math.random()*2-1)*stepY)),dx=x-current.x,facing=Math.abs(dx)<.3?Number(current.facing||1):(dx>0?-1:1);petWanderLivePositions[scene]={x,y,scale:Number(anchor.scale||1),z:Number(anchor.z||30),facing};el.classList.add('wander-step');el.style.setProperty('--pet-x',`${x}%`);el.style.setProperty('--pet-y',`${y}%`);el.style.setProperty('--pet-facing',facing);setTimeout(()=>el?.classList.remove('wander-step'),3000)
 }
 function startPetWandering(){clearInterval(petWanderTimer);petWanderTimer=setInterval(petWanderTick,6200);setTimeout(petWanderTick,1800)}
-async function renderBackup(){const snaps=(await idbAll('snapshots')).sort((a,b)=>String(b.at).localeCompare(String(a.at)));let persisted=false;try{persisted=await navigator.storage?.persisted?.()}catch{};const external=state.settings.lastExternalBackupAt?new Date(state.settings.lastExternalBackupAt).toLocaleString('zh-CN'):'从未';$('#backupCards').innerHTML=[['主数据库','IndexedDB','浏览器内主要数据仓'],['本地镜像','已同步','localStorage 副本'],['版本快照',`${snaps.length}份`,'保留最近50次修改'],['外部备份',external,persisted?'浏览器存储已获持久权限':'仍建议保留下载的JSON']].map((x,i)=>`<div class="backup-card"><div class="label">${x[0]}</div><strong class="${i===3&&!state.settings.lastExternalBackupAt?'warn':'safe'}">${x[1]}</strong><p>${x[2]}</p></div>`).join('');$('#dailyBackupSwitch').classList.toggle('on',!!state.settings.autoDailyDownload);$('#everyChangeSwitch').classList.toggle('on',!!state.settings.everyChangeDownload);$('#snapshotList').innerHTML=snaps.slice(0,12).map(s=>`<div class="snapshot"><div><strong>${new Date(s.at).toLocaleString('zh-CN')}</strong><br><small>${esc(s.reason)}</small></div><button class="btn ghost" data-restore-snapshot="${s.id}">恢复</button></div>`).join('')||'<div class="empty">还没有版本快照。</div>';$('#diagnostics').innerHTML=`应用版本：1.9.33（沉浸式全屏阅读器）<br>数据结构版本：${state.schemaVersion}<br>阅读器：${readerData().bookMeta?esc(readerData().bookMeta.title||readerData().bookMeta.name):'当前无缓存'} · 小松鼠书架 ${readerLibrary().length} 本<br>账目：${state.ledger.records.length}笔<br>家务：${state.chores.items.length}项<br>日历记录：${Object.keys(state.modules.calendar.entries||{}).length}天<br>梦境记录：${Object.values(dreamsData().entries||{}).filter(dreamMeaningful).length}篇<br>餐厅与外卖：${restaurantData().items.length}次<br>树屋居民：${tamagotchiData().current?.name||'尚未领养'}<br>愿望：${state.modules.wishlist.items.length}件<br>数独完成：${state.modules.brain.sudoku.stats.completed||0}题<br>空当接龙胜利：${state.modules.brain.freecell.stats.won||0}局<br>扫雷胜利：${state.modules.brain.minesweeper.stats.won||0}局<br>推箱子通关：${state.modules.brain.sokoban.stats.won||0}关<br>当前来源：${location.protocol}<br>最近更新：${new Date(state.updatedAt).toLocaleString('zh-CN')}`;$('#backupBadge').textContent=state.settings.lastExternalBackupAt?`外部备份：${new Date(state.settings.lastExternalBackupAt).toLocaleDateString('zh-CN')}`:'外部备份尚未建立'}
+async function renderBackup(){const snaps=(await idbAll('snapshots')).sort((a,b)=>String(b.at).localeCompare(String(a.at)));let persisted=false;try{persisted=await navigator.storage?.persisted?.()}catch{};const external=state.settings.lastExternalBackupAt?new Date(state.settings.lastExternalBackupAt).toLocaleString('zh-CN'):'从未';$('#backupCards').innerHTML=[['主数据库','IndexedDB','浏览器内主要数据仓'],['本地镜像','已同步','localStorage 副本'],['版本快照',`${snaps.length}份`,'保留最近50次修改'],['外部备份',external,persisted?'浏览器存储已获持久权限':'仍建议保留下载的JSON']].map((x,i)=>`<div class="backup-card"><div class="label">${x[0]}</div><strong class="${i===3&&!state.settings.lastExternalBackupAt?'warn':'safe'}">${x[1]}</strong><p>${x[2]}</p></div>`).join('');$('#dailyBackupSwitch').classList.toggle('on',!!state.settings.autoDailyDownload);$('#everyChangeSwitch').classList.toggle('on',!!state.settings.everyChangeDownload);$('#snapshotList').innerHTML=snaps.slice(0,12).map(s=>`<div class="snapshot"><div><strong>${new Date(s.at).toLocaleString('zh-CN')}</strong><br><small>${esc(s.reason)}</small></div><button class="btn ghost" data-restore-snapshot="${s.id}">恢复</button></div>`).join('')||'<div class="empty">还没有版本快照。</div>';$('#diagnostics').innerHTML=`应用版本：1.9.34（紧凑阅读器工具栏）<br>数据结构版本：${state.schemaVersion}<br>阅读器：${readerData().bookMeta?esc(readerData().bookMeta.title||readerData().bookMeta.name):'当前无缓存'} · 小松鼠书架 ${readerLibrary().length} 本<br>账目：${state.ledger.records.length}笔<br>家务：${state.chores.items.length}项<br>日历记录：${Object.keys(state.modules.calendar.entries||{}).length}天<br>梦境记录：${Object.values(dreamsData().entries||{}).filter(dreamMeaningful).length}篇<br>餐厅与外卖：${restaurantData().items.length}次<br>树屋居民：${tamagotchiData().current?.name||'尚未领养'}<br>愿望：${state.modules.wishlist.items.length}件<br>数独完成：${state.modules.brain.sudoku.stats.completed||0}题<br>空当接龙胜利：${state.modules.brain.freecell.stats.won||0}局<br>扫雷胜利：${state.modules.brain.minesweeper.stats.won||0}局<br>推箱子通关：${state.modules.brain.sokoban.stats.won||0}关<br>当前来源：${location.protocol}<br>最近更新：${new Date(state.updatedAt).toLocaleString('zh-CN')}`;$('#backupBadge').textContent=state.settings.lastExternalBackupAt?`外部备份：${new Date(state.settings.lastExternalBackupAt).toLocaleDateString('zh-CN')}`:'外部备份尚未建立'}
 
 const SUDOKU_LEVELS={easy:{label:'简单',clues:42},medium:{label:'中等',clues:34},hard:{label:'困难',clues:28}};
 let sudokuSelected=-1,sudokuChecked=false,sudokuTimer=null;
@@ -2492,17 +2550,17 @@ function readerShelfNotes(item){if(!item)return[];if(item.source==='ebook'){cons
 function readerShelfSelected(){const R=readerData(),lib=readerLibrary();let item=lib.find(x=>x.id===R.selectedShelfId);if(!item&&lib.length){item=lib[0];R.selectedShelfId=item.id}return item||null}
 function readerSyncShelfProgress(){const item=readerCurrentShelfEntry()||readerUpsertCurrentShelf();if(!item)return;item.progress=Math.max(Number(item.progress)||0,readerOverallProgress());item.updatedAt=nowISO()}
 function readerNoteCardHtml(n,allowDelete=false){return `<article class="reader-shelf-note"><h4>${readerEscapeText(n.title||'一条读书碎念')}</h4><small>${readerEscapeText(n.chapterTitle||'读后记录')} · ${Math.round(Number(n.progress||0)*100)}% · ${new Date(n.updatedAt||n.createdAt).toLocaleString('zh-CN')}</small><p>${readerEscapeText(n.text)}</p>${allowDelete?`<button class="btn danger" data-shelf-note-delete="${n.id}">删除这条</button>`:''}</article>`}
-function renderReaderShelf(){const grid=$('#readerShelfGrid'),detail=$('#readerShelfDetail'),count=$('#readerShelfCount');if(!grid||!detail)return;const lib=[...readerLibrary()].sort((a,b)=>String(b.updatedAt||b.addedAt).localeCompare(String(a.updatedAt||a.addedAt)));count.textContent=lib.length?`${lib.length} 本 · ${lib.filter(x=>x.status==='finished').length} 本读完`:'还没有藏书';grid.innerHTML=lib.map(item=>`<article class="reader-shelf-book ${item.status==='finished'?'finished':''}" style="--book:${readerShelfColor(item.id+item.title)}" data-shelf-open="${item.id}"><span class="shelf-source">${item.source==='paper'?'📕':'📘'}</span><h3>${readerEscapeText(item.title)}</h3><small>${readerEscapeText(item.author||'作者未记录')}<br>${item.status==='finished'?'✓ 已读完':`在读 ${Math.round(Number(item.progress||0)*100)}%`}</small></article>`).join('')||'<div class="reader-shelf-empty">小松鼠的木书架还空着。上传电子书，或者记录一本纸质书吧。</div>';const item=readerShelfSelected();if(!item){detail.classList.add('hidden');detail.innerHTML='';return}detail.classList.remove('hidden');const notes=[...readerShelfNotes(item)].sort((a,b)=>String(b.updatedAt||b.createdAt).localeCompare(String(a.updatedAt||a.createdAt)));detail.innerHTML=`<div class="reader-shelf-detail-head"><div><h3>${item.source==='paper'?'📕':'📘'} 《${readerEscapeText(item.title)}》</h3><div class="reader-shelf-meta">${readerEscapeText(item.author||'作者未记录')} · ${item.source==='paper'?'纸质书':'电子书'} · ${item.status==='finished'?`已于 ${readerEscapeText(item.finishedAt||'某一天')} 读完`:`正在读 · ${Math.round(Number(item.progress||0)*100)}%`}</div></div><div class="reader-shelf-actions"><button class="btn soft" data-shelf-action="toggle" data-id="${item.id}">${item.status==='finished'?'改为在读':'✓ 标记读完'}</button>${item.source==='paper'?`<button class="btn ghost" data-shelf-action="edit" data-id="${item.id}">编辑书籍</button>`:''}<button class="btn danger" data-shelf-action="remove" data-id="${item.id}">移出书架</button></div></div><div class="reader-shelf-note-editor"><strong>给这本书追加笔记</strong><input id="readerShelfNoteTitle" maxlength="100" placeholder="标题（可以不写）"><textarea id="readerShelfNoteText" maxlength="8000" placeholder="纸质书摘抄、读后感、人物分析，或读完以后仍想记住的事情……"></textarea><div class="reader-shelf-note-actions"><button class="btn primary" data-shelf-action="save-note" data-id="${item.id}">保存书架笔记</button></div></div><div class="reader-shelf-notes">${notes.map(n=>readerNoteCardHtml(n,true)).join('')||'<div class="reader-note-empty">这本书还没有留下笔记。</div>'}</div>`}
+function renderReaderShelf(){const grid=$('#readerShelfGrid'),detail=$('#readerShelfDetail'),count=$('#readerShelfCount');if(!grid||!detail)return;const lib=[...readerLibrary()].sort((a,b)=>String(b.updatedAt||b.addedAt).localeCompare(String(a.updatedAt||a.addedAt)));count.textContent=lib.length?`${lib.length} 本 · ${lib.filter(x=>x.status==='finished').length} 本读完`:'还没有藏书';grid.innerHTML=lib.map(item=>`<article class="reader-shelf-book ${item.status==='finished'?'finished':''}" style="--book:${readerShelfColor(item.id+item.title)}" data-shelf-open="${item.id}"><span class="shelf-source">${item.source==='paper'?'📕':'📘'}</span><h3>${readerEscapeText(item.title)}</h3><small>${readerEscapeText(item.author||'作者未记录')}<br>${item.status==='finished'?'✓ 已读完':`在读 ${Math.round(Number(item.progress||0)*100)}%`}</small></article>`).join('')||'<div class="reader-shelf-empty">小松鼠的木书架还空着。上传电子书，或者记录一本纸质书吧。</div>';const item=readerShelfSelected();if(!item){detail.classList.add('hidden');detail.innerHTML='';return}detail.classList.remove('hidden');const notes=[...readerShelfNotes(item)].sort((a,b)=>String(b.updatedAt||b.createdAt).localeCompare(String(a.updatedAt||a.createdAt)));detail.innerHTML=`<div class="reader-shelf-detail-head"><div><h3>${item.source==='paper'?'📕':'📘'} 《${readerEscapeText(item.title)}》</h3><div class="reader-shelf-meta">${readerEscapeText(item.author||'作者未记录')} · ${item.source==='paper'?'纸质书':'电子书'} · ${item.status==='finished'?`已于 ${readerEscapeText(item.finishedAt||'某一天')} 读完`:`正在读 · ${Math.round(Number(item.progress||0)*100)}%`}</div></div><div class="reader-shelf-actions"><button class="btn soft" data-shelf-action="toggle" data-id="${item.id}">${item.status==='finished'?'改为在读':'✓ 读完'}</button>${item.source==='paper'?`<button class="btn ghost" data-shelf-action="edit" data-id="${item.id}">编辑</button>`:''}<button class="btn danger" data-shelf-action="remove" data-id="${item.id}">移出</button></div></div><div class="reader-shelf-note-editor"><strong>给这本书追加笔记</strong><input id="readerShelfNoteTitle" maxlength="100" placeholder="标题（可以不写）"><textarea id="readerShelfNoteText" maxlength="8000" placeholder="纸质书摘抄、读后感、人物分析，或读完以后仍想记住的事情……"></textarea><div class="reader-shelf-note-actions"><button class="btn primary" data-shelf-action="save-note" data-id="${item.id}">保存笔记</button></div></div><div class="reader-shelf-notes">${notes.map(n=>readerNoteCardHtml(n,true)).join('')||'<div class="reader-note-empty">这本书还没有留下笔记。</div>'}</div>`}
 function openPaperBookDialog(item=null){$('#paperBookForm').reset();$('#paperBookEditId').value=item?.id||'';$('#paperBookDialogTitle').textContent=item?'编辑纸质书':'记录纸质书';$('#paperBookTitle').value=item?.title||'';$('#paperBookAuthor').value=item?.author||'';$('#paperBookStatus').value=item?.status||'reading';$('#paperBookFinishedAt').value=item?.finishedAt||'';$('#paperBookFinishedAt').disabled=(item?.status||'reading')!=='finished';$('#paperBookDialog').showModal()}
 async function savePaperBook(){const title=$('#paperBookTitle').value.trim(),author=$('#paperBookAuthor').value.trim(),status=$('#paperBookStatus').value,finishedAt=$('#paperBookFinishedAt').value,id=$('#paperBookEditId').value;if(!title)return toast('先写书名');const now=nowISO();let item=readerLibrary().find(x=>x.id===id);if(item)Object.assign(item,{title,author,status,finishedAt:status==='finished'?(finishedAt||today()):'',progress:status==='finished'?1:Number(item.progress)||0,updatedAt:now});else{item={id:uid('book'),source:'paper',bookKey:'',title,author,status,addedAt:now,startedAt:today(),finishedAt:status==='finished'?(finishedAt||today()):'',updatedAt:now,progress:status==='finished'?1:0,notes:[]};readerLibrary().unshift(item)}readerData().selectedShelfId=item.id;$('#paperBookDialog').close();await persist(id?'编辑纸质书':'记录纸质书',true,true);renderReaderShelf();toast('纸质书已经放上书架')}
 async function toggleShelfFinished(id){const item=readerLibrary().find(x=>x.id===id);if(!item)return;item.status=item.status==='finished'?'reading':'finished';item.finishedAt=item.status==='finished'?today():'';if(item.status==='finished')item.progress=1;item.updatedAt=nowISO();await persist(item.status==='finished'?'标记读完':'改为在读',true,true);renderReaderShelf();renderReaderFinishButton()}
-function renderReaderFinishButton(){const b=$('#readerFinishBtn');if(!b)return;const item=readerCurrentShelfEntry();b.disabled=!readerBookRecord;b.textContent=item?.status==='finished'?'↩ 改为在读':'✓ 标记读完'}
+function renderReaderFinishButton(){const b=$('#readerFinishBtn');if(!b)return;const item=readerCurrentShelfEntry();b.disabled=!readerBookRecord;b.textContent=item?.status==='finished'?'↩ 改为在读':'✓ 读完'}
 async function saveShelfNote(id){const item=readerLibrary().find(x=>x.id===id),textValue=$('#readerShelfNoteText')?.value.trim(),titleValue=$('#readerShelfNoteTitle')?.value.trim();if(!item||!textValue)return toast('先写下一点想法');readerShelfNotes(item).push({id:uid('shelfnote'),title:titleValue,text:textValue,bookTitle:item.title,chapterTitle:item.source==='paper'?'纸质书笔记':'读后记录',progress:Number(item.progress)||0,createdAt:nowISO(),updatedAt:nowISO()});item.updatedAt=nowISO();await persist('新增书架笔记',true,true);renderReaderShelf();toast('笔记已经夹进这本书')}
 async function removeShelfNote(itemId,noteId){const item=readerLibrary().find(x=>x.id===itemId);if(!item||!confirm('删除这条笔记吗？'))return;if(item.source==='ebook')readerData().notesByBook[item.bookKey]=readerShelfNotes(item).filter(x=>x.id!==noteId);else item.notes=readerShelfNotes(item).filter(x=>x.id!==noteId);item.updatedAt=nowISO();await persist('删除书架笔记',true,true);renderReaderShelf()}
-async function removeShelfBook(id){const item=readerLibrary().find(x=>x.id===id);if(!item)return;if(item.source==='ebook'&&item.bookKey===readerCurrentBookKey())return toast('这是当前正在缓存的书，先清除或替换电子书再移出');if(!confirm(`把《${item.title}》移出小松鼠书架吗？相关笔记也会一起删除。`))return;readerData().library=readerLibrary().filter(x=>x.id!==id);if(item.source==='ebook')delete readerData().notesByBook[item.bookKey];if(readerData().selectedShelfId===id)readerData().selectedShelfId='';await persist('移出书架',true,true);renderReaderShelf()}
+async function removeShelfBook(id){const item=readerLibrary().find(x=>x.id===id);if(!item)return;if(item.source==='ebook'&&item.bookKey===readerCurrentBookKey())return toast('这是当前正在缓存的书，先清除或替换电子书再移出');if(!confirm(`把《${item.title}》移出小松鼠书架吗？相关笔记也会一起删除。`))return;readerData().library=readerLibrary().filter(x=>x.id!==id);if(item.source==='ebook')delete readerData().notesByBook[item.bookKey];if(readerData().selectedShelfId===id)readerData().selectedShelfId='';await persist('移出',true,true);renderReaderShelf()}
 async function toggleCurrentBookFinished(){const item=readerCurrentShelfEntry()||readerUpsertCurrentShelf();if(!item)return toast('先上传一本书');await toggleShelfFinished(item.id)}
 function readerCurrentLocation(){const R=readerData(),index=Math.max(0,Number(R.chapterIndex)||0),chapter=readerChapters[index],content=$('#readerContent');let progress=readerProgressFor(index);if(content&&readerFormat(readerBookRecord)!=='pdf'&&content.scrollHeight>content.clientHeight)progress=Math.max(0,Math.min(1,content.scrollTop/(content.scrollHeight-content.clientHeight)));return{chapterIndex:index,chapterTitle:chapter?.title||(readerFormat(readerBookRecord)==='pdf'?'PDF':'正文'),progress}}
-function clearReaderNoteEditor(){const id=$('#readerNoteEditId'),title=$('#readerNoteTitle'),body=$('#readerNoteText');if(id)id.value='';if(title)title.value='';if(body)body.value='';$('#readerNoteCancelBtn')?.classList.add('hidden');if($('#readerNoteSaveBtn'))$('#readerNoteSaveBtn').textContent='保存这条笔记'}
+function clearReaderNoteEditor(){const id=$('#readerNoteEditId'),title=$('#readerNoteTitle'),body=$('#readerNoteText');if(id)id.value='';if(title)title.value='';if(body)body.value='';$('#readerNoteCancelBtn')?.classList.add('hidden');if($('#readerNoteSaveBtn'))$('#readerNoteSaveBtn').textContent='保存笔记'}
 function renderReaderNotes(){const label=$('#readerNoteBookLabel'),loc=$('#readerNoteLocation'),list=$('#readerNotesList'),save=$('#readerNoteSaveBtn'),title=$('#readerNoteTitle'),body=$('#readerNoteText');if(!label||!list)return;const has=!!readerBookRecord,R=readerData(),bookTitle=R.bookMeta?.title||R.bookMeta?.name||readerBookRecord?.name||'尚未上传书籍';label.textContent=has?`《${bookTitle}》`:'先上传一本书';if(save)save.disabled=!has;if(title)title.disabled=!has;if(body)body.disabled=!has;if(!has){loc.textContent='书架为空';list.innerHTML='<div class="reader-note-empty">上传一本电子书后，就可以在这里记下阅读时的想法。</div>';return}const L=readerCurrentLocation();loc.textContent=readerFormat(readerBookRecord)==='pdf'?`PDF · 当前阅读进度 ${Math.round(L.progress*100)}%`:`第 ${L.chapterIndex+1} 章 · ${L.chapterTitle} · ${Math.round(L.progress*100)}%`;const notes=[...readerCurrentNotes()].sort((a,b)=>String(b.updatedAt||b.createdAt).localeCompare(String(a.updatedAt||a.createdAt)));list.innerHTML=notes.map(n=>`<article class="reader-note-card" data-reader-note="${n.id}"><div class="reader-note-card-head"><div><h3>${readerEscapeText(n.title||'一条阅读碎念')}</h3><small>${readerEscapeText(n.chapterTitle||'正文')} · ${Math.round(Number(n.progress||0)*100)}% · ${new Date(n.updatedAt||n.createdAt).toLocaleString('zh-CN')}</small></div></div><p>${readerEscapeText(n.text)}</p><div class="reader-note-card-actions"><button class="btn ghost" data-reader-note-action="edit" data-id="${n.id}">编辑</button><button class="btn danger" data-reader-note-action="delete" data-id="${n.id}">删除</button></div></article>`).join('')||'<div class="reader-note-empty">这本书还没有笔记。读到喜欢或困惑的地方，就留下一条吧。</div>'}
 async function saveReaderNote(){if(!readerBookRecord)return toast('先上传一本书');const textValue=$('#readerNoteText').value.trim(),titleValue=$('#readerNoteTitle').value.trim();if(!textValue)return toast('先写下一点读书想法');const R=readerData(),notes=readerCurrentNotes(),editId=$('#readerNoteEditId').value,L=readerCurrentLocation(),now=nowISO(),bookTitle=R.bookMeta?.title||R.bookMeta?.name||readerBookRecord.name;let note=notes.find(n=>n.id===editId);if(note){Object.assign(note,{title:titleValue,text:textValue,chapterIndex:L.chapterIndex,chapterTitle:L.chapterTitle,progress:L.progress,updatedAt:now})}else notes.push({id:uid('readnote'),title:titleValue,text:textValue,bookTitle,chapterIndex:L.chapterIndex,chapterTitle:L.chapterTitle,progress:L.progress,createdAt:now,updatedAt:now});readerSyncShelfProgress();clearReaderNoteEditor();await persist(note?'编辑读书笔记':'新增读书笔记',true,true);renderReaderNotes();renderReaderShelf();toast(note?'读书笔记已经更新':'这条笔记已经夹进书里')}
 function editReaderNote(id){const n=readerCurrentNotes().find(x=>x.id===id);if(!n)return;$('#readerNoteEditId').value=n.id;$('#readerNoteTitle').value=n.title||'';$('#readerNoteText').value=n.text||'';$('#readerNoteCancelBtn').classList.remove('hidden');$('#readerNoteSaveBtn').textContent='保存修改';$('#readerNoteText').focus();$('#readerNotesPanel').scrollIntoView({behavior:'smooth',block:'start'})}
