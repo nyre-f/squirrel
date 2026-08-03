@@ -1301,6 +1301,158 @@ body.reader-fullscreen .reader-pdf{height:calc(100dvh - 230px)!important;min-hei
   .reader-settings{gap:3px!important}
 }
 
+
+/* v1.9.35：真正全屏阅读器 + 全站紧凑整齐控件 */
+:root{--ui-control-h:32px;--ui-gap:6px}
+
+/* 全站控件只调整尺寸与位置，保留现有像素配色和边框 */
+.btn,.type-chip,.icon-btn,.pet-cat-btn,.brain-tab,.fc-difficulty-switch button,
+.nav-btn,.nav-more-btn,.more-nav-close,.star-btn{
+  box-sizing:border-box;
+  min-height:var(--ui-control-h);
+  padding:5px 9px;
+  font-size:12px;
+  line-height:1.15;
+}
+.btn{border-radius:4px}
+.status-pill{min-height:28px;padding:4px 8px;font-size:11px;line-height:1.25}
+.section{padding:14px;margin-bottom:12px}
+.card{padding:14px}
+.section-head{gap:8px;margin-bottom:10px;align-items:center}
+.section-head h2{font-size:18px;line-height:1.25}
+.section-head span{font-size:11px;line-height:1.35;text-align:right}
+.top-actions{padding:9px;margin-bottom:12px;gap:6px}
+.top-actions .left,.top-actions .right{gap:6px}
+.form-grid{gap:8px}
+.field label{margin-bottom:3px;font-size:11px}
+.field input,.field select,.field textarea,select,input[type="date"],input[type="month"],input[type="number"]{
+  min-height:34px;padding:6px 8px;border-radius:4px;font-size:13px;box-sizing:border-box
+}
+.dialog-inner{padding:14px}.dialog-inner h3{margin-bottom:10px;font-size:18px}
+.dialog-actions{gap:6px;margin-top:10px}.dialog-actions .btn{min-width:76px}
+.type-switch{gap:5px;margin-bottom:9px}.type-chip{padding:5px 9px}
+
+/* 常见操作区：同行、紧凑、自动换行；不再出现孤零零的大按钮 */
+.actions,.btns,.quick-row,.toolbar,.calendar-toolbar,.calendar-nav,.calendar-editor-actions,
+.restaurant-actions,.wish-actions,.dream-actions,.dream-footer-row,.mood-color-actions,
+.reader-note-actions,.reader-note-card-actions,.reader-shelf-note-actions,.reader-shelf-actions,
+.pet-resident-actions,.pet-background-controls,.pet-background-theme-actions,
+.pet-decor-toolbar-actions,.pet-action-strip,.brain-controls,.game-compact-actions{
+  gap:var(--ui-gap)!important;
+  align-items:center;
+}
+.actions,.btns,.quick-row,.toolbar,.calendar-toolbar,.calendar-nav,.calendar-editor-actions,
+.restaurant-actions,.wish-actions,.dream-actions,.dream-footer-row,.mood-color-actions,
+.pet-resident-actions,.pet-background-controls,.pet-background-theme-actions,
+.pet-decor-toolbar-actions,.pet-action-strip{
+  display:flex;flex-wrap:wrap
+}
+.actions>.btn,.btns>.btn,.quick-row>.btn,.toolbar>.btn,
+.calendar-toolbar>.btn,.calendar-nav>.btn,.calendar-editor-actions>.btn,
+.restaurant-actions>.btn,.wish-actions>.btn,.dream-actions>.btn,.dream-footer-row>.btn,
+.mood-color-actions>.btn,.pet-resident-actions>.btn,.pet-background-controls>.btn,
+.pet-background-theme-actions>.btn,.pet-decor-toolbar-actions>.btn,.pet-action-strip>.btn{
+  margin:0!important;flex:0 1 auto
+}
+.switch-row{padding:8px 0;gap:10px}.switch{transform:scale(.88);transform-origin:right center}
+
+/* 首页与底栏更省空间 */
+.app{padding-top:14px;padding-bottom:74px}
+.hero-header{padding:14px!important}.hero-actions .btn{min-height:30px;padding:4px 8px;font-size:11px}
+.bottom-nav{bottom:max(5px,env(safe-area-inset-bottom));padding:4px 6px;gap:3px;border-radius:9px}
+.bottom-nav .nav-btn,.bottom-nav .nav-more-btn{min-height:43px;padding:3px 2px;font-size:9.5px;border-radius:4px}
+.bottom-nav .nav-btn span,.bottom-nav .nav-more-btn span{font-size:16px;margin-bottom:0}
+.more-nav-panel{padding-bottom:calc(10px + env(safe-area-inset-bottom))}
+.more-nav-grid{gap:6px}.more-nav-grid .nav-btn{min-height:48px;padding:5px 3px;font-size:10px}
+
+/* 真正的阅读器门户：作为 body 直属层覆盖视口 */
+html.reader-fullscreen,body.reader-fullscreen{width:100%!important;height:100%!important;overflow:hidden!important;overscroll-behavior:none!important}
+body.reader-fullscreen{margin:0!important;padding:0!important}
+body.reader-fullscreen>.app,body.reader-fullscreen>.bottom-nav,
+body.reader-fullscreen>.more-nav-panel,body.reader-fullscreen>.more-nav-backdrop{
+  display:none!important;visibility:hidden!important;pointer-events:none!important
+}
+body.reader-fullscreen>#view-reader{
+  display:block!important;position:fixed!important;inset:0!important;
+  width:100vw!important;max-width:none!important;height:100dvh!important;min-height:100dvh!important;
+  margin:0!important;padding:0 0 calc(10px + env(safe-area-inset-bottom))!important;
+  z-index:2147483000!important;overflow-x:hidden!important;overflow-y:auto!important;
+  overscroll-behavior:contain!important;-webkit-overflow-scrolling:touch!important;
+  background:#9ab687!important;background-image:repeating-linear-gradient(90deg,transparent 0 18px,rgba(67,91,57,.055) 18px 20px),repeating-linear-gradient(0deg,transparent 0 18px,rgba(255,246,211,.05) 18px 20px)!important;
+  box-sizing:border-box!important
+}
+body.reader-fullscreen>#view-reader>.reader-fullscreen-header{
+  position:sticky!important;top:0!important;left:0!important;right:0!important;
+  display:grid!important;grid-template-columns:72px minmax(0,1fr) 72px!important;
+  min-height:44px!important;padding:calc(5px + env(safe-area-inset-top)) 7px 5px!important;
+  z-index:50!important
+}
+body.reader-fullscreen>#view-reader>.panel{
+  width:min(1040px,calc(100% - 12px))!important;max-width:1040px!important;
+  margin:6px auto!important;box-sizing:border-box!important
+}
+body.reader-fullscreen>#view-reader>.panel:first-of-type>.section-head{display:none!important}
+.reader-fullscreen-back{min-width:64px!important;min-height:30px!important;padding:4px 7px!important;font-size:11px!important}
+.reader-fullscreen-header strong{font-size:13px!important;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+body.reader-fullscreen .reader-content{
+  height:calc(100dvh - 220px)!important;min-height:360px!important;max-height:none!important
+}
+body.reader-fullscreen .reader-pdf{
+  height:calc(100dvh - 160px)!important;min-height:430px!important;max-height:none!important
+}
+
+/* 阅读器按钮组再统一：能同行的不拆行 */
+#view-reader .reader-toolbar{grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:4px!important;padding:6px!important}
+#view-reader .reader-settings{grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:4px!important}
+#view-reader .reader-chapter-bar{grid-template-columns:58px minmax(0,1fr) 58px!important;gap:4px!important}
+#view-reader .reader-shelf-actions{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:4px!important}
+#view-reader .btn{min-height:29px!important;padding:4px 6px!important;font-size:10.5px!important}
+#view-reader .reader-toolbar .status-pill{min-height:22px!important}
+#view-reader .reader-book-head{padding:7px!important}.reader-workspace{gap:7px!important}
+#view-reader .reader-page-frame{padding:7px!important}
+
+/* 脑力游戏和其他页面的按钮排布统一 */
+#view-brain .brain-tabs{grid-template-columns:repeat(4,minmax(0,1fr))!important}
+#view-brain .brain-controls,#view-brain .game-compact-actions{gap:4px!important}
+#view-brain .brain-controls>.btn,#view-brain .game-compact-actions>.btn{min-height:29px!important;height:29px!important}
+#view-brain .puzzle-mini-nav{gap:4px!important}
+#view-brain .puzzle-mini-nav>.btn{min-height:28px!important}
+
+@media(max-width:700px){
+  :root{--ui-control-h:30px;--ui-gap:4px}
+  .app{width:calc(100% - 12px);padding-top:7px;padding-bottom:65px}
+  .section{padding:10px;margin-bottom:8px}.card{padding:10px}
+  .section-head{margin-bottom:7px}.section-head h2{font-size:16px}.section-head span{font-size:9.5px}
+  .btn,.type-chip,.icon-btn,.pet-cat-btn{padding:4px 6px;font-size:10.5px}
+  .status-pill{font-size:9.5px;padding:3px 5px}
+  .form-grid{grid-template-columns:1fr 1fr;gap:6px}.field.full{grid-column:1/-1}
+  .dialog-inner{padding:10px}.dialog-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.dialog-actions .btn{width:100%;min-width:0}
+  .top-actions{padding:6px}.top-actions .left,.top-actions .right{gap:4px}
+  .top-actions .btn{font-size:9.5px;padding:3px 5px}
+  .grid.kpi{gap:7px}.grid.two,.grid.three{gap:8px}
+  body.reader-fullscreen>#view-reader>.panel{width:calc(100% - 8px)!important;margin:4px auto!important}
+  body.reader-fullscreen>#view-reader>.panel.section{padding:6px!important}
+  body.reader-fullscreen .reader-content{height:calc(100dvh - 196px)!important;min-height:330px!important;padding:18px!important}
+  body.reader-fullscreen .reader-pdf{height:calc(100dvh - 125px)!important;min-height:400px!important}
+  #view-reader .reader-book-head{grid-template-columns:1fr!important}
+  #view-reader .reader-settings{width:100%!important;min-width:0!important}
+}
+@media(max-width:420px){
+  .form-grid{grid-template-columns:1fr}
+  .field.full{grid-column:auto}
+  .section-head{align-items:flex-start}.section-head span{max-width:44%}
+  .calendar-toolbar,.calendar-nav,.calendar-editor-actions,.restaurant-actions,.wish-actions,.dream-actions,.dream-footer-row{
+    display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;width:100%
+  }
+  .calendar-toolbar>.btn,.calendar-nav>.btn,.calendar-editor-actions>.btn,
+  .restaurant-actions>.btn,.wish-actions>.btn,.dream-actions>.btn,.dream-footer-row>.btn{width:100%!important;min-width:0!important}
+  #view-reader .reader-toolbar{gap:3px!important;padding:4px!important}
+  #view-reader .reader-toolbar>.btn,#view-reader .reader-toolbar>label.btn{font-size:9px!important;padding:3px 1px!important}
+  #view-reader .reader-chapter-bar{grid-template-columns:52px minmax(0,1fr) 52px!important;gap:3px!important}
+  body.reader-fullscreen>#view-reader>.reader-fullscreen-header{grid-template-columns:62px minmax(0,1fr) 62px!important}
+  .reader-fullscreen-back{min-width:58px!important;padding:3px 4px!important;font-size:10px!important}
+}
+
 </style>
 </head>
 <body>
@@ -2246,7 +2398,7 @@ function petWanderTick(){
  if(currentView!=='village'||petDecorMode||petBusy||petGamePanel||selectedPetTool||isPetNight())return;const T=tamagotchiData(),p=T.current,el=document.querySelector('[data-pet-avatar]');if(!T.wanderEnabled||!p?.alive||!el||el.classList.contains('leave')||el.classList.contains('visit')||el.classList.contains('sleeping'))return;const scene=T.scene||'forest',anchor=petPosition(scene),current=petWanderLivePositions[scene]||{...anchor,facing:1},rangeX=scene==='home'?20:30,rangeY=scene==='home'?12:17,stepX=scene==='home'?13:18,stepY=scene==='home'?8:11,minX=Math.max(10,anchor.x-rangeX),maxX=Math.min(90,anchor.x+rangeX),minY=Math.max(35,anchor.y-rangeY),maxY=Math.min(82,anchor.y+rangeY),x=Math.max(minX,Math.min(maxX,current.x+(Math.random()*2-1)*stepX)),y=Math.max(minY,Math.min(maxY,current.y+(Math.random()*2-1)*stepY)),dx=x-current.x,facing=Math.abs(dx)<.3?Number(current.facing||1):(dx>0?-1:1);petWanderLivePositions[scene]={x,y,scale:Number(anchor.scale||1),z:Number(anchor.z||30),facing};el.classList.add('wander-step');el.style.setProperty('--pet-x',`${x}%`);el.style.setProperty('--pet-y',`${y}%`);el.style.setProperty('--pet-facing',facing);setTimeout(()=>el?.classList.remove('wander-step'),3000)
 }
 function startPetWandering(){clearInterval(petWanderTimer);petWanderTimer=setInterval(petWanderTick,6200);setTimeout(petWanderTick,1800)}
-async function renderBackup(){const snaps=(await idbAll('snapshots')).sort((a,b)=>String(b.at).localeCompare(String(a.at)));let persisted=false;try{persisted=await navigator.storage?.persisted?.()}catch{};const external=state.settings.lastExternalBackupAt?new Date(state.settings.lastExternalBackupAt).toLocaleString('zh-CN'):'从未';$('#backupCards').innerHTML=[['主数据库','IndexedDB','浏览器内主要数据仓'],['本地镜像','已同步','localStorage 副本'],['版本快照',`${snaps.length}份`,'保留最近50次修改'],['外部备份',external,persisted?'浏览器存储已获持久权限':'仍建议保留下载的JSON']].map((x,i)=>`<div class="backup-card"><div class="label">${x[0]}</div><strong class="${i===3&&!state.settings.lastExternalBackupAt?'warn':'safe'}">${x[1]}</strong><p>${x[2]}</p></div>`).join('');$('#dailyBackupSwitch').classList.toggle('on',!!state.settings.autoDailyDownload);$('#everyChangeSwitch').classList.toggle('on',!!state.settings.everyChangeDownload);$('#snapshotList').innerHTML=snaps.slice(0,12).map(s=>`<div class="snapshot"><div><strong>${new Date(s.at).toLocaleString('zh-CN')}</strong><br><small>${esc(s.reason)}</small></div><button class="btn ghost" data-restore-snapshot="${s.id}">恢复</button></div>`).join('')||'<div class="empty">还没有版本快照。</div>';$('#diagnostics').innerHTML=`应用版本：1.9.34（紧凑阅读器工具栏）<br>数据结构版本：${state.schemaVersion}<br>阅读器：${readerData().bookMeta?esc(readerData().bookMeta.title||readerData().bookMeta.name):'当前无缓存'} · 小松鼠书架 ${readerLibrary().length} 本<br>账目：${state.ledger.records.length}笔<br>家务：${state.chores.items.length}项<br>日历记录：${Object.keys(state.modules.calendar.entries||{}).length}天<br>梦境记录：${Object.values(dreamsData().entries||{}).filter(dreamMeaningful).length}篇<br>餐厅与外卖：${restaurantData().items.length}次<br>树屋居民：${tamagotchiData().current?.name||'尚未领养'}<br>愿望：${state.modules.wishlist.items.length}件<br>数独完成：${state.modules.brain.sudoku.stats.completed||0}题<br>空当接龙胜利：${state.modules.brain.freecell.stats.won||0}局<br>扫雷胜利：${state.modules.brain.minesweeper.stats.won||0}局<br>推箱子通关：${state.modules.brain.sokoban.stats.won||0}关<br>当前来源：${location.protocol}<br>最近更新：${new Date(state.updatedAt).toLocaleString('zh-CN')}`;$('#backupBadge').textContent=state.settings.lastExternalBackupAt?`外部备份：${new Date(state.settings.lastExternalBackupAt).toLocaleDateString('zh-CN')}`:'外部备份尚未建立'}
+async function renderBackup(){const snaps=(await idbAll('snapshots')).sort((a,b)=>String(b.at).localeCompare(String(a.at)));let persisted=false;try{persisted=await navigator.storage?.persisted?.()}catch{};const external=state.settings.lastExternalBackupAt?new Date(state.settings.lastExternalBackupAt).toLocaleString('zh-CN'):'从未';$('#backupCards').innerHTML=[['主数据库','IndexedDB','浏览器内主要数据仓'],['本地镜像','已同步','localStorage 副本'],['版本快照',`${snaps.length}份`,'保留最近50次修改'],['外部备份',external,persisted?'浏览器存储已获持久权限':'仍建议保留下载的JSON']].map((x,i)=>`<div class="backup-card"><div class="label">${x[0]}</div><strong class="${i===3&&!state.settings.lastExternalBackupAt?'warn':'safe'}">${x[1]}</strong><p>${x[2]}</p></div>`).join('');$('#dailyBackupSwitch').classList.toggle('on',!!state.settings.autoDailyDownload);$('#everyChangeSwitch').classList.toggle('on',!!state.settings.everyChangeDownload);$('#snapshotList').innerHTML=snaps.slice(0,12).map(s=>`<div class="snapshot"><div><strong>${new Date(s.at).toLocaleString('zh-CN')}</strong><br><small>${esc(s.reason)}</small></div><button class="btn ghost" data-restore-snapshot="${s.id}">恢复</button></div>`).join('')||'<div class="empty">还没有版本快照。</div>';$('#diagnostics').innerHTML=`应用版本：1.9.35（真正全屏与全站紧凑布局）<br>数据结构版本：${state.schemaVersion}<br>阅读器：${readerData().bookMeta?esc(readerData().bookMeta.title||readerData().bookMeta.name):'当前无缓存'} · 小松鼠书架 ${readerLibrary().length} 本<br>账目：${state.ledger.records.length}笔<br>家务：${state.chores.items.length}项<br>日历记录：${Object.keys(state.modules.calendar.entries||{}).length}天<br>梦境记录：${Object.values(dreamsData().entries||{}).filter(dreamMeaningful).length}篇<br>餐厅与外卖：${restaurantData().items.length}次<br>树屋居民：${tamagotchiData().current?.name||'尚未领养'}<br>愿望：${state.modules.wishlist.items.length}件<br>数独完成：${state.modules.brain.sudoku.stats.completed||0}题<br>空当接龙胜利：${state.modules.brain.freecell.stats.won||0}局<br>扫雷胜利：${state.modules.brain.minesweeper.stats.won||0}局<br>推箱子通关：${state.modules.brain.sokoban.stats.won||0}关<br>当前来源：${location.protocol}<br>最近更新：${new Date(state.updatedAt).toLocaleString('zh-CN')}`;$('#backupBadge').textContent=state.settings.lastExternalBackupAt?`外部备份：${new Date(state.settings.lastExternalBackupAt).toLocaleDateString('zh-CN')}`:'外部备份尚未建立'}
 
 const SUDOKU_LEVELS={easy:{label:'简单',clues:42},medium:{label:'中等',clues:34},hard:{label:'困难',clues:28}};
 let sudokuSelected=-1,sudokuChecked=false,sudokuTimer=null;
@@ -2676,10 +2828,18 @@ const MORE_NAV_VIEWS=['chores','dreams','restaurants','wishlist','brain','villag
 function closeMoreNav(){const panel=$('#moreNavPanel'),backdrop=$('#moreNavBackdrop'),button=$('#moreNavBtn');panel?.classList.add('hidden');backdrop?.classList.add('hidden');button?.setAttribute('aria-expanded','false')}
 function toggleMoreNav(){const panel=$('#moreNavPanel'),backdrop=$('#moreNavBackdrop'),button=$('#moreNavBtn'),open=panel?.classList.contains('hidden');if(open){panel?.classList.remove('hidden');backdrop?.classList.remove('hidden');button?.setAttribute('aria-expanded','true')}else closeMoreNav()}
 function renderAll(){renderHome();renderCalendar();renderDreams();renderReaderHome();renderReaderShelf();renderActivityRewardButtons();renderWishlistHome();renderRestaurantsHome();renderPetHome();renderLedger();renderRestaurants();renderVillage();renderWishlist();renderChores();renderSudoku();renderFreecell();renderMines();renderSokoban();renderBrainTabs();renderBackup();if(currentView==='reader')void renderReader()}
+let readerPortalReady=false;
+function ensureReaderPortal(){
+ const view=document.getElementById('view-reader');
+ if(!view)return null;
+ if(view.parentElement!==document.body)document.body.appendChild(view);
+ readerPortalReady=true;
+ return view
+}
 function setView(v){
  const next=v||'home',previous=currentView,enteringReader=next==='reader'&&previous!=='reader',leavingReader=previous==='reader'&&next!=='reader';
- if(enteringReader){readerReturnView=previous&&previous!=='reader'?previous:'home';readerReturnScroll=window.scrollY||0}
- currentView=next;closeMoreNav();document.body.classList.toggle('reader-fullscreen',next==='reader');
+ if(enteringReader){readerReturnView=previous&&previous!=='reader'?previous:'home';readerReturnScroll=window.scrollY||0;ensureReaderPortal()}
+ currentView=next;closeMoreNav();document.body.classList.toggle('reader-fullscreen',next==='reader');document.documentElement.classList.toggle('reader-fullscreen',next==='reader');
  document.querySelector('.hero-shell')?.classList.toggle('hidden',next!=='home');
  $$('.view').forEach(x=>x.classList.toggle('active',x.id===`view-${next}`));
  $$('.nav-btn').forEach(x=>x.classList.toggle('active',x.dataset.view===next));
@@ -2702,6 +2862,7 @@ function openChore(c=null){$('#choreForm').reset();$('#choreEditId').value=c?.id
 async function importBackup(file){const text=await file.text();let parsed;try{parsed=JSON.parse(text)}catch{throw new Error('这不是有效的JSON备份')};downloadBackup('导入前保护备份');state=migrate(parsed);state.updatedAt=nowISO();await persist('导入备份',false,true);initSelects();$('#ledgerMonth').value=monthNow();toast('备份已导入')}
 function exportCsv(){const rows=monthRecords().sort((a,b)=>a.date.localeCompare(b.date));const data=[['日期','类型','预算池','二级分类','金额','账户','性质','备注'],...rows.map(r=>[r.date,r.type,r.pool,r.category,Number(r.amount).toFixed(2),r.account,r.nature,r.note])];const q=v=>/[",\n]/.test(String(v??''))?`"${String(v??'').replaceAll('"','""')}"`:String(v??'');const csv='\ufeff'+data.map(r=>r.map(q).join(',')).join('\r\n');const b=new Blob([csv],{type:'text/csv;charset=utf-8'}),u=URL.createObjectURL(b),a=document.createElement('a');a.href=u;a.download=`小松鼠账单_${selectedMonth()}.csv`;a.click();setTimeout(()=>URL.revokeObjectURL(u),1000)}
 async function init(){if(location.protocol==='file:')$('#fileBanner').classList.remove('hidden');await loadState();await loadReaderBookCache();const petChanged=processTamagotchiTime();initSelects();$('#restaurantMonth').value=monthNow();$('#ledgerMonth').value=state.ledger.records.some(r=>r.date?.startsWith(monthNow()))?monthNow():[...new Set(state.ledger.records.map(r=>r.date.slice(0,7)))].sort().reverse()[0]||monthNow();syncMineCountInput(false);renderAll();if(petChanged){localStorage.setItem(MIRROR_KEY,JSON.stringify(state));await idbPut('state',clone(state),'current')}startSudokuClock();startFreecellClock();startMineClock();startPetWandering();setInterval(async()=>{if(processTamagotchiTime())await persist('树屋居民时间流逝',false,false)},300000);if('true'==='true'&&'serviceWorker' in navigator)navigator.serviceWorker.register('./sw.js').catch(()=>{});window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredInstall=e;$('#installBtn').classList.remove('hidden')})}
+ensureReaderPortal();
 $$('.nav-btn[data-view]').forEach(b=>b.onclick=()=>setView(b.dataset.view));$('#readerBackBtn').onclick=exitReaderFullscreen;$('#moreNavBtn').onclick=toggleMoreNav;$('#moreNavCloseBtn').onclick=closeMoreNav;$('#moreNavBackdrop').onclick=closeMoreNav;$$('[data-brain-game]').forEach(b=>b.onclick=()=>setBrainGame(b.dataset.brainGame));$$('[data-open-view]').forEach(b=>b.onclick=()=>setView(b.dataset.openView));$('#quickLedgerBtn').onclick=()=>openLedger();$('#quickChoreBtn').onclick=()=>openChore();$('#quickWishBtn').onclick=()=>{setView('wishlist');openWish()};$('#quickRestaurantBtn').onclick=()=>{setView('restaurants');openRestaurant()};$('#backupNowBtn').onclick=()=>{state.settings.lastExternalBackupAt=nowISO();state.settings.lastExternalBackupDay=today();downloadBackup();persist('手动外部备份',false,true)};$('#backupPageBtn').onclick=$('#backupNowBtn').onclick;$('#installBtn').onclick=async()=>{if(deferredInstall){deferredInstall.prompt();await deferredInstall.userChoice;deferredInstall=null;$('#installBtn').classList.add('hidden')}};$$('[data-close]').forEach(b=>b.onclick=()=>document.getElementById(b.dataset.close).close());$$('[data-ledger-type]').forEach(b=>b.onclick=()=>setLedgerType(b.dataset.ledgerType));
 $('#calendarGrid').onclick=e=>{const b=e.target.closest('[data-calendar-date]');if(b)selectCalendarDate(b.dataset.calendarDate)};
 $('#calendarPrevBtn').onclick=async()=>{calendarCaptureEditor();const C=calendarData();C.visibleMonth=calendarShiftMonth(C.visibleMonth,-1);C.selectedDate=`${C.visibleMonth}-01`;await persist('查看上个月',false,false)};
@@ -2782,7 +2943,7 @@ $('#undoSokobanBtn').onclick=undoSokoban;
 $('#resetSokobanBtn').onclick=resetSokoban;
 $('#sokobanBoard').onclick=e=>{};
 document.querySelector('#brain-game-sokoban .sokoban-dpad').onclick=e=>{const b=e.target.closest('[data-sokoban-move]');if(b)moveSokoban(b.dataset.sokobanMove)};
-document.addEventListener('keydown',e=>{if(currentView!=='brain')return;const game=brainGame();if(game==='sudoku'){if(/^[1-9]$/.test(e.key))setSudokuNumber(Number(e.key));if(e.key==='Backspace'||e.key==='Delete'||e.key==='0')setSudokuNumber(0);return}if(game==='sokoban'){const dir={ArrowUp:'up',w:'up',W:'up',ArrowDown:'down',s:'down',S:'down',ArrowLeft:'left',a:'left',A:'left',ArrowRight:'right',d:'right',D:'right'}[e.key];if(dir){e.preventDefault();moveSokoban(dir)}}});
+document.addEventListener('keydown',e=>{if(currentView==='reader'&&e.key==='Escape'){e.preventDefault();exitReaderFullscreen();return}if(currentView!=='brain')return;const game=brainGame();if(game==='sudoku'){if(/^[1-9]$/.test(e.key))setSudokuNumber(Number(e.key));if(e.key==='Backspace'||e.key==='Delete'||e.key==='0')setSudokuNumber(0);return}if(game==='sokoban'){const dir={ArrowUp:'up',w:'up',W:'up',ArrowDown:'down',s:'down',S:'down',ArrowLeft:'left',a:'left',A:'left',ArrowRight:'right',d:'right',D:'right'}[e.key];if(dir){e.preventDefault();moveSokoban(dir)}}});
 
 $('#petMain').onclick=async e=>{
  if(petDecorMoved){petDecorMoved=false;return}
